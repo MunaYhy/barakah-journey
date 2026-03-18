@@ -1,121 +1,123 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>رحلة البركة — تحدي ٩٠ يوم</title>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<title>Barakah Journey — 90-Day Planner</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Quicksand:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --gd:#1b5e38;--gm:#2d8653;--gl:#5bbf85;--gp:#d4f0e0;
   --gpaper:#f2fbf5;--gdot:#8fd4ad;--ink:#1a3328;--inks:#3d6b52;
   --line:#b5e3cc;--white:#fff;--shadow:0 8px 36px rgba(27,94,56,.14);
-  --gold:#c9a84c;--rose:#e8a0a0;--lav:#b8a0d8;
+  --gold:#c9a84c;--rose:#e8a0a0;--lav:#b8a0d8;--amber:#f59e0b;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:linear-gradient(135deg,#e3f5eb,#d0eedd);font-family:'Tajawal',sans-serif;min-height:100vh;padding:0 0 60px;direction:rtl}
+body{background:linear-gradient(135deg,#e3f5eb,#d0eedd);font-family:'Quicksand',sans-serif;min-height:100vh;padding:0 0 60px}
 
 .banner{background:linear-gradient(135deg,var(--gd),var(--gm));color:#fff;padding:20px 20px 15px;text-align:center;position:relative;overflow:hidden}
 .banner::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(255,255,255,.03) 0,rgba(255,255,255,.03) 2px,transparent 2px,transparent 14px)}
-.banner .bisml{font-family:'Amiri',serif;font-size:1.25rem;color:#b5e3cc;margin-bottom:6px}
-.banner h1{font-family:'Amiri',serif;font-size:1.7rem;font-weight:700}
-.banner .sub{font-size:.78rem;opacity:.72;margin-top:3px;font-weight:500}
-.lsw{position:absolute;top:13px;left:13px;background:rgba(255,255,255,.18);border:1.5px solid rgba(255,255,255,.35);border-radius:50px;padding:5px 12px;font-size:.73rem;font-weight:700;color:#fff;cursor:pointer;text-decoration:none;transition:background .2s;font-family:'Tajawal',sans-serif}
+.banner .bisml{font-family:'Amiri',serif;font-size:1.1rem;color:#b5e3cc;margin-bottom:5px}
+.banner h1{font-family:'Amiri',serif;font-size:1.6rem;font-weight:700}
+.banner .sub{font-size:.76rem;opacity:.72;margin-top:3px;font-weight:600}
+.lsw{position:absolute;top:13px;right:13px;background:rgba(255,255,255,.18);border:1.5px solid rgba(255,255,255,.35);border-radius:50px;padding:5px 12px;font-size:.73rem;font-weight:700;color:#fff;cursor:pointer;text-decoration:none;transition:background .2s}
 .lsw:hover{background:rgba(255,255,255,.28)}
 
-.tabs{display:flex;background:var(--gd);overflow-x:auto;-webkit-overflow-scrolling:touch;direction:rtl}
-.tab{flex:none;padding:10px 13px;font-size:.75rem;font-weight:700;color:rgba(255,255,255,.55);cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:all .2s;font-family:'Tajawal',sans-serif;background:none;border-top:none;border-left:none;border-right:none}
+.tabs{display:flex;background:var(--gd);overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tab{flex:none;padding:10px 13px;font-size:.72rem;font-weight:700;color:rgba(255,255,255,.55);cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:all .2s;font-family:'Quicksand',sans-serif;background:none;border-top:none;border-left:none;border-right:none}
 .tab.active{color:#fff;border-bottom-color:var(--gl)}
+.tab:hover:not(.active){color:rgba(255,255,255,.8)}
 
 .cbar-wrap{background:var(--gd);padding:9px 20px 13px}
-.cbar-lbl{display:flex;justify-content:space-between;font-size:.73rem;font-weight:700;color:var(--gdot);margin-bottom:4px;direction:rtl}
+.cbar-lbl{display:flex;justify-content:space-between;font-size:.7rem;font-weight:700;color:var(--gdot);margin-bottom:4px}
 .cbar-bg{background:rgba(255,255,255,.15);border-radius:50px;height:9px;overflow:hidden}
-.cbar-fill{height:100%;border-radius:50px;background:linear-gradient(270deg,var(--gl),#a8e6c2);transition:width .6s ease;float:right}
+.cbar-fill{height:100%;border-radius:50px;background:linear-gradient(90deg,var(--gl),#a8e6c2);transition:width .6s ease}
 
 .date-nav{display:flex;align-items:center;justify-content:center;gap:10px;padding:12px 20px 8px;background:var(--gpaper);border-bottom:1.5px solid var(--line)}
-.date-nav h2{font-size:.9rem;font-weight:700;color:var(--gd);min-width:190px;text-align:center}
-.nvbtn{background:#fff;border:2px solid var(--gl);border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:.85rem;color:var(--gd);display:flex;align-items:center;justify-content:center;transition:all .18s;font-weight:700}
+.date-nav h2{font-size:.88rem;font-weight:700;color:var(--gd);min-width:190px;text-align:center}
+.nvbtn{background:#fff;border:2px solid var(--gl);border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:.85rem;color:var(--gd);display:flex;align-items:center;justify-content:center;transition:all .18s;font-family:'Quicksand',sans-serif;font-weight:700}
 .nvbtn:hover{background:var(--gp);transform:scale(1.1)}
 
 .page{display:none}.page.active{display:block}
-.nb{max-width:560px;margin:15px auto 0;background:#fff;border-radius:18px 4px 4px 18px;box-shadow:var(--shadow),7px 0 0 var(--gm);overflow:hidden}
+
+.nb{max-width:560px;margin:15px auto 0;background:#fff;border-radius:4px 18px 18px 4px;box-shadow:var(--shadow),-7px 0 0 var(--gm);overflow:hidden}
 .spr{background:var(--gp);padding:8px 0 6px;display:flex;justify-content:center;gap:14px;border-bottom:2px solid var(--line)}
 .sd{width:14px;height:14px;border-radius:50%;background:#fff;border:2.5px solid var(--gl)}
 .sec{padding:14px 18px 11px;border-bottom:1.5px dashed var(--line)}
 .sec:last-child{border-bottom:none}
-.sl{font-size:.7rem;font-weight:800;color:var(--gm);margin-bottom:9px;display:flex;align-items:center;gap:6px;direction:rtl}
-.sl::before{content:'';flex:1;height:1px;background:var(--line)}
+.sl{font-size:.67rem;font-weight:800;text-transform:uppercase;letter-spacing:1.1px;color:var(--gm);margin-bottom:9px;display:flex;align-items:center;gap:6px}
+.sl::after{content:'';flex:1;height:1px;background:var(--line)}
 
-/* Quote */
+/* ── Quote card ── */
 .qcard{background:linear-gradient(135deg,#f0faf4,#e8f7ee);border-radius:14px;padding:14px 16px;border-right:4px solid var(--gm);position:relative;overflow:hidden}
-.qcard::before{content:'❝';position:absolute;top:-4px;right:10px;font-size:3rem;color:var(--gp);font-family:Georgia,serif;line-height:1}
-.q-arabic{font-family:'Amiri',serif;font-size:1.1rem;color:var(--gd);text-align:center;direction:rtl;margin-bottom:8px;line-height:1.7}
-.q-english{font-size:.8rem;font-weight:500;color:var(--inks);text-align:center;font-style:italic;margin-bottom:8px;line-height:1.5}
+.qcard::before{content:'❝';position:absolute;top:-4px;left:10px;font-size:3rem;color:var(--gp);font-family:Georgia,serif;line-height:1}
+.q-arabic{font-family:'Amiri',serif;font-size:1.05rem;color:var(--gd);text-align:center;direction:rtl;margin-bottom:8px;line-height:1.7}
+.q-english{font-size:.82rem;font-weight:600;color:var(--inks);text-align:center;font-style:italic;margin-bottom:8px;line-height:1.5}
 .q-source{font-size:.68rem;font-weight:800;color:var(--gm);text-align:center}
 .q-learn{margin-top:10px;padding-top:9px;border-top:1px dashed var(--line)}
-.q-learn-lbl{font-size:.66rem;font-weight:800;color:var(--gm);margin-bottom:5px;text-align:right}
-.q-learn-inp{width:100%;border:none;outline:none;background:transparent;font-family:'Tajawal',sans-serif;font-size:.84rem;font-weight:600;color:var(--ink);padding:2px 0;border-bottom:1.5px dashed var(--line);direction:rtl;text-align:right}
+.q-learn-lbl{font-size:.65rem;font-weight:800;color:var(--gm);text-transform:uppercase;letter-spacing:.8px;margin-bottom:5px}
+.q-learn-inp{width:100%;border:none;outline:none;background:transparent;font-family:'Quicksand',sans-serif;font-size:.82rem;font-weight:600;color:var(--ink);padding:2px 0;border-bottom:1.5px dashed var(--line)}
 .q-learn-inp::placeholder{color:#afdfc4}
 .q-nav{display:flex;justify-content:center;gap:8px;margin-top:10px}
-.q-nav-btn{background:var(--gp);border:none;border-radius:50px;padding:4px 12px;font-size:.72rem;font-weight:700;color:var(--gd);cursor:pointer;transition:background .18s;font-family:'Tajawal',sans-serif}
+.q-nav-btn{background:var(--gp);border:none;border-radius:50px;padding:4px 12px;font-size:.72rem;font-weight:700;color:var(--gd);cursor:pointer;transition:background .18s;font-family:'Quicksand',sans-serif}
 .q-nav-btn:hover{background:var(--gl);color:#fff}
 
-/* Mood */
-.mood-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;direction:rtl}
-.mood-lbl{font-size:.82rem;font-weight:700;color:var(--inks)}
+/* ── Mood tracker ── */
+.mood-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.mood-lbl{font-size:.8rem;font-weight:700;color:var(--inks)}
 .moods{display:flex;gap:6px}
 .mood-btn{font-size:1.3rem;background:none;border:2.5px solid #eee;border-radius:50%;width:38px;height:38px;cursor:pointer;transition:all .18s;display:flex;align-items:center;justify-content:center}
 .mood-btn:hover{border-color:var(--gl);transform:scale(1.12)}
 .mood-btn.sel{border-color:var(--gd);background:var(--gp);transform:scale(1.15)}
-.mood-note{flex:1;min-width:100px;border:none;outline:none;border-bottom:1.5px dashed var(--line);font-family:'Tajawal',sans-serif;font-size:.82rem;font-weight:600;color:var(--ink);padding:3px 0;background:transparent;direction:rtl;text-align:right}
+.mood-note{flex:1;min-width:120px;border:none;outline:none;border-bottom:1.5px dashed var(--line);font-family:'Quicksand',sans-serif;font-size:.8rem;font-weight:600;color:var(--ink);padding:3px 0;background:transparent}
 .mood-note::placeholder{color:#afdfc4}
 
-/* Steps */
-.steps-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;direction:rtl}
-.steps-inp{width:90px;padding:6px 10px;border:1.5px solid var(--line);border-radius:9px;font-family:'Tajawal',sans-serif;font-size:.9rem;font-weight:700;color:var(--ink);outline:none;background:#f6fcf8;transition:border-color .2s;text-align:center}
+/* ── Steps ── */
+.steps-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.steps-inp{width:90px;padding:6px 10px;border:1.5px solid var(--line);border-radius:9px;font-family:'Quicksand',sans-serif;font-size:.9rem;font-weight:700;color:var(--ink);outline:none;background:#f6fcf8;transition:border-color .2s;text-align:center}
 .steps-inp:focus{border-color:var(--gm)}
 .steps-goal{font-size:.75rem;font-weight:700;color:var(--inks)}
-.steps-bar-wrap{flex:1;min-width:80px;background:#f0f0f0;border-radius:50px;height:7px;overflow:hidden}
-.steps-bar-fill{height:100%;border-radius:50px;background:linear-gradient(270deg,var(--gl),var(--gm));transition:width .4s ease;float:right}
+.steps-bar-wrap{flex:1;min-width:100px;background:#f0f0f0;border-radius:50px;height:7px;overflow:hidden}
+.steps-bar-fill{height:100%;border-radius:50px;background:linear-gradient(90deg,var(--gl),var(--gm));transition:width .4s ease}
 
-/* Habits */
+/* ── Habit rows ── */
 .hg{margin-bottom:7px}
-.mr{display:flex;align-items:center;justify-content:space-between;padding:7px 10px;background:var(--gp);border-radius:9px;margin-bottom:3px;cursor:pointer;transition:background .18s;border-right:4px solid var(--gm);border-left:none;gap:6px}
-.mr:hover{background:#c2e8d4}.mr.ck{background:var(--gl);border-right-color:var(--gd)}
+.mr{display:flex;align-items:center;justify-content:space-between;padding:7px 10px;background:var(--gp);border-radius:9px;margin-bottom:3px;cursor:pointer;transition:background .18s;border-left:4px solid var(--gm);gap:6px}
+.mr:hover{background:#c2e8d4}.mr.ck{background:var(--gl);border-left-color:var(--gd)}
 .ml{display:flex;align-items:center;gap:7px;flex:1}
-.mll{font-weight:700;font-size:.9rem;color:var(--ink)}
+.mll{font-weight:700;font-size:.88rem;color:var(--ink)}
 .mr.ck .mll{text-decoration:line-through;opacity:.65}
 .cc{width:20px;height:20px;border-radius:50%;border:2.5px solid var(--gm);background:#fff;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.68rem;color:#fff;transition:all .2s}
 .mr.ck .cc{background:var(--gd);border-color:var(--gd)}.mr.ck .cc::after{content:'✓'}
-.mr.pk{border-right-color:var(--gold);background:#fdf8ec}.mr.pk:hover{background:#f9f0d0}
-.mr.pk.sd{background:#e8f5d4;border-right-color:var(--gd)}
-.pb{font-size:.6rem;font-weight:800;background:var(--gold);color:#fff;border-radius:50px;padding:2px 6px;white-space:nowrap}
+.mr.pk{border-left-color:var(--gold);background:#fdf8ec}.mr.pk:hover{background:#f9f0d0}
+.mr.pk.sd{background:#e8f5d4;border-left-color:var(--gd)}
+.pb{font-size:.58rem;font-weight:800;background:var(--gold);color:#fff;border-radius:50px;padding:2px 6px;white-space:nowrap}
 .xb{background:none;border:none;cursor:pointer;color:#ccc;font-size:.78rem;padding:0 2px;transition:color .15s}
 .xb:hover{color:#e57373}
 .eb{background:none;border:none;cursor:pointer;font-size:.7rem;color:var(--inks);padding:2px 4px;border-radius:5px;transition:transform .25s}
 .eb.op{transform:rotate(180deg)}
-.shs{display:none;padding:3px 12px 3px 0;border-right:2px dotted var(--gdot);margin-right:11px;margin-bottom:2px}
+.shs{display:none;padding:3px 0 3px 12px;border-left:2px dotted var(--gdot);margin-left:11px;margin-bottom:2px}
 .shs.op{display:block}
-.sr{display:flex;align-items:center;gap:6px;padding:4px 7px;border-radius:7px;margin-bottom:3px;cursor:pointer;transition:background .15s;background:#f5fdf8;direction:rtl}
+.sr{display:flex;align-items:center;gap:6px;padding:4px 7px;border-radius:7px;margin-bottom:3px;cursor:pointer;transition:background .15s;background:#f5fdf8}
 .sr:hover{background:var(--gp)}.sr.ck{background:#d6f0e2}
 .dot{width:13px;height:13px;border-radius:50%;border:2px solid var(--gdot);background:#fff;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.52rem;color:#fff;transition:all .18s}
 .sr.ck .dot{background:var(--gm);border-color:var(--gm)}.sr.ck .dot::after{content:'✓'}
 .sr.ck .dot.rd{background:var(--gold);border-color:#a07830}
-.slb{font-size:.82rem;font-weight:600;color:var(--inks)}.sr.ck .slb{font-weight:700;color:var(--ink)}
-.asb{display:flex;gap:5px;margin-top:4px;margin-right:12px;direction:rtl}
-.asb input{flex:1;padding:4px 8px;border:1.5px solid var(--line);border-radius:7px;font-family:'Tajawal',sans-serif;font-size:.8rem;font-weight:600;outline:none;color:var(--ink);background:#fafdfc;transition:border-color .2s;direction:rtl}
+.slb{font-size:.79rem;font-weight:600;color:var(--inks)}.sr.ck .slb{font-weight:700;color:var(--ink)}
+.asb{display:flex;gap:5px;margin-top:4px;margin-left:12px}
+.asb input{flex:1;padding:4px 8px;border:1.5px solid var(--line);border-radius:7px;font-family:'Quicksand',sans-serif;font-size:.76rem;font-weight:600;outline:none;color:var(--ink);background:#fafdfc;transition:border-color .2s}
 .asb input:focus{border-color:var(--gm)}
-.asb button{background:var(--gm);color:#fff;border:none;border-radius:7px;padding:4px 8px;font-size:.78rem;font-weight:700;cursor:pointer;font-family:'Tajawal',sans-serif;transition:background .18s}
+.asb button{background:var(--gm);color:#fff;border:none;border-radius:7px;padding:4px 8px;font-size:.74rem;font-weight:700;cursor:pointer;font-family:'Quicksand',sans-serif;transition:background .18s}
 .asb button:hover{background:var(--gd)}
-.amn{display:flex;gap:6px;margin-top:8px;direction:rtl}
-.amn input{flex:1;padding:7px 11px;border:1.5px solid var(--line);border-radius:9px;font-family:'Tajawal',sans-serif;font-size:.86rem;font-weight:600;outline:none;color:var(--ink);background:#f6fcf8;transition:border-color .2s;direction:rtl}
+.amn{display:flex;gap:6px;margin-top:8px}
+.amn input{flex:1;padding:7px 11px;border:1.5px solid var(--line);border-radius:9px;font-family:'Quicksand',sans-serif;font-size:.82rem;font-weight:600;outline:none;color:var(--ink);background:#f6fcf8;transition:border-color .2s}
 .amn input:focus{border-color:var(--gm)}
-.amn button{background:var(--gm);color:#fff;border:none;border-radius:9px;padding:7px 12px;font-size:.86rem;font-weight:700;cursor:pointer;font-family:'Tajawal',sans-serif;transition:background .18s}
+.amn button{background:var(--gm);color:#fff;border:none;border-radius:9px;padding:7px 12px;font-size:.82rem;font-weight:700;cursor:pointer;font-family:'Quicksand',sans-serif;transition:background .18s}
 .amn button:hover{background:var(--gd)}
 
-/* Water */
-.wr{display:flex;align-items:center;gap:7px;flex-wrap:wrap;direction:rtl}
-.wl{font-size:.8rem;font-weight:700;color:var(--inks)}
+/* ── Water ── */
+.wr{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.wl{font-size:.78rem;font-weight:700;color:var(--inks)}
 .cups{display:flex;gap:4px;flex-wrap:wrap}
 .cup{width:24px;height:28px;cursor:pointer;transition:transform .15s}
 .cup:hover{transform:scale(1.1)}
@@ -125,451 +127,541 @@ body{background:linear-gradient(135deg,#e3f5eb,#d0eedd);font-family:'Tajawal',sa
 .cup .co{fill:none;stroke:var(--gm);stroke-width:2;stroke-linejoin:round}
 .cc2{font-size:.72rem;font-weight:700;color:var(--gm)}
 
-/* Priority */
+/* ── Priority ── */
 .prl{display:flex;flex-direction:column;gap:4px}
-.prr{display:flex;align-items:center;gap:6px;border-bottom:1px solid var(--line);padding-bottom:4px;direction:rtl}
-.pnum{width:17px;height:17px;border-radius:50%;background:var(--gp);border:2px solid var(--gl);font-size:.65rem;font-weight:800;color:var(--gd);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.pi{flex:1;border:none;outline:none;background:transparent;font-family:'Tajawal',sans-serif;font-size:.88rem;font-weight:600;color:var(--ink);padding:2px 0;direction:rtl;text-align:right}
+.prr{display:flex;align-items:center;gap:6px;border-bottom:1px solid var(--line);padding-bottom:4px}
+.pnum{width:17px;height:17px;border-radius:50%;background:var(--gp);border:2px solid var(--gl);font-size:.62rem;font-weight:800;color:var(--gd);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pi{flex:1;border:none;outline:none;background:transparent;font-family:'Quicksand',sans-serif;font-size:.82rem;font-weight:600;color:var(--ink);padding:2px 0}
 .pc{width:16px;height:16px;border-radius:4px;border:2px solid var(--gdot);background:#fff;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.56rem;color:#fff;transition:all .18s}
 .pc.dn{background:var(--gm);border-color:var(--gd)}.pc.dn::after{content:'✓'}
 
-/* Bullets */
+/* ── Bullet lines ── */
 .bl{display:flex;flex-direction:column;gap:5px}
-.br{display:flex;align-items:center;gap:7px;border-bottom:1px solid var(--line);padding-bottom:4px;direction:rtl}
+.br{display:flex;align-items:center;gap:7px;border-bottom:1px solid var(--line);padding-bottom:4px}
 .bi{font-size:.85rem;flex-shrink:0}
-.bip{flex:1;border:none;outline:none;background:transparent;font-family:'Tajawal',sans-serif;font-size:.86rem;font-weight:500;color:var(--ink);padding:2px 0;direction:rtl;text-align:right}
+.bip{flex:1;border:none;outline:none;background:transparent;font-family:'Quicksand',sans-serif;font-size:.82rem;font-weight:600;color:var(--ink);padding:2px 0}
 .bip::placeholder{color:#afdfc4}
 
-/* Textarea */
-.lta{width:100%;border:none;outline:none;resize:none;font-family:'Tajawal',sans-serif;font-size:.88rem;font-weight:500;color:var(--ink);line-height:28px;padding:2px;background:repeating-linear-gradient(to bottom,transparent,transparent 27px,var(--line) 27px,var(--line) 28px) transparent;direction:rtl;text-align:right}
+/* ── Textarea ── */
+.lta{width:100%;border:none;outline:none;resize:none;font-family:'Quicksand',sans-serif;font-size:.83rem;font-weight:600;color:var(--ink);line-height:28px;padding:2px;background:repeating-linear-gradient(to bottom,transparent,transparent 27px,var(--line) 27px,var(--line) 28px) transparent}
 .lta::placeholder{color:#afdfc4}
-.sni{width:100%;border:none;outline:none;border-bottom:1.5px dashed var(--line);font-family:'Tajawal',sans-serif;font-size:.86rem;font-weight:600;color:var(--ink);padding:4px 0;background:transparent;direction:rtl;text-align:right}
+.sni{width:100%;border:none;outline:none;border-bottom:1.5px dashed var(--line);font-family:'Quicksand',sans-serif;font-size:.82rem;font-weight:600;color:var(--ink);padding:4px 0;background:transparent}
 .sni::placeholder{color:#afdfc4}
 
-/* Prayer */
-.pgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;direction:rtl}
+/* ── Prayer ── */
+.pgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
 .pcol{display:flex;flex-direction:column;align-items:center;gap:4px}
-.pn{font-size:.65rem;font-weight:700;color:var(--inks);text-align:center;font-family:'Amiri',serif}
+.pn{font-size:.62rem;font-weight:700;color:var(--inks);text-align:center}
 .pd{width:26px;height:26px;border-radius:50%;border:2.5px solid var(--gdot);background:#fff;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;font-size:.67rem;color:#fff}
 .pd:hover{border-color:var(--gm);background:var(--gp)}
 .pd.done{background:var(--gm);border-color:var(--gd)}.pd.done::after{content:'✓';font-weight:900}
 
-/* Self-care */
+/* ── Self-care ── */
 .scg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .scc{background:var(--gp);border-radius:11px;padding:10px 11px;border-top:3px solid var(--gl)}
 .scc.ros{border-top-color:#e8a0a0;background:#fdf0f0}
 .scc.lav{border-top-color:#b8a0d8;background:#f5f0fd}
-.sct2{font-size:.72rem;font-weight:800;color:var(--gd);margin-bottom:7px;display:flex;align-items:center;gap:4px;direction:rtl}
-.sci{display:flex;align-items:center;gap:6px;padding:4px 0;border-bottom:1px solid rgba(181,227,204,.4);cursor:pointer;direction:rtl}
+.sct2{font-size:.7rem;font-weight:800;color:var(--gd);margin-bottom:7px;display:flex;align-items:center;gap:4px}
+.sci{display:flex;align-items:center;gap:6px;padding:4px 0;border-bottom:1px solid rgba(181,227,204,.4);cursor:pointer}
 .sci:last-child{border-bottom:none}
 .scd{width:15px;height:15px;border-radius:50%;border:2px solid var(--gdot);background:#fff;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.52rem;color:#fff;transition:all .18s}
 .sci.dn .scd{background:var(--gm);border-color:var(--gd)}.sci.dn .scd::after{content:'✓'}
 .sci.dn .scl{text-decoration:line-through;opacity:.6}
-.scl{font-size:.78rem;font-weight:600;color:var(--inks);flex:1;text-align:right}
+.scl{font-size:.76rem;font-weight:600;color:var(--inks);flex:1}
 .scf{font-size:.58rem;background:var(--gm);color:#fff;border-radius:50px;padding:1px 5px;font-weight:700;flex-shrink:0;white-space:nowrap}
 .scf.wk{background:var(--lav)}
 
-/* Weight */
-.wti{font-size:.78rem;color:var(--inks);font-weight:600;margin-bottom:12px;line-height:1.6;background:var(--gp);padding:10px 12px;border-radius:10px;border-right:3px solid var(--gl);text-align:right}
+/* ── Weight ── */
+.wti{font-size:.76rem;color:var(--inks);font-weight:600;margin-bottom:12px;line-height:1.5;background:var(--gp);padding:10px 12px;border-radius:10px;border-left:3px solid var(--gl)}
 .wtl{display:flex;flex-direction:column;gap:0}
-.wte{display:flex;align-items:flex-start;position:relative;padding-bottom:4px;direction:rtl}
-.wtln{position:absolute;right:19px;top:38px;width:2px;height:calc(100% - 4px);background:var(--line);z-index:0}
-.wtdw{display:flex;flex-direction:column;align-items:center;z-index:1;flex-shrink:0;margin-right:8px;padding-top:6px}
+.wte{display:flex;align-items:flex-start;position:relative;padding-bottom:4px}
+.wtln{position:absolute;left:19px;top:38px;width:2px;height:calc(100% - 4px);background:var(--line);z-index:0}
+.wtdw{display:flex;flex-direction:column;align-items:center;z-index:1;flex-shrink:0;margin-left:8px;padding-top:6px}
 .wtd{width:22px;height:22px;border-radius:50%;border:3px solid var(--gl);background:#fff;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:900;color:var(--gm)}
 .wtd.ms{border-color:var(--gold);color:var(--gold)}.wtd.st{border-color:var(--gd);background:var(--gd);color:#fff}
-.wtc{flex:1;padding:6px 12px 10px 12px;text-align:right}
+.wtc{flex:1;padding:6px 12px 10px 12px}
 .wtlbl{font-size:.7rem;font-weight:800;color:var(--gd);margin-bottom:3px}
 .wtdt{font-size:.63rem;color:var(--inks);font-weight:600;margin-bottom:5px}
-.wtir{display:flex;align-items:center;gap:7px;flex-wrap:wrap;direction:rtl}
-.wtin{width:80px;padding:5px 8px;border:1.5px solid var(--line);border-radius:8px;font-family:'Tajawal',sans-serif;font-size:.88rem;font-weight:700;color:var(--ink);outline:none;background:#f6fcf8;transition:border-color .2s;text-align:center}
+.wtir{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.wtin{width:80px;padding:5px 8px;border:1.5px solid var(--line);border-radius:8px;font-family:'Quicksand',sans-serif;font-size:.85rem;font-weight:700;color:var(--ink);outline:none;background:#f6fcf8;transition:border-color .2s;text-align:center}
 .wtin:focus{border-color:var(--gm)}
 .wtu{font-size:.76rem;font-weight:700;color:var(--inks)}
 .wtdf{font-size:.72rem;font-weight:800;padding:3px 8px;border-radius:50px}
 .wtdf.ls{background:#d4f0e0;color:var(--gd)}.wtdf.gn{background:#fde8e8;color:#c0392b}.wtdf.sm{background:#f3f3f3;color:#888}
 
-/* Measurements */
+/* ── Measurements ── */
 .meas-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .meas-card{background:var(--gp);border-radius:10px;padding:10px 12px}
-.meas-lbl{font-size:.7rem;font-weight:800;color:var(--gd);margin-bottom:6px;text-align:right}
-.meas-inp{width:100%;padding:6px 8px;border:1.5px solid var(--line);border-radius:8px;font-family:'Tajawal',sans-serif;font-size:.9rem;font-weight:700;color:var(--ink);outline:none;background:#fff;transition:border-color .2s;text-align:center}
+.meas-lbl{font-size:.68rem;font-weight:800;color:var(--gd);margin-bottom:6px}
+.meas-inp{width:100%;padding:6px 8px;border:1.5px solid var(--line);border-radius:8px;font-family:'Quicksand',sans-serif;font-size:.9rem;font-weight:700;color:var(--ink);outline:none;background:#fff;transition:border-color .2s;text-align:center}
 .meas-inp:focus{border-color:var(--gm)}
 
-/* Mood chart */
+/* ── Mood chart mini ── */
 .mood-chart{display:flex;align-items:flex-end;gap:3px;height:40px;margin-top:8px}
-.mood-bar{flex:1;border-radius:3px 3px 0 0;background:var(--gl);transition:height .3s;min-height:3px}
+.mood-bar{flex:1;border-radius:3px 3px 0 0;background:var(--gl);transition:height .3s;min-height:3px;cursor:default;position:relative}
+.mood-bar:hover::after{content:attr(data-tip);position:absolute;bottom:110%;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:2px 6px;border-radius:4px;font-size:.6rem;white-space:nowrap;z-index:10}
 
-/* Weekly */
-.week-card{background:var(--gp);border-radius:12px;padding:12px 14px;margin-bottom:10px;border-right:4px solid var(--gm)}
-.week-card h4{font-size:.8rem;font-weight:800;color:var(--gd);margin-bottom:8px;text-align:right}
+/* ── Weekly Review ── */
+.week-card{background:var(--gp);border-radius:12px;padding:12px 14px;margin-bottom:10px;border-left:4px solid var(--gm)}
+.week-card h4{font-size:.78rem;font-weight:800;color:var(--gd);margin-bottom:8px}
 .week-stars{display:flex;gap:5px;margin-bottom:8px}
 .star-btn{font-size:1.2rem;cursor:pointer;transition:transform .15s;background:none;border:none;padding:2px}
 .star-btn:hover{transform:scale(1.2)}
-.rating-lbl{font-size:.72rem;font-weight:700;color:var(--inks);margin-bottom:6px;text-align:right}
+.rating-lbl{font-size:.7rem;font-weight:700;color:var(--inks);margin-bottom:6px}
 
-/* Rewards */
-.rwrap2{max-width:560px;margin:15px auto 0;background:#fff;border-radius:18px 4px 4px 18px;box-shadow:var(--shadow),7px 0 0 var(--gm);overflow:hidden}
-.reward-week{background:var(--gp);border-radius:12px;padding:12px 14px;margin-bottom:10px;border-right:4px solid var(--gold)}
-.reward-week.unlocked{border-right-color:var(--gm);background:#d4f0e0}
+/* ── Rewards ── */
+.rwrap2{max-width:560px;margin:15px auto 0;background:#fff;border-radius:4px 18px 18px 4px;box-shadow:var(--shadow),-7px 0 0 var(--gm);overflow:hidden}
+.reward-week{background:var(--gp);border-radius:12px;padding:12px 14px;margin-bottom:10px;border-left:4px solid var(--gold)}
+.reward-week.unlocked{border-left-color:var(--gm);background:#d4f0e0}
 .reward-week.unlocked .rw-num{background:var(--gm);color:#fff}
-.rw-header{display:flex;align-items:center;gap:10px;margin-bottom:8px;direction:rtl}
+.rw-header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
 .rw-num{width:28px;height:28px;border-radius:50%;background:var(--gold);color:#fff;font-size:.72rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .rw-title{font-size:.82rem;font-weight:800;color:var(--gd)}
 .rw-date{font-size:.65rem;color:var(--inks);font-weight:600}
-.rw-ideas{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;direction:rtl}
+.rw-ideas{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px}
 .rw-tag{font-size:.7rem;font-weight:700;background:#fff;border:1.5px solid var(--line);border-radius:50px;padding:3px 10px;color:var(--inks);cursor:pointer;transition:all .18s}
 .rw-tag:hover,.rw-tag.sel{background:var(--gm);border-color:var(--gm);color:#fff}
-.rw-custom{width:100%;padding:6px 10px;border:1.5px solid var(--line);border-radius:9px;font-family:'Tajawal',sans-serif;font-size:.82rem;font-weight:600;outline:none;color:var(--ink);background:#fff;transition:border-color .2s;direction:rtl;text-align:right}
+.rw-custom{width:100%;padding:6px 10px;border:1.5px solid var(--line);border-radius:9px;font-family:'Quicksand',sans-serif;font-size:.8rem;font-weight:600;outline:none;color:var(--ink);background:#fff;transition:border-color .2s}
 .rw-custom:focus{border-color:var(--gm)}
-.rw-check{display:flex;align-items:center;gap:7px;margin-top:7px;font-size:.8rem;font-weight:700;color:var(--inks);cursor:pointer;direction:rtl}
+.rw-check{display:flex;align-items:center;gap:7px;margin-top:7px;font-size:.78rem;font-weight:700;color:var(--inks);cursor:pointer}
 .rw-chk{width:18px;height:18px;border-radius:5px;border:2px solid var(--gdot);background:#fff;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.62rem;color:#fff;transition:all .18s}
 .rw-chk.dn{background:var(--gm);border-color:var(--gd)}.rw-chk.dn::after{content:'✓'}
 
-/* Rules */
-.ruleswrap{max-width:560px;margin:15px auto 0;background:#fff;border-radius:18px 4px 4px 18px;box-shadow:var(--shadow),7px 0 0 var(--gm);overflow:hidden}
+/* ── Rules ── */
+.ruleswrap{max-width:560px;margin:15px auto 0;background:#fff;border-radius:4px 18px 18px 4px;box-shadow:var(--shadow),-7px 0 0 var(--gm);overflow:hidden}
 .rh{background:linear-gradient(135deg,var(--gd),var(--gm));padding:20px 22px;color:#fff;text-align:center}
-.rh h2{font-family:'Amiri',serif;font-size:1.5rem;margin-bottom:4px}
-.rh p{font-size:.8rem;opacity:.75;font-weight:500}
+.rh h2{font-family:'Amiri',serif;font-size:1.45rem;margin-bottom:4px}
+.rh p{font-size:.78rem;opacity:.75;font-weight:600}
 .rb{padding:18px 20px}
-.ri{display:flex;align-items:flex-start;gap:11px;padding:9px 0;border-bottom:1px solid var(--line);direction:rtl}
+.ri{display:flex;align-items:flex-start;gap:11px;padding:9px 0;border-bottom:1px solid var(--line)}
 .ri:last-child{border-bottom:none}
 .rnum{width:27px;height:27px;border-radius:50%;background:var(--gp);border:2px solid var(--gl);font-size:.72rem;font-weight:900;color:var(--gd);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
 .rico{font-size:1.05rem;flex-shrink:0;margin-top:2px}
-.rtxt{font-size:.86rem;font-weight:600;color:var(--ink);line-height:1.45;flex:1;text-align:right}
-.rcat{font-size:.62rem;font-weight:800;border-radius:50px;padding:2px 7px;margin-top:3px;display:inline-block}
+.rtxt{font-size:.84rem;font-weight:600;color:var(--ink);line-height:1.42;flex:1}
+.rcat{font-size:.6rem;font-weight:800;border-radius:50px;padding:2px 7px;margin-top:3px;display:inline-block}
 .csp{background:#e8f5e0;color:var(--gd)}.cph{background:#e0f0ff;color:#2260a8}
 .cmn{background:#f5edff;color:#6b3fa0}.csc{background:#fde8f5;color:#a03060}
 
-.nbf{background:var(--gp);padding:10px 18px;display:flex;align-items:center;justify-content:space-between;border-top:2px solid var(--line);flex-wrap:wrap;gap:6px;direction:rtl}
-.scr{font-size:.78rem;font-weight:800;color:var(--gd)}
-.rstb{background:none;border:1.5px solid var(--gl);border-radius:50px;padding:5px 11px;font-family:'Tajawal',sans-serif;font-size:.74rem;font-weight:700;color:var(--gm);cursor:pointer;transition:all .18s}
+.nbf{background:var(--gp);padding:10px 18px;display:flex;align-items:center;justify-content:space-between;border-top:2px solid var(--line);flex-wrap:wrap;gap:6px}
+.scr{font-size:.76rem;font-weight:800;color:var(--gd)}
+.rstb{background:none;border:1.5px solid var(--gl);border-radius:50px;padding:5px 11px;font-family:'Quicksand',sans-serif;font-size:.72rem;font-weight:700;color:var(--gm);cursor:pointer;transition:all .18s}
 .rstb:hover{background:#fff;color:var(--gd)}
 </style>
 </head>
 <body>
 
 <div class="banner">
-  <a class="lsw" href="habit-tracker-en.html">🌐 English</a>
+  <a class="lsw" href="habit-tracker-ar.html">🌐 العربية</a>
   <div class="bisml">بِسْمِ اللَّهِ، نَبْدَأُ عَلَى بَرَكَةِ اللَّهِ</div>
-  <h1>🌿 رحلة البركة</h1>
-  <div class="sub">Barakah Journey — تحدي ٩٠ يوم</div>
-  <div style="margin-top:10px"><a href="progress-report.html" style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);border:1.5px solid rgba(255,255,255,.35);border-radius:50px;padding:6px 14px;font-size:.74rem;font-weight:700;color:#fff;text-decoration:none">📊 تقرير التقدم كل ٢١ يوم</a></div>
+  <h1>🌿 Barakah Journey</h1>
+  <div class="sub">رحلة البركة — 90-Day Challenge Planner</div>
+  <div style="margin-top:10px"><a href="progress-report.html" style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);border:1.5px solid rgba(255,255,255,.35);border-radius:50px;padding:6px 14px;font-size:.74rem;font-weight:700;color:#fff;text-decoration:none">📊 21-Day Progress Report</a></div>
 </div>
 
 <div class="tabs">
-  <button class="tab active" onclick="showPage('daily',this)">📋 اليومي</button>
-  <button class="tab" onclick="showPage('selfcare',this)">💆 العناية</button>
-  <button class="tab" onclick="showPage('weight',this)">⚖️ الوزن</button>
-  <button class="tab" onclick="showPage('weekly',this)">📊 الأسبوعي</button>
-  <button class="tab" onclick="showPage('rewards',this)">🎁 المكافآت</button>
-  <button class="tab" onclick="showPage('rules',this)">📜 القواعد</button>
+  <button class="tab active" onclick="showPage('daily',this)">📋 Daily</button>
+  <button class="tab" onclick="showPage('selfcare',this)">💆 Self-Care</button>
+  <button class="tab" onclick="showPage('weight',this)">⚖️ Weight</button>
+  <button class="tab" onclick="showPage('weekly',this)">📊 Weekly</button>
+  <button class="tab" onclick="showPage('rewards',this)">🎁 Rewards</button>
+  <button class="tab" onclick="showPage('rules',this)">📜 Rules</button>
 </div>
 
 <div class="cbar-wrap">
-  <div class="cbar-lbl"><span id="dlbl">اليوم ١ من ٩٠</span><span id="plbl">١٪</span></div>
+  <div class="cbar-lbl"><span id="dlbl">Day 1 of 90</span><span id="plbl">1%</span></div>
   <div class="cbar-bg"><div class="cbar-fill" id="cbar" style="width:1%"></div></div>
 </div>
 <div class="date-nav">
-  <button class="nvbtn" onclick="chDay(1)">◀</button>
+  <button class="nvbtn" onclick="chDay(-1)">◀</button>
   <h2 id="datelbl">—</h2>
-  <button class="nvbtn" onclick="chDay(-1)">▶</button>
+  <button class="nvbtn" onclick="chDay(1)">▶</button>
 </div>
 
-<!-- DAILY -->
+<!-- ══ DAILY ══ -->
 <div class="page active" id="page-daily">
 <div class="nb">
   <div class="spr" id="spr1"></div>
-  <div class="sec"><div class="sl">✨ إلهام اليوم</div><div class="qcard" id="qcard"></div></div>
-  <div class="sec"><div class="sl">😊 المزاج والطاقة</div>
-    <div class="mood-row"><span class="mood-lbl">كيف حالك؟</span><div class="moods" id="moods"></div>
-    <input class="mood-note" id="mood-note" type="text" placeholder="ملاحظة…"></div></div>
-  <div class="sec"><div class="sl">🕌 الصلوات اليومية</div><div class="pgrid" id="pgrid"></div>
-    <div style="margin-top:9px"><div class="sl" style="font-size:.63rem;margin-bottom:7px">السنن والنوافل</div><div class="pgrid" id="sgrid"></div></div></div>
-  <div class="sec"><div class="sl">✅ العادات اليومية</div><div id="hlist"></div>
-    <div class="amn" style="margin-top:8px"><input type="text" id="nh" placeholder="+ أضف مجموعة عادة…" maxlength="60" onkeydown="if(event.key==='Enter')aMain()"><button onclick="aMain()">إضافة</button></div></div>
-  <div class="sec"><div class="sl">💧 شرب الماء</div>
-    <div style="font-size:.7rem;color:var(--inks);font-weight:600;margin-bottom:7px;text-align:right">🤱 هدف الرضاعة: <b>٦ زجاجات × ٥٠٠ مل</b> = ٣ لتر. حليبك معظمه ماء — استمري يا أماه!</div>
-    <div class="wr"><span class="wl">الزجاجات:</span><div class="cups" id="cupr"></div><span class="cc2" id="cupc">٠/٦</span></div></div>
-  <div class="sec"><div class="sl">🌙 الراحة والتعافي</div>
-    <div style="font-size:.74rem;color:var(--inks);font-weight:600;margin-bottom:8px;line-height:1.6;background:var(--gp);padding:8px 11px;border-radius:9px;border-right:3px solid var(--gl);text-align:right">
-      💛 أنتِ في مرحلة النفاس — الراحة ليست كسلاً، بل هي شفاء. كل قيلولة تحتسب. كل لحظة هدوء تحتسب.
+
+  <!-- Quote -->
+  <div class="sec">
+    <div class="sl">✨ Daily Inspiration</div>
+    <div class="qcard" id="qcard"></div>
+  </div>
+
+  <!-- Mood -->
+  <div class="sec">
+    <div class="sl">😊 Mood & Energy</div>
+    <div class="mood-row">
+      <span class="mood-lbl">How are you?</span>
+      <div class="moods" id="moods"></div>
+      <input class="mood-note" id="mood-note" type="text" placeholder="Any note…">
+    </div>
+  </div>
+
+  <!-- Prayers -->
+  <div class="sec"><div class="sl">🕌 Daily Prayers</div><div class="pgrid" id="pgrid"></div>
+    <div style="margin-top:9px"><div class="sl" style="font-size:.61rem;margin-bottom:7px">Sunnah & Extras</div><div class="pgrid" id="sgrid"></div></div></div>
+
+  <!-- Habits -->
+  <div class="sec"><div class="sl">✅ Daily Habits</div><div id="hlist"></div>
+    <div class="amn" style="margin-top:8px"><input type="text" id="nh" placeholder="+ Add habit group…" maxlength="40" onkeydown="if(event.key==='Enter')aMain()"><button onclick="aMain()">Add</button></div></div>
+
+  <!-- Water -->
+  <div class="sec"><div class="sl">💧 Water Intake</div>
+    <div style="font-size:.68rem;color:var(--inks);font-weight:600;margin-bottom:7px">🤱 Breastfeeding goal: <b>6 × 500ml bottles</b> = 3 litres. Your milk is mostly water — keep going, mama!</div>
+    <div class="wr"><span class="wl">Bottles:</span><div class="cups" id="cupr"></div><span class="cc2" id="cupc">0/6</span></div></div>
+
+  <!-- Rest & Recovery -->
+  <div class="sec"><div class="sl">🌙 Rest & Recovery</div>
+    <div style="font-size:.72rem;color:var(--inks);font-weight:600;margin-bottom:8px;line-height:1.5;background:var(--gp);padding:8px 11px;border-radius:9px;border-left:3px solid var(--gl)">
+      💛 You're postpartum — rest is not laziness, it's healing. Every nap counts. Every moment of stillness counts.
     </div>
     <div id="rest-checks"></div>
   </div>
 
+  <!-- Priorities -->
+  <div class="sec"><div class="sl">⭐ Today's Priorities</div><div class="prl" id="plist"></div></div>
+
   <!-- BF Tracker -->
-  <div class="sec"><div class="sl">🤱 الرضاعة اليوم</div>
-    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px;direction:rtl">
+  <div class="sec"><div class="sl">🤱 Breastfeeding Today</div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px">
       <div style="background:var(--gp);border-radius:10px;padding:9px 14px;text-align:center;flex:1;min-width:80px">
-        <div style="font-size:1.5rem;font-weight:800;color:var(--gd)" id="bf-count">٠</div>
-        <div style="font-size:.67rem;font-weight:700;color:var(--inks)">رضعات اليوم</div>
+        <div style="font-size:1.5rem;font-weight:800;color:var(--gd)" id="bf-count">0</div>
+        <div style="font-size:.65rem;font-weight:700;color:var(--inks)">Feeds today</div>
       </div>
       <div style="display:flex;flex-direction:column;gap:6px;flex:1">
-        <button onclick="chBF(1)" style="background:var(--gm);color:#fff;border:none;border-radius:9px;padding:8px;font-family:'Tajawal',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer">+ رضعة</button>
-        <button onclick="chBF(-1)" style="background:none;border:1.5px solid var(--gl);border-radius:9px;padding:6px;font-family:'Tajawal',sans-serif;font-size:.8rem;font-weight:700;color:var(--gm);cursor:pointer">− تراجع</button>
+        <button onclick="chBF(1)" style="background:var(--gm);color:#fff;border:none;border-radius:9px;padding:8px;font-family:'Quicksand',sans-serif;font-size:.8rem;font-weight:700;cursor:pointer">+ Feed</button>
+        <button onclick="chBF(-1)" style="background:none;border:1.5px solid var(--gl);border-radius:9px;padding:6px;font-family:'Quicksand',sans-serif;font-size:.78rem;font-weight:700;color:var(--gm);cursor:pointer">– Undo</button>
       </div>
       <div style="background:#fdf8ec;border-radius:10px;padding:9px 14px;text-align:center;flex:1;min-width:80px;border:1.5px solid #f0dfa0">
-        <div style="font-size:.67rem;font-weight:800;color:#a07830;margin-bottom:4px">شفط؟</div>
-        <div id="pump-count" style="font-size:1.4rem;font-weight:800;color:var(--gold)">٠</div>
+        <div style="font-size:.65rem;font-weight:800;color:#a07830;margin-bottom:4px">Pumping?</div>
+        <div id="pump-count" style="font-size:1.4rem;font-weight:800;color:var(--gold)">0</div>
         <div style="display:flex;gap:4px;justify-content:center;margin-top:4px">
-          <button onclick="chPump(1)" style="background:var(--gold);color:#fff;border:none;border-radius:7px;padding:3px 8px;font-family:'Tajawal',sans-serif;font-size:.75rem;font-weight:700;cursor:pointer">+</button>
-          <button onclick="chPump(-1)" style="background:none;border:1.5px solid #f0dfa0;border-radius:7px;padding:3px 7px;font-family:'Tajawal',sans-serif;font-size:.75rem;font-weight:700;color:#a07830;cursor:pointer">−</button>
+          <button onclick="chPump(1)" style="background:var(--gold);color:#fff;border:none;border-radius:7px;padding:3px 8px;font-family:'Quicksand',sans-serif;font-size:.72rem;font-weight:700;cursor:pointer">+</button>
+          <button onclick="chPump(-1)" style="background:none;border:1.5px solid #f0dfa0;border-radius:7px;padding:3px 7px;font-family:'Quicksand',sans-serif;font-size:.72rem;font-weight:700;color:#a07830;cursor:pointer">−</button>
         </div>
       </div>
     </div>
     <!-- Last side + duration -->
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;align-items:center;direction:rtl">
-      <div style="font-size:.75rem;font-weight:700;color:var(--inks);flex-shrink:0">آخر ثدي:</div>
-      <button id="side-R" onclick="setSide('R')" style="border-radius:50px;padding:5px 14px;font-family:'Tajawal',sans-serif;font-size:.8rem;font-weight:700;cursor:pointer;border:2px solid var(--gl);background:#fff;color:var(--gm)">➡️ أيمن</button>
-      <button id="side-L" onclick="setSide('L')" style="border-radius:50px;padding:5px 14px;font-family:'Tajawal',sans-serif;font-size:.8rem;font-weight:700;cursor:pointer;border:2px solid var(--gl);background:#fff;color:var(--gm)">أيسر ⬅️</button>
-      <div style="font-size:.75rem;font-weight:700;color:var(--inks);flex-shrink:0">المدة:</div>
-      <input id="bf-dur" type="number" min="1" max="60" placeholder="دقيقة" oninput="saveBFDur(this.value)" style="width:72px;padding:5px 8px;border:1.5px solid var(--line);border-radius:9px;font-family:'Tajawal',sans-serif;font-size:.82rem;font-weight:700;color:var(--ink);outline:none;background:#f6fcf8;text-align:center">
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;align-items:center">
+      <div style="font-size:.75rem;font-weight:700;color:var(--inks);flex-shrink:0">Last side:</div>
+      <button id="side-L" onclick="setSide('L')" style="border-radius:50px;padding:5px 14px;font-family:'Quicksand',sans-serif;font-size:.78rem;font-weight:700;cursor:pointer;border:2px solid var(--gl);background:#fff;color:var(--gm);transition:all .18s">⬅️ Left</button>
+      <button id="side-R" onclick="setSide('R')" style="border-radius:50px;padding:5px 14px;font-family:'Quicksand',sans-serif;font-size:.78rem;font-weight:700;cursor:pointer;border:2px solid var(--gl);background:#fff;color:var(--gm);transition:all .18s">Right ➡️</button>
+      <div style="font-size:.75rem;font-weight:700;color:var(--inks);flex-shrink:0;margin-left:6px">Duration:</div>
+      <input id="bf-dur" type="number" min="1" max="60" placeholder="mins" oninput="saveBFDur(this.value)" style="width:65px;padding:5px 8px;border:1.5px solid var(--line);border-radius:9px;font-family:'Quicksand',sans-serif;font-size:.82rem;font-weight:700;color:var(--ink);outline:none;background:#f6fcf8;text-align:center">
     </div>
     <div id="bf-supp"></div>
   </div>
 
-  <!-- Baby Blues -->
-  <div class="sec"><div class="sl">💙 كيف حالك فعلاً؟</div>
-    <div style="font-size:.73rem;color:var(--inks);font-weight:600;margin-bottom:9px;line-height:1.6;background:#f0f4ff;padding:8px 11px;border-radius:9px;border-right:3px solid #8aa4e8;text-align:right">
-      💛 مشاعر ما بعد الولادة حقيقية ومقبولة تماماً. لا شعور خاطئ هنا. هذا فقط لكِ.
+  <!-- Baby Blues / Emotional Check-in -->
+  <div class="sec"><div class="sl">💙 How are you really feeling?</div>
+    <div style="font-size:.72rem;color:var(--inks);font-weight:600;margin-bottom:9px;line-height:1.5;background:#f0f4ff;padding:8px 11px;border-radius:9px;border-left:3px solid #8aa4e8">
+      💛 Postpartum emotions are real and valid. No feeling is wrong. This is just for you.
     </div>
-    <div style="margin-bottom:8px"><div style="font-size:.68rem;font-weight:800;color:#4a6fa5;margin-bottom:6px;text-align:right">شعرتُ اليوم بـ…</div>
-    <div id="bb-feelings" style="display:flex;flex-wrap:wrap;gap:6px;direction:rtl"></div></div>
-    <input class="sni" id="bb-note" type="text" placeholder="أي شيء على قلبك اليوم… (هذا فقط لكِ 💛)">
+    <div style="margin-bottom:8px"><div style="font-size:.68rem;font-weight:800;color:#4a6fa5;margin-bottom:6px;text-transform:uppercase;letter-spacing:.8px">Today I felt…</div>
+    <div id="bb-feelings" style="display:flex;flex-wrap:wrap;gap:6px"></div></div>
+    <input class="sni" id="bb-note" type="text" placeholder="Anything on your heart today… (just for you 💛)">
   </div>
 
-  <!-- Let it go -->
-  <div class="sec"><div class="sl">🌿 اتركيه اليوم</div>
-    <div style="font-size:.73rem;color:var(--inks);font-weight:600;margin-bottom:8px;line-height:1.5;text-align:right">
-      ✍️ أمنح نفسي إذناً بالتخلي عن…
+  <!-- Mental Load — Let it go -->
+  <div class="sec"><div class="sl">🌿 Let It Go Today</div>
+    <div style="font-size:.72rem;color:var(--inks);font-weight:600;margin-bottom:8px;line-height:1.5">
+      ✍️ I give myself permission to let go of…
     </div>
-    <input class="sni" id="letgo" type="text" placeholder="مثلاً: الفوضى في البيت، عدم الرد على الرسائل، تخطّي عادة اليوم…">
+    <input class="sni" id="letgo" type="text" placeholder="e.g. the messy house, not replying to messages, skipping a habit…">
   </div>
 
-  <div class="sec"><div class="sl">⭐ أولويات اليوم</div><div class="prl" id="plist"></div></div>
-  <div class="sec"><div class="sl">🤲 نية اليوم / الدعاء</div><input class="sni" id="dua" type="text" placeholder="اكتب نيتك أو دعاءك لهذا اليوم…"></div>
-  <div class="sec"><div class="sl">🌸 الشكر — أنا ممتن لـ…</div><div class="bl" id="glist"></div></div>
-  <div class="sec"><div class="sl">💡 ماذا تعلمت اليوم</div><div class="bl" id="llist"></div>
-    <div style="margin-top:8px"><div class="sl" style="font-size:.63rem;margin-bottom:6px">عن نفسي</div><div class="bl" id="slist"></div></div></div>
+  <!-- Intention -->
+  <div class="sec"><div class="sl">🤲 Today's Intention / Dua</div><input class="sni" id="dua" type="text" placeholder="Write your intention or dua…"></div>
+
+  <!-- Gratitude -->
+  <div class="sec"><div class="sl">🌸 Gratitude — I'm Grateful For…</div><div class="bl" id="glist"></div></div>
+
+  <!-- Learn -->
+  <div class="sec"><div class="sl">💡 What I Learned Today</div><div class="bl" id="llist"></div>
+    <div style="margin-top:8px"><div class="sl" style="font-size:.61rem;margin-bottom:6px">About Myself</div><div class="bl" id="slist"></div></div></div>
 
   <!-- Baby -->
-  <div class="sec"><div class="sl">👶 الطفل اليوم</div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;align-items:center;direction:rtl">
-      <div style="font-size:.75rem;font-weight:700;color:var(--inks)">أطول فترة نوم:</div>
-      <input id="baby-sleep" type="number" min="0" max="12" step="0.5" placeholder="ساعة" oninput="saveBabySleep(this.value)" style="width:72px;padding:5px 8px;border:1.5px solid var(--line);border-radius:9px;font-family:'Tajawal',sans-serif;font-size:.82rem;font-weight:700;color:var(--ink);outline:none;background:#f6fcf8;text-align:center">
-      <span style="font-size:.72rem;color:var(--inks);font-weight:600">ساعات</span>
+  <div class="sec"><div class="sl">👶 Baby Today</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;align-items:center">
+      <div style="font-size:.75rem;font-weight:700;color:var(--inks)">Longest sleep stretch:</div>
+      <input id="baby-sleep" type="number" min="0" max="12" step="0.5" placeholder="hrs" oninput="saveBabySleep(this.value)" style="width:65px;padding:5px 8px;border:1.5px solid var(--line);border-radius:9px;font-family:'Quicksand',sans-serif;font-size:.82rem;font-weight:700;color:var(--ink);outline:none;background:#f6fcf8;text-align:center">
+      <span style="font-size:.72rem;color:var(--inks);font-weight:600">hours</span>
     </div>
-    <div style="font-size:.72rem;font-weight:800;color:var(--gm);margin-bottom:5px;text-align:right">🌟 إنجاز الطفل اليوم</div>
-    <input class="sni" id="baby-win" type="text" placeholder="أول ابتسامة، أمسك إصبعي، صوت جديد… كل شيء صغير يحتسب 🥹">
+    <div style="font-size:.72rem;font-weight:800;color:var(--gm);margin-bottom:5px;text-transform:uppercase;letter-spacing:.8px">🌟 Today's win just for baby</div>
+    <input class="sni" id="baby-win" type="text" placeholder="First smile, held my finger, made a new sound… every tiny thing counts 🥹">
   </div>
 
-  <div class="sec"><div class="sl">📝 يومياتي وأفكاري</div><textarea class="lta" id="jnl" placeholder="اكتب بحرية… أفكارك، تأملاتك…" rows="5"></textarea></div>
-  <div class="sec"><div class="sl">💭 تذكيرات وملاحظات</div><textarea class="lta" id="nts" placeholder="ملاحظات سريعة…" rows="3"></textarea></div>
-  <div class="nbf"><div class="scr" id="scrlbl">✅ النتيجة: ٠/٠</div><button class="rstb" onclick="resetDay()">🔄 إعادة تعيين</button></div>
+  <!-- Journal -->
+  <div class="sec"><div class="sl">📝 Journal & Thoughts</div><textarea class="lta" id="jnl" placeholder="Write freely… your thoughts, reflections…" rows="5"></textarea></div>
+
+  <!-- Notes -->
+  <div class="sec"><div class="sl">💭 Reminders & Notes</div><textarea class="lta" id="nts" placeholder="Quick notes, reminders, ideas…" rows="3"></textarea></div>
+
+  <div class="nbf"><div class="scr" id="scrlbl">✅ Score: 0/0</div><button class="rstb" onclick="resetDay()">🔄 Reset Today</button></div>
 </div>
 </div>
 
-<!-- SELF-CARE -->
+<!-- ══ SELF-CARE ══ -->
 <div class="page" id="page-selfcare">
 <div class="nb">
   <div class="spr" id="spr2"></div>
-  <div class="sec"><div class="sl">🌅 العناية بالبشرة — يومياً</div><div class="scg"><div class="scc" id="scm"></div><div class="scc ros" id="sce"></div></div></div>
-  <div class="sec"><div class="sl">💆 الشعر والجسم — أسبوعياً</div><div class="scg"><div class="scc lav" id="sch"></div><div class="scc lav" id="scb"></div></div></div>
-  <div class="sec"><div class="sl">🦷 العناية بالأسنان — يومياً</div><div class="scc" id="sct" style="max-width:100%"></div></div>
-  <div class="sec"><div class="sl">📝 ملاحظات العناية</div><textarea class="lta" id="scnts" placeholder="المنتجات المستخدمة، ملاحظات عن البشرة…" rows="4"></textarea></div>
-  <div class="nbf"><div class="scr" id="scscore">✅ العناية: ٠/٠</div><button class="rstb" onclick="rstSC()">🔄 إعادة تعيين</button></div>
+  <div class="sec"><div class="sl">🤱 Breast Care — Daily</div><div class="scc" id="scbf" style="max-width:100%;background:#fff5f8;border-top:3px solid #e8a0a0"></div></div>
+  <div class="sec"><div class="sl">🌅 Skincare — Daily</div><div class="scg"><div class="scc" id="scm"></div><div class="scc ros" id="sce"></div></div></div>
+  <div class="sec"><div class="sl">💆 Hair & Body — Weekly</div><div class="scg"><div class="scc lav" id="sch"></div><div class="scc lav" id="scb"></div></div></div>
+  <div class="sec"><div class="sl">🦷 Teeth Care — Daily</div><div class="scc" id="sct" style="max-width:100%"></div></div>
+  <div class="sec"><div class="sl">📝 Self-Care Notes</div><textarea class="lta" id="scnts" placeholder="Products used, skin observations, tips for yourself…" rows="4"></textarea></div>
+  <div class="nbf"><div class="scr" id="scscore">✅ Self-Care: 0/0</div><button class="rstb" onclick="rstSC()">🔄 Reset</button></div>
 </div>
 </div>
 
-<!-- WEIGHT -->
+<!-- ══ WEIGHT ══ -->
 <div class="page" id="page-weight">
 <div class="nb">
   <div class="spr" id="spr3"></div>
   <div class="sec">
-    <div class="sl">⚖️ رحلة الوزن — كل ٢١ يوماً</div>
-    <div class="wti">📅 وزن البداية: <b>٧٧٫٥ كغ</b>. قيسي وزنكِ في اليوم ١، ٢٢، ٤٣، ٦٤ و٩٠. يتم حساب التقدم تلقائياً 💪</div>
+    <div class="sl">⚖️ Weight Journey — Every 21 Days</div>
+    <div class="wti">📅 Weigh yourself on <b>Day 1, 22, 43, 64</b> and <b>Day 90</b>. Starting weight: <b>77.5 kg</b>. Progress calculated automatically 💪</div>
     <div class="wtl" id="wtl"></div>
   </div>
   <div class="sec">
-    <div class="sl">📏 قياسات الجسم (سم)</div>
+    <div class="sl">📏 Body Measurements (cm)</div>
     <div class="meas-grid" id="meas-grid"></div>
-    <div style="margin-top:8px;font-size:.7rem;color:var(--inks);font-weight:600;text-align:right">💡 قيسي في نفس مواعيد الوزن (اليوم ١، ٢٢، ٤٣، ٦٤، ٩٠)</div>
+    <div style="margin-top:8px;font-size:.68rem;color:var(--inks);font-weight:600">💡 Measure at the same milestones as your weight (Day 1, 22, 43, 64, 90)</div>
   </div>
-  <div class="sec"><div class="sl">📝 ملاحظات وأهداف</div><textarea class="lta" id="wtnts" placeholder="وزنك المستهدف، كيف تشعرين، ملاحظاتك…" rows="4"></textarea></div>
+  <div class="sec"><div class="sl">📝 Notes & Goals</div><textarea class="lta" id="wtnts" placeholder="Your goal weight, how you feel, energy levels, observations…" rows="4"></textarea></div>
 </div>
 </div>
 
-<!-- WEEKLY -->
+<!-- ══ WEEKLY REVIEW ══ -->
 <div class="page" id="page-weekly">
 <div class="nb">
   <div class="spr" id="spr5"></div>
   <div class="sec">
-    <div class="sl">📊 المراجعة الأسبوعية — الأسبوع <span id="week-num">١</span></div>
-    <div style="font-size:.73rem;color:var(--inks);font-weight:600;margin-bottom:12px;text-align:right">🗓️ <span id="week-range">—</span></div>
-    <div class="week-card"><h4>⭐ تقييم الأسبوع</h4><div class="rating-lbl" id="rating-lbl">اضغطي على نجمة لتقييم أسبوعك</div><div class="week-stars" id="week-stars"></div></div>
-    <div class="week-card"><h4>💪 ما الذي سار بشكل جيد هذا الأسبوع؟</h4><textarea class="lta" id="wr-well" placeholder="العادات التي حافظت عليها، الانجازات، لحظات أفخر بها…" rows="3"></textarea></div>
-    <div class="week-card"><h4>🔧 ما الذي يمكن تحسينه الأسبوع القادم؟</h4><textarea class="lta" id="wr-impr" placeholder="العادات التي كانت صعبة، ما سأفعله بشكل مختلف…" rows="3"></textarea></div>
-    <div class="week-card"><h4>🎯 تركيزي للأسبوع القادم</h4><textarea class="lta" id="wr-focus" placeholder="نية أو هدف رئيسي للأسبوع القادم…" rows="2"></textarea></div>
-    <div class="week-card"><h4>😊 مزاج هذا الأسبوع</h4><div class="mood-chart" id="mood-chart-week"></div><div style="display:flex;justify-content:space-between;margin-top:3px" id="mood-days-lbl"></div></div>
-    <div class="week-card"><h4>📖 اقتباس أثّر فيّ هذا الأسبوع</h4><textarea class="lta" id="wr-quote" placeholder="آية أو حديث أو اقتباس أثّر فيك هذا الأسبوع…" rows="2"></textarea></div>
+    <div class="sl">📊 Weekly Review — Week <span id="week-num">1</span></div>
+    <div style="font-size:.72rem;color:var(--inks);font-weight:600;margin-bottom:12px">🗓️ <span id="week-range">—</span></div>
+
+    <div class="week-card">
+      <h4>⭐ Overall Week Rating</h4>
+      <div class="rating-lbl" id="rating-lbl">Tap a star to rate your week</div>
+      <div class="week-stars" id="week-stars"></div>
+    </div>
+
+    <div class="week-card">
+      <h4>💪 What went well this week?</h4>
+      <textarea class="lta" id="wr-well" placeholder="Habits I kept, wins, moments I'm proud of…" rows="3"></textarea>
+    </div>
+
+    <div class="week-card">
+      <h4>🔧 What can I improve next week?</h4>
+      <textarea class="lta" id="wr-impr" placeholder="Habits I struggled with, what to do differently…" rows="3"></textarea>
+    </div>
+
+    <div class="week-card">
+      <h4>🎯 My focus for next week</h4>
+      <textarea class="lta" id="wr-focus" placeholder="One main intention or goal for next week…" rows="2"></textarea>
+    </div>
+
+    <div class="week-card">
+      <h4>😊 Mood this week</h4>
+      <div class="mood-chart" id="mood-chart-week"></div>
+      <div style="display:flex;justify-content:space-between;margin-top:3px" id="mood-days-lbl"></div>
+    </div>
+
+    <div class="week-card">
+      <h4>📖 Quote I reflected on this week</h4>
+      <textarea class="lta" id="wr-quote" placeholder="A quote or verse that meant something to you this week…" rows="2"></textarea>
+    </div>
   </div>
-  <div class="nbf"><div class="scr" id="wk-score">الأسبوع ١ من ١٣</div><button class="rstb" onclick="saveWeeklyReview()">💾 حفظ</button></div>
+  <div class="nbf"><div class="scr" id="wk-score">Week 1 of 13</div><button class="rstb" onclick="saveWeeklyReview()">💾 Save</button></div>
 </div>
 </div>
 
-<!-- REWARDS -->
+<!-- ══ REWARDS ══ -->
 <div class="page" id="page-rewards">
 <div class="rwrap2">
   <div class="spr" id="spr6"></div>
   <div style="background:linear-gradient(135deg,var(--gd),var(--gm));padding:18px 22px;color:#fff;text-align:center">
-    <h2 style="font-family:'Amiri',serif;font-size:1.5rem;margin-bottom:4px">🎁 نظام المكافآت الأسبوعي</h2>
-    <p style="font-size:.78rem;opacity:.75;font-weight:500">استحقيتِ كل واحدة. احتفلي بنفسك! 🌟</p>
+    <h2 style="font-family:'Amiri',serif;font-size:1.45rem;margin-bottom:4px">🎁 Weekly Reward System</h2>
+    <p style="font-size:.78rem;opacity:.75;font-weight:600">You earned every single one. Celebrate yourself! 🌟</p>
   </div>
   <div style="padding:16px 18px" id="rewards-body"></div>
 </div>
 </div>
 
-<!-- RULES -->
+<!-- ══ RULES ══ -->
 <div class="page" id="page-rules">
 <div class="ruleswrap">
   <div class="spr" id="spr4"></div>
-  <div class="rh"><h2>📜 قواعد تحديك</h2><p>التزمي بها. ستغيّرين حياتك.</p></div>
+  <div class="rh"><h2>📜 Your 90-Day Rules</h2><p>Commit to these. They will change your life.</p></div>
   <div class="rb" id="rbd"></div>
 </div>
 </div>
 
 <script>
-const AN=['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
-function ar(n){return String(n).split('').map(d=>AN[+d]||d).join('')}
-
-const PR=['الفجر','الظهر','العصر','المغرب','العشاء'];
-const SN=['سنة الفجر','الضحى','التهجد','الوتر'];
+// ═══════════════════════════════════════════
+// DATA
+// ═══════════════════════════════════════════
+const PR=['Fajr','Dhuhr','Asr','Maghrib','Isha'];
+const SN=['Fajr S.','Duha','Tahajjud','Witr'];
 const NC=6,NP=4,NG=3,NL=3,NS=2;
 const START=new Date('2026-03-23');START.setHours(0,0,0,0);
 const NOW=new Date();NOW.setHours(0,0,0,0);
 let vd=new Date(NOW);
-let st=JSON.parse(localStorage.getItem('par3')||'{}');
-let ht=JSON.parse(localStorage.getItem('parh5')||'null');
+let st=JSON.parse(localStorage.getItem('pen3')||'{}');
+let ht=JSON.parse(localStorage.getItem('penh5')||'null');
 if(!ht){ht=[
-  {id:1,name:'الأذكار',emoji:'🌅',subs:['أذكار الصباح','أذكار المساء','الاستغفار ١٠٠ مرة 🤲'],pick:true,op:false},
-  {id:2,name:'القرآن الكريم',emoji:'📖',subs:['الورد اليومي','التدبر والتفسير','قراءة إسلامية','الاستماع للقرآن'],pick:true,op:false},
-  {id:3,name:'تغذية العقل 🧠',emoji:'🧠',subs:['قراءة كتاب','الاستماع لكتاب صوتي','الاستماع لبودكاست'],pick:true,op:true},
-  {id:4,name:'التغذية',emoji:'🥗',subs:['وجبة مغذية تدعم الرضاعة 🤱','فيتامينات ما بعد الولادة 💊','بدون وجبات سريعة','تناول الفطور','تحضير الوجبات'],pick:true,op:false},
+  {id:1,name:'Adhkar',emoji:'🌅',subs:['Adhkar al-Sabah','Adhkar al-Masa','Istighfar (100x) 🤲'],pick:true,op:false},
+  {id:2,name:'Quran',emoji:'📖',subs:['Daily Wird','Tafsir / Reflection','Islamic reading','Listen to Quran'],pick:true,op:false},
+  {id:3,name:'Mind 🧠',emoji:'🧠',subs:['Read a Book','Listen to Audiobook','Listen to Podcast'],pick:true,op:true},
+  {id:4,name:'Nourishment',emoji:'🥗',subs:['Lactation-friendly meal 🤱','Postnatal vitamins 💊','No junk food','Eat breakfast','Meal prep / planning'],pick:true,op:false},
 ];svH();}
 
-const SCM=['غسيل الوجه','تونر / لوشن','سيروم','مرطب','واقي شمس'];
-const SCE=['إزالة المكياج','غسيل الوجه','تونر / بخاخ','سيروم / ريتينول','كريم ليلي'];
-const SCH=['غسيل الشعر','ماسك / زيت للشعر','تدليك فروة الرأس','تمشيط وتصفيف'];
-const SCB=['مقشر الجسم','لوشن الجسم','العناية بالأظافر','مقشر وبلسم الشفاه'];
-const SCT=['تنظيف الأسنان (صباحاً)','تنظيف الأسنان (مساءً)','خيط الأسنان 🦷','غسول الفم'];
+const SCM=['Cleanser','Toner / Essence','Serum','Moisturiser','SPF (daytime)'];
+const SCE=['Makeup Removal','Cleanser','Toner / Mist','Serum / Retinol','Night Cream'];
+const SCH=['Hair wash','Hair mask / oil','Scalp massage','Brush & detangle'];
+const SCB=['Body scrub / exfoliate','Body lotion','Nails — check & file','Lip scrub & balm'];
+const SCT=['Brush teeth (morning)','Brush teeth (evening)','Floss 🦷','Mouthwash'];
+const SCBF=['Nipple cream / lanolin 🧴','Breast pads changed 🤍','Breast massage / warm compress','Checked for engorgement / blocked ducts','Took lactation supplement / herb'];
 const WT_DAYS=[1,22,43,64,90];
-const MEAS_LABELS=['الخصر','الأرداف','الصدر','ذراع يمين','ذراع يسار','الفخذ'];
+const MEAS_LABELS=['Waist','Hips','Chest','Right Arm','Left Arm','Right Thigh'];
 const MEAS_MILESTONES=[1,22,43,64,90];
+
 const MOODS=['😔','😐','🙂','😊','🌟'];
-const MOOD_NAMES=['صعب','مقبول','جيد','ممتاز','رائع'];
+const MOOD_NAMES=['Difficult','Okay','Good','Great','Amazing'];
 
 const REWARD_IDEAS=[
-  'حمام فاخر 🛁','منتج عناية جديد 🧴','مطعم مفضل 🍽️',
-  'كتاب جديد 📚','شمعة عطرية 🕯️','نزهة في الطبيعة 🌿','سينما 🎬',
-  'قطعة ملابس جديدة 👗','متحف أو معرض 🖼️','يوم راحة كامل 😴',
-  'جلسة سبا 💆','دفتر يوميات جديد 📓'
+  'Luxurious bath 🛁','New skincare product 🧴','Favourite restaurant 🍽️',
+  'New book 📚','Scented candle 🕯️','Nature walk 🌿','Cinema outing 🎬',
+  'New clothing item 👗','Museum or exhibition 🖼️','Full day of rest 😴',
+  'Spa treatment 💆','New journal 📓'
 ];
 
-// Same 90 quotes as English version
+// 90 Islamic / motivational quotes
 const QUOTES=[
-  {ar:'وَمَن يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ',en:'ومن يتوكل على الله فهو حسبه',src:'القرآن ٦٥:٣'},
-  {ar:'إِنَّ مَعَ الْعُسْرِ يُسْرًا',en:'إن مع العسر يسرًا',src:'القرآن ٩٤:٦'},
-  {ar:'وَلَا تَهِنُوا وَلَا تَحْزَنُوا وَأَنتُمُ الْأَعْلَوْنَ',en:'ولا تهنوا ولا تحزنوا وأنتم الأعلون',src:'القرآن ٣:١٣٩'},
-  {ar:'فَإِنَّ مَعَ الْعُسْرِ يُسْرًا',en:'فإن مع العسر يسرًا',src:'القرآن ٩٤:٥'},
-  {ar:'وَاصْبِرْ وَمَا صَبْرُكَ إِلَّا بِاللَّهِ',en:'واصبر وما صبرك إلا بالله',src:'القرآن ١٦:١٢٧'},
-  {ar:'وَأَن لَّيْسَ لِلْإِنسَانِ إِلَّا مَا سَعَىٰ',en:'وأن ليس للإنسان إلا ما سعى',src:'القرآن ٥٣:٣٩'},
-  {ar:'يَا أَيُّهَا الَّذِينَ آمَنُوا اسْتَعِينُوا بِالصَّبْرِ وَالصَّلَاةِ',en:'استعينوا بالصبر والصلاة',src:'القرآن ٢:١٥٣'},
-  {ar:'وَهُوَ مَعَكُمْ أَيْنَ مَا كُنتُمْ',en:'وهو معكم أينما كنتم',src:'القرآن ٥٧:٤'},
-  {ar:'رَبِّ زِدْنِي عِلْمًا',en:'رب زدني علمًا',src:'القرآن ٢٠:١١٤'},
-  {ar:'حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ',en:'حسبنا الله ونعم الوكيل',src:'القرآن ٣:١٧٣'},
-  {ar:'أَحَبُّ الأَعمالِ إلى اللهِ أَدوَمُها وإن قَلَّ',en:'أحب الأعمال إلى الله أدومها وإن قل',src:'النبي ﷺ — البخاري'},
-  {ar:'طَلَبُ العِلمِ فَريضَةٌ عَلَى كُلِّ مُسلِمٍ',en:'طلب العلم فريضة على كل مسلم',src:'النبي ﷺ — ابن ماجه'},
-  {ar:'مَن عَرَفَ نَفسَهُ فَقَد عَرَفَ رَبَّهُ',en:'من عرف نفسه فقد عرف ربه',src:'حكمة إسلامية'},
-  {ar:'الدُّنيا مَزرَعَةُ الآخِرَة',en:'الدنيا مزرعة الآخرة',src:'علي بن أبي طالب رضي الله عنه'},
-  {ar:'كُن في الدُّنيا كَأَنَّكَ غَريبٌ أو عابِرُ سَبيل',en:'كن في الدنيا كأنك غريب أو عابر سبيل',src:'النبي ﷺ — البخاري'},
-  {ar:'الصِّحَّةُ والفَراغُ نِعمَتانِ مَغبُونٌ فِيهِما كَثيرٌ مِنَ النَّاس',en:'الصحة والفراغ نعمتان مغبون فيهما كثير من الناس',src:'النبي ﷺ — البخاري'},
-  {ar:'مَن لَم يَشكُرِ النَّاسَ لَم يَشكُرِ اللَّهَ',en:'من لم يشكر الناس لم يشكر الله',src:'النبي ﷺ — أبو داود'},
-  {ar:'إنَّ اللهَ لا يُغَيِّرُ مَا بِقَومٍ حَتَّىٰ يُغَيِّرُوا مَا بِأَنفُسِهِم',en:'إن الله لا يغير ما بقوم حتى يغيروا ما بأنفسهم',src:'القرآن ١٣:١١'},
-  {ar:'خَيرُكُم مَن تَعَلَّمَ القُرآنَ وعَلَّمَهُ',en:'خيركم من تعلم القرآن وعلمه',src:'النبي ﷺ — البخاري'},
-  {ar:'اغتَنِم خَمساً قَبلَ خَمس: شَبابَكَ قَبلَ هَرَمِك',en:'اغتنم خمسًا قبل خمس',src:'النبي ﷺ — الحاكم'},
-  {ar:'أَقرَبُ ما يَكُونُ العَبدُ مِن رَبِّهِ وهو ساجِد',en:'أقرب ما يكون العبد من ربه وهو ساجد',src:'النبي ﷺ — مسلم'},
-  {ar:'لا تَغضَب',en:'لا تغضب',src:'النبي ﷺ — البخاري'},
-  {ar:'المُؤمِنُ القَوِيُّ خَيرٌ وأَحَبُّ إلى اللهِ مِنَ المُؤمِنِ الضَّعيف',en:'المؤمن القوي خير وأحب إلى الله من المؤمن الضعيف',src:'النبي ﷺ — مسلم'},
-  {ar:'تَبَسُّمُكَ في وَجهِ أَخِيكَ صَدَقَة',en:'تبسمك في وجه أخيك صدقة',src:'النبي ﷺ — الترمذي'},
-  {ar:'خَيرُ النَّاسِ أَنفَعُهُم لِلنَّاس',en:'خير الناس أنفعهم للناس',src:'النبي ﷺ — الطبراني'},
-  {ar:'اعمَل لِدُنياكَ كَأَنَّكَ تَعِيشُ أَبَداً، واعمَل لِآخِرَتِكَ كَأَنَّكَ تَمُوتُ غَداً',en:'اعمل لدنياك كأنك تعيش أبدًا',src:'علي بن أبي طالب رضي الله عنه'},
-  {ar:'النِّيَّةُ الصَّالِحَةُ تَبلُغُ بِصاحِبِها مَا لَا تَبلُغُهُ الأَعمال',en:'النية الصالحة تبلغ بصاحبها ما لا تبلغه الأعمال',src:'ابن القيم رحمه الله'},
-  {ar:'كُلَّما ازدَدتَ عِلماً، ازدَدتَ مَعرِفَةً بِجَهلِك',en:'كلما ازددت علمًا ازددت معرفة بجهلك',src:'الإمام الشافعي رحمه الله'},
-  {ar:'وَعَسَىٰ أَن تَكْرَهُوا شَيْئًا وَهُوَ خَيْرٌ لَّكُمْ',en:'وعسى أن تكرهوا شيئًا وهو خير لكم',src:'القرآن ٢:٢١٦'},
-  {ar:'سَلامَةُ الإِنسانِ في حِفظِ اللِّسان',en:'سلامة الإنسان في حفظ اللسان',src:'الإمام الشافعي رحمه الله'},
-  {ar:'مَن صَبَرَ ظَفِر',en:'من صبر ظفر',src:'حكمة إسلامية'},
-  {ar:'قَيِّد العِلمَ بالكِتابَة',en:'قيّد العلم بالكتابة',src:'علي بن أبي طالب رضي الله عنه'},
-  {ar:'الجُودُ لا يُفقِر والاستِغفارُ لا يُذِل',en:'الجود لا يفقر والاستغفار لا يذل',src:'علي بن أبي طالب رضي الله عنه'},
-  {ar:'الوَقتُ كالسَّيف إن لَم تَقطَعهُ قَطَعَك',en:'الوقت كالسيف إن لم تقطعه قطعك',src:'الإمام الشافعي رحمه الله'},
-  {ar:'مَن لَم يُحاسِب نَفسَهُ لَم يَتَقَدَّم',en:'من لم يحاسب نفسه لم يتقدم',src:'عمر بن الخطاب رضي الله عنه'},
-  {ar:'حاسِبُوا أَنفُسَكُم قَبلَ أن تُحاسَبُوا',en:'حاسبوا أنفسكم قبل أن تُحاسَبوا',src:'عمر بن الخطاب رضي الله عنه'},
-  {ar:'إِنَّ اللَّهَ مَعَ الصَّابِرِينَ',en:'إن الله مع الصابرين',src:'القرآن ٢:١٥٣'},
-  {ar:'إِنَّ اللَّهَ جَمِيلٌ يُحِبُّ الْجَمَالَ',en:'إن الله جميل يحب الجمال',src:'النبي ﷺ — مسلم'},
-  {ar:'الطَّهُورُ شَطرُ الإِيمَان',en:'الطهور شطر الإيمان',src:'النبي ﷺ — مسلم'},
-  {ar:'مَن سَلَكَ طَرِيقاً يَلتَمِسُ فِيهِ عِلماً سَهَّلَ اللهُ لَهُ طَرِيقاً إلى الجَنَّة',en:'من سلك طريقًا يلتمس فيه علمًا سهّل الله له طريقًا إلى الجنة',src:'النبي ﷺ — مسلم'},
-  {ar:'العِلمُ نُورٌ يَقذِفُهُ اللهُ في قَلبِ مَن يَشَاء',en:'العلم نور يقذفه الله في قلب من يشاء',src:'الإمام مالك رحمه الله'},
-  {ar:'أَعقِل وتَوَكَّل',en:'اعقل وتوكل',src:'النبي ﷺ — الترمذي'},
-  {ar:'النَّفسُ إن لَم تَشغَلها بِالحَقِّ شَغَلَتكَ بِالباطِل',en:'النفس إن لم تشغلها بالحق شغلتك بالباطل',src:'ابن القيم رحمه الله'},
-  {ar:'لا يَزالُ لِسانُكَ رَطباً بِذِكرِ الله',en:'لا يزال لسانك رطبًا بذكر الله',src:'النبي ﷺ — الترمذي'},
-  {ar:'التَّوبَةُ تَجُبُّ ما قَبلَها',en:'التوبة تجب ما قبلها',src:'النبي ﷺ — الترمذي'},
-  {ar:'ابدَأ بِنَفسِك',en:'ابدأ بنفسك',src:'النبي ﷺ — مسلم'},
-  {ar:'الحَياءُ لا يَأتِي إلا بِخَير',en:'الحياء لا يأتي إلا بخير',src:'النبي ﷺ — البخاري'},
-  {ar:'حُسنُ الخُلُقِ نِصفُ الدِّين',en:'حسن الخلق نصف الدين',src:'الإمام الغزالي رحمه الله'},
-  {ar:'وَاللَّهُ يُحِبُّ الصَّابِرِينَ',en:'والله يحب الصابرين',src:'القرآن ٣:١٤٦'},
-  {ar:'قِيمَةُ كُلِّ امرِئٍ ما يُحسِنُه',en:'قيمة كل امرئ ما يحسنه',src:'علي بن أبي طالب رضي الله عنه'},
-  {ar:'أَحسِن إلى النَّاسِ تَستَعبِد قُلُوبَهُم',en:'أحسن إلى الناس تستعبد قلوبهم',src:'علي بن أبي طالب رضي الله عنه'},
-  {ar:'كُن مَع اللهِ وَلا تُبالِ بِشَيء',en:'كن مع الله ولا تبالِ بشيء',src:'ابن عطاء الله السكندري'},
-  {ar:'الجَنَّةُ حُفَّت بِالمَكارِه والنَّارُ حُفَّت بِالشَّهَوات',en:'الجنة حفّت بالمكاره والنار حفّت بالشهوات',src:'النبي ﷺ — البخاري'},
-  {ar:'أَجمِل الظَّنَّ بِاللهِ',en:'أجمل الظن بالله',src:'ابن القيم رحمه الله'},
-  {ar:'الصَّلاةُ عِمادُ الدِّين',en:'الصلاة عماد الدين',src:'النبي ﷺ — البيهقي'},
-  {ar:'مَن تَواضَعَ للهِ رَفَعَهُ اللهُ',en:'من تواضع لله رفعه الله',src:'النبي ﷺ — مسلم'},
-  {ar:'مَن جَدَّ وَجَد',en:'من جد وجد',src:'مثل عربي'},
-  {ar:'إنَّ اللهَ يُحِبُّ إذا عَمِلَ أحَدُكُم عَمَلاً أن يُتقِنَهُ',en:'إن الله يحب إذا عمل أحدكم عملًا أن يتقنه',src:'النبي ﷺ — البيهقي'},
-  {ar:'البَركَةُ في البُكُور',en:'البركة في البكور',src:'النبي ﷺ — أبو داود'},
-  {ar:'لا تَيأَس مِن رَوحِ اللهِ',en:'لا تيأس من روح الله',src:'القرآن ١٢:٨٧'},
-  {ar:'اللَّهُمَّ إنِّي أَسأَلُكَ الثَّباتَ في الأَمر',en:'اللهم إني أسألك الثبات في الأمر',src:'النبي ﷺ — النسائي'},
-  {ar:'تَعَلَّم ثُمَّ عَلِّم',en:'تعلّم ثم علّم',src:'مبدأ إسلامي'},
-  {ar:'الدُّعاءُ سِلاحُ المُؤمِن',en:'الدعاء سلاح المؤمن',src:'علي بن أبي طالب رضي الله عنه'},
-  {ar:'يا أَيُّها الإِنسانُ إِنَّكَ كادِحٌ إِلى رَبِّكَ كَدحاً فَمُلاقِيه',en:'يا أيها الإنسان إنك كادح إلى ربك كدحًا فملاقيه',src:'القرآن ٨٤:٦'},
+  {ar:'وَمَن يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ',en:'And whoever relies upon Allah — then He is sufficient for him.',src:'Quran 65:3'},
+  {ar:'إِنَّ مَعَ الْعُسْرِ يُسْرًا',en:'Indeed, with hardship comes ease.',src:'Quran 94:6'},
+  {ar:'وَلَا تَهِنُوا وَلَا تَحْزَنُوا وَأَنتُمُ الْأَعْلَوْنَ',en:'Do not weaken and do not grieve, for you will be superior.',src:'Quran 3:139'},
+  {ar:'فَإِنَّ مَعَ الْعُسْرِ يُسْرًا',en:'For indeed, with hardship will be ease.',src:'Quran 94:5'},
+  {ar:'وَاصْبِرْ وَمَا صَبْرُكَ إِلَّا بِاللَّهِ',en:'Be patient, and your patience is only through Allah.',src:'Quran 16:127'},
+  {ar:'وَأَن لَّيْسَ لِلْإِنسَانِ إِلَّا مَا سَعَىٰ',en:'That there is not for man except what he strives for.',src:'Quran 53:39'},
+  {ar:'يَا أَيُّهَا الَّذِينَ آمَنُوا اسْتَعِينُوا بِالصَّبْرِ وَالصَّلَاةِ',en:'O believers! Seek help through patience and prayer.',src:'Quran 2:153'},
+  {ar:'وَهُوَ مَعَكُمْ أَيْنَ مَا كُنتُمْ',en:'And He is with you wherever you are.',src:'Quran 57:4'},
+  {ar:'رَبِّ زِدْنِي عِلْمًا',en:'My Lord, increase me in knowledge.',src:'Quran 20:114'},
+  {ar:'حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ',en:'Allah is sufficient for us, and He is the best Disposer of affairs.',src:'Quran 3:173'},
+  {ar:'أَحَبُّ الأَعمالِ إلى اللهِ أَدوَمُها وإن قَلَّ',en:'The most beloved deeds to Allah are the most consistent, even if small.',src:'Prophet Muhammad ﷺ — Bukhari'},
+  {ar:'طَلَبُ العِلمِ فَريضَةٌ عَلَى كُلِّ مُسلِمٍ',en:'Seeking knowledge is an obligation upon every Muslim.',src:'Prophet Muhammad ﷺ — Ibn Majah'},
+  {ar:'إذا أَردتَ أن تَعرِفَ قَدرَكَ عِندَ اللهِ، فانظُر فِيمَ يَستَعمِلُكَ',en:'If you want to know your worth to Allah, see what He employs you in.',src:'Ibn Ata\'illah al-Sakandari'},
+  {ar:'مَن عَرَفَ نَفسَهُ فَقَد عَرَفَ رَبَّهُ',en:'Whoever knows himself, knows his Lord.',src:'Attributed — Islamic wisdom'},
+  {ar:'الدُّنيا مَزرَعَةُ الآخِرَة',en:'This world is the farm of the Hereafter.',src:'Ali ibn Abi Talib رضي الله عنه'},
+  {ar:'كُن في الدُّنيا كَأَنَّكَ غَريبٌ أو عابِرُ سَبيل',en:'Be in this world as if you were a stranger or a traveler.',src:'Prophet Muhammad ﷺ — Bukhari'},
+  {ar:'الصِّحَّةُ والفَراغُ نِعمَتانِ مَغبُونٌ فِيهِما كَثيرٌ مِنَ النَّاس',en:'Health and free time are two blessings many people are cheated of.',src:'Prophet Muhammad ﷺ — Bukhari'},
+  {ar:'مَن لَم يَشكُرِ النَّاسَ لَم يَشكُرِ اللَّهَ',en:'Whoever does not thank people has not thanked Allah.',src:'Prophet Muhammad ﷺ — Abu Dawud'},
+  {ar:'إنَّ اللهَ لا يُغَيِّرُ مَا بِقَومٍ حَتَّىٰ يُغَيِّرُوا مَا بِأَنفُسِهِم',en:'Indeed, Allah will not change the condition of a people until they change what is in themselves.',src:'Quran 13:11'},
+  {ar:'خَيرُكُم مَن تَعَلَّمَ القُرآنَ وعَلَّمَهُ',en:'The best of you are those who learn the Quran and teach it.',src:'Prophet Muhammad ﷺ — Bukhari'},
+  {ar:'اغتَنِم خَمساً قَبلَ خَمس: شَبابَكَ قَبلَ هَرَمِك',en:'Take advantage of five before five: your youth before old age.',src:'Prophet Muhammad ﷺ — Al-Hakim'},
+  {ar:'أَقرَبُ ما يَكُونُ العَبدُ مِن رَبِّهِ وهو ساجِد',en:'The closest a servant is to his Lord is when he is in prostration.',src:'Prophet Muhammad ﷺ — Muslim'},
+  {ar:'لا تَغضَب',en:'Do not be angry.',src:'Prophet Muhammad ﷺ — Bukhari'},
+  {ar:'المُؤمِنُ القَوِيُّ خَيرٌ وأَحَبُّ إلى اللهِ مِنَ المُؤمِنِ الضَّعيف',en:'The strong believer is better and more beloved to Allah than the weak believer.',src:'Prophet Muhammad ﷺ — Muslim'},
+  {ar:'تَبَسُّمُكَ في وَجهِ أَخِيكَ صَدَقَة',en:'Your smile in the face of your brother is charity.',src:'Prophet Muhammad ﷺ — Tirmidhi'},
+  {ar:'خَيرُ النَّاسِ أَنفَعُهُم لِلنَّاس',en:'The best of people are those most beneficial to people.',src:'Prophet Muhammad ﷺ — Al-Tabarani'},
+  {ar:'اعمَل لِدُنياكَ كَأَنَّكَ تَعِيشُ أَبَداً، واعمَل لِآخِرَتِكَ كَأَنَّكَ تَمُوتُ غَداً',en:'Work for your world as if you live forever, and work for your Hereafter as if you die tomorrow.',src:'Ali ibn Abi Talib رضي الله عنه'},
+  {ar:'النِّيَّةُ الصَّالِحَةُ تَبلُغُ بِصاحِبِها مَا لَا تَبلُغُهُ الأَعمال',en:'A sincere intention takes its owner where deeds alone cannot.',src:'Ibn al-Qayyim رحمه الله'},
+  {ar:'كُلَّما ازدَدتَ عِلماً، ازدَدتَ مَعرِفَةً بِجَهلِك',en:'The more knowledge you gain, the more you realize your ignorance.',src:'Imam al-Shafi\'i رحمه الله'},
+  {ar:'رِضا اللهِ غايَتِي',en:'The pleasure of Allah is my goal.',src:'Islamic supplication'},
+  {ar:'وَعَسَىٰ أَن تَكْرَهُوا شَيْئًا وَهُوَ خَيْرٌ لَّكُمْ',en:'Perhaps you dislike something that is good for you.',src:'Quran 2:216'},
+  {ar:'سَلامَةُ الإِنسانِ في حِفظِ اللِّسان',en:'The safety of a person lies in guarding their tongue.',src:'Imam al-Shafi\'i رحمه الله'},
+  {ar:'إن أَردتَ أن تَعِيشَ سَعيداً، فَعِش زاهِداً',en:'If you wish to live happily, live with contentment.',src:'Ali ibn Abi Talib رضي الله عنه'},
+  {ar:'مَن صَبَرَ ظَفِر',en:'Whoever is patient will succeed.',src:'Arabic proverb / Islamic wisdom'},
+  {ar:'قَيِّد العِلمَ بالكِتابَة',en:'Preserve knowledge by writing it down.',src:'Ali ibn Abi Talib رضي الله عنه'},
+  {ar:'خَيرُ الكَلامِ ما قَلَّ ودَلَّ',en:'The best speech is that which is brief and meaningful.',src:'Islamic wisdom'},
+  {ar:'مَن أَحَبَّ أن يَعلَمَ ما لَهُ عِندَ اللهِ، فَليَنظُر ما للهِ عِندَهُ',en:'Whoever wants to know his standing with Allah should look at Allah\'s standing in his heart.',src:'Ibn Ata\'illah al-Sakandari'},
+  {ar:'وَمَا أُوتِيتُم مِّنَ الْعِلْمِ إِلَّا قَلِيلًا',en:'And you have been given of knowledge only a little.',src:'Quran 17:85'},
+  {ar:'جاهِد نَفسَكَ على الطَّاعَة قَبلَ أن تَنشَغِلَ بِمُجاهَدَةِ غَيرِك',en:'Strive against your own soul in obedience before you busy yourself with others.',src:'Ibn al-Qayyim رحمه الله'},
+  {ar:'البَركَةُ في البُكُور',en:'Blessing is in the early morning.',src:'Prophet Muhammad ﷺ — Abu Dawud'},
+  {ar:'مَن قَرَأَ القُرآنَ وعَمِلَ بِما فِيهِ أُلبِسَ والِداهُ تاجاً',en:'Whoever reads the Quran and acts by it, his parents will be crowned on the Day of Judgement.',src:'Prophet Muhammad ﷺ — Abu Dawud'},
+  {ar:'إنَّ اللهَ يُحِبُّ إذا عَمِلَ أحَدُكُم عَمَلاً أن يُتقِنَهُ',en:'Allah loves that when one of you does a job, he does it with excellence.',src:'Prophet Muhammad ﷺ — Al-Bayhaqi'},
+  {ar:'التَّفكِيرُ في نِعمَةِ اللهِ عِبادَة',en:'Reflecting on the blessings of Allah is an act of worship.',src:'Hasan al-Basri رحمه الله'},
+  {ar:'اليَقِينُ لا يُعطى بالأمانِي، ولكِن بِالعَمَل',en:'Certainty is not given through wishes, but through action.',src:'Hasan al-Basri رحمه الله'},
+  {ar:'مَن عَرَفَ قَدرَ نَفسِهِ لَم يُهِنها',en:'Whoever knows their own worth will not degrade themselves.',src:'Imam al-Ghazali رحمه الله'},
+  {ar:'الدُّعاءُ سِلاحُ المُؤمِن',en:'Supplication is the weapon of the believer.',src:'Ali ibn Abi Talib رضي الله عنه'},
+  {ar:'أَعظَمُ الناسِ قِيمَةً أَكثَرُهُم خِدمَةً للنَّاس',en:'The greatest of people in value are those who serve others most.',src:'Islamic wisdom'},
+  {ar:'تُعرَفُ المَرأَةُ بِأَخلاقِها لا بِزِينَتِها',en:'A woman is known by her character, not her adornment.',src:'Islamic wisdom'},
+  {ar:'لا تَيأَس مِن رَوحِ اللهِ',en:'Do not despair of the mercy of Allah.',src:'Quran 12:87'},
+  {ar:'اللهُ وَليُّ الَّذِينَ آمَنُوا يُخرِجُهُم مِنَ الظُّلُماتِ إلى النُّور',en:'Allah is the ally of those who believe. He brings them out from darkness into light.',src:'Quran 2:257'},
+  {ar:'مَن تَواضَعَ للهِ رَفَعَهُ اللهُ',en:'Whoever humbles themselves for Allah, Allah raises them.',src:'Prophet Muhammad ﷺ — Muslim'},
+  {ar:'مَن جَدَّ وَجَد',en:'Whoever strives will find.',src:'Arabic proverb'},
+  {ar:'كُن مَع اللهِ وَلا تُبالِ بِشَيء',en:'Be with Allah and worry about nothing.',src:'Ibn Ata\'illah al-Sakandari'},
+  {ar:'الجَنَّةُ حُفَّت بِالمَكارِه والنَّارُ حُفَّت بِالشَّهَوات',en:'Paradise is surrounded by hardships and Hell is surrounded by desires.',src:'Prophet Muhammad ﷺ — Bukhari'},
+  {ar:'إنَّ البَدَنَ إذا أُترِفَ تَعِبَ',en:'When the body is pampered, it grows weary.',src:'Imam al-Shafi\'i رحمه الله'},
+  {ar:'أَجمِل الظَّنَّ بِاللهِ',en:'Have the best opinion of Allah.',src:'Ibn al-Qayyim رحمه الله'},
+  {ar:'الصَّلاةُ عِمادُ الدِّين',en:'Prayer is the pillar of the religion.',src:'Prophet Muhammad ﷺ — Al-Bayhaqi'},
+  {ar:'كُن صادِقاً مَع نَفسِكَ أَوَّلاً',en:'Be honest with yourself first.',src:'Islamic wisdom'},
+  {ar:'الوَقتُ كالسَّيف إن لَم تَقطَعهُ قَطَعَك',en:'Time is like a sword — if you do not cut it, it will cut you.',src:'Imam al-Shafi\'i رحمه الله'},
+  {ar:'مَن لَم يُحاسِب نَفسَهُ لَم يَتَقَدَّم',en:'Whoever does not hold themselves accountable will not progress.',src:'Omar ibn al-Khattab رضي الله عنه'},
+  {ar:'حاسِبُوا أَنفُسَكُم قَبلَ أن تُحاسَبُوا',en:'Hold yourselves accountable before you are held accountable.',src:'Omar ibn al-Khattab رضي الله عنه'},
+  {ar:'إِنَّ اللَّهَ مَعَ الصَّابِرِينَ',en:'Indeed, Allah is with the patient.',src:'Quran 2:153'},
+  {ar:'وَقُل رَّبِّ ارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا',en:'Say: My Lord, have mercy on them as they raised me when I was small.',src:'Quran 17:24'},
+  {ar:'قُلْ إِن كُنتُمْ تُحِبُّونَ اللَّهَ فَاتَّبِعُونِي',en:'Say: If you love Allah, then follow me.',src:'Quran 3:31'},
+  {ar:'إِنَّ اللَّهَ جَمِيلٌ يُحِبُّ الْجَمَالَ',en:'Verily, Allah is beautiful and loves beauty.',src:'Prophet Muhammad ﷺ — Muslim'},
+  {ar:'الطَّهُورُ شَطرُ الإِيمَان',en:'Cleanliness is half of faith.',src:'Prophet Muhammad ﷺ — Muslim'},
+  {ar:'مَن سَلَكَ طَرِيقاً يَلتَمِسُ فِيهِ عِلماً سَهَّلَ اللهُ لَهُ طَرِيقاً إلى الجَنَّة',en:'Whoever travels a path seeking knowledge, Allah eases for them a path to Paradise.',src:'Prophet Muhammad ﷺ — Muslim'},
+  {ar:'العِلمُ نُورٌ يَقذِفُهُ اللهُ في قَلبِ مَن يَشَاء',en:'Knowledge is a light Allah casts into the heart of whomever He wills.',src:'Imam Malik رحمه الله'},
+  {ar:'خَيرُ العُمُرِ ما انقَضَى في طاعَةِ الله',en:'The best of life is that which is spent in obedience to Allah.',src:'Hasan al-Basri رحمه الله'},
+  {ar:'أَعقِل وتَوَكَّل',en:'Take precautions and then trust in Allah.',src:'Prophet Muhammad ﷺ — Tirmidhi'},
+  {ar:'النَّفسُ إن لَم تَشغَلها بِالحَقِّ شَغَلَتكَ بِالباطِل',en:'If you do not engage your soul in truth, it will engage you in falsehood.',src:'Ibn al-Qayyim رحمه الله'},
+  {ar:'الإيمانُ ما وَقَرَ في القَلبِ وصَدَّقَهُ العَمَل',en:'Faith is what settles in the heart and is confirmed by action.',src:'Prophet Muhammad ﷺ — Tirmidhi'},
+  {ar:'تَخَلَّق بِأَخلاقِ اللهِ',en:'Take on the character traits of Allah.',src:'Hadith — Al-Bayhaqi'},
+  {ar:'لا يَزالُ لِسانُكَ رَطباً بِذِكرِ الله',en:'Let your tongue always be moist with the remembrance of Allah.',src:'Prophet Muhammad ﷺ — Tirmidhi'},
+  {ar:'مَن أَحَبَّ أن يَكُونَ أَكرَمَ النَّاسِ فَليَتَّقِ الله',en:'Whoever wishes to be the most noble of people, let them fear Allah.',src:'Prophet Muhammad ﷺ'},
+  {ar:'الجُودُ لا يُفقِر والاستِغفارُ لا يُذِل',en:'Generosity does not cause poverty, and seeking forgiveness does not bring humiliation.',src:'Ali ibn Abi Talib رضي الله عنه'},
+  {ar:'تَعَلَّم ثُمَّ عَلِّم',en:'Learn, then teach.',src:'Islamic principle'},
+  {ar:'رُبَّ كَلِمَةٍ خَيرٌ مِن أَلفِ كَلِمَة',en:'One word of wisdom is worth more than a thousand words.',src:'Islamic wisdom'},
+  {ar:'قِيمَةُ كُلِّ امرِئٍ ما يُحسِنُه',en:'The value of every person is in what they do well.',src:'Ali ibn Abi Talib رضي الله عنه'},
+  {ar:'اللَّهُمَّ إنِّي أَسأَلُكَ الثَّباتَ في الأَمر',en:'O Allah, I ask You for steadfastness in all matters.',src:'Prophet Muhammad ﷺ — Al-Nasa\'i'},
+  {ar:'أَحسِن إلى النَّاسِ تَستَعبِد قُلُوبَهُم',en:'Be good to people and you will win their hearts.',src:'Ali ibn Abi Talib رضي الله عنه'},
+  {ar:'التَّوبَةُ تَجُبُّ ما قَبلَها',en:'Repentance wipes away what came before it.',src:'Prophet Muhammad ﷺ — Tirmidhi'},
+  {ar:'ابدَأ بِنَفسِك',en:'Begin with yourself.',src:'Prophet Muhammad ﷺ — Muslim'},
+  {ar:'الحَياءُ لا يَأتِي إلا بِخَير',en:'Modesty brings nothing but good.',src:'Prophet Muhammad ﷺ — Bukhari'},
+  {ar:'أَعمَلُ النَّاسِ أَكمَلُهُم عَقلاً',en:'The most hard-working of people are the most complete in reason.',src:'Islamic wisdom'},
+  {ar:'إذا أَنعَمَ اللهُ عَلَيكَ بِنِعمَة فأَظهِرها',en:'When Allah blesses you with a blessing, show it (as gratitude).',src:'Prophet Muhammad ﷺ — Abu Dawud'},
+  {ar:'أَعظَمُ ما تَلقَى اللهَ بِه خِلاف ما يَرضَاه',en:'The greatest thing you can meet Allah with is opposing what displeases Him.',src:'Ibn al-Qayyim رحمه الله'},
+  {ar:'حُسنُ الخُلُقِ نِصفُ الدِّين',en:'Good character is half of the religion.',src:'Imam al-Ghazali رحمه الله'},
+  {ar:'وَاللَّهُ يُحِبُّ الصَّابِرِينَ',en:'And Allah loves the patient.',src:'Quran 3:146'},
+  {ar:'يا أَيُّها الإِنسانُ إِنَّكَ كادِحٌ إِلى رَبِّكَ كَدحاً فَمُلاقِيه',en:'O mankind, indeed you are working toward your Lord with exertion and will meet Him.',src:'Quran 84:6'},
 ];
 
 const RULES=[
-  {n:1,ico:'🕌',t:'لا تفوّتي صلاة — حتى لو جالسة أو قصيرة. الله يرى جهدك.',cat:'csp',cl:'روحاني'},
-  {n:2,ico:'🕐',t:'صلّي الخمس — حتى لو متأخرة. أقبلي على الله أولاً.',cat:'csp',cl:'روحاني'},
-  {n:3,ico:'📖',t:'اقرئي أو استمعي للقرآن يومياً — حتى آية أثناء الرضاعة تحتسب.',cat:'csp',cl:'روحاني'},
-  {n:4,ico:'🤲',t:'لا تتركي أذكار الصباح والمساء والاستغفار — احمي قلبك.',cat:'csp',cl:'روحاني'},
-  {n:5,ico:'💧',t:'اشربي ١٠–١٢ كوباً يومياً — الرضاعة الطبيعية تزيد احتياجك للماء بشكل كبير.',cat:'cph',cl:'جسدي'},
-  {n:6,ico:'🚶',t:'تحرّكي بلطف — مشية قصيرة أو تمدد أو تمارين الحوض كلها تحتسب.',cat:'cph',cl:'جسدي'},
-  {n:7,ico:'🥗',t:'تناولي طعاماً مغذياً — جسمك يتعافى. أطعميه بحب.',cat:'cph',cl:'جسدي'},
-  {n:8,ico:'💊',t:'تناولي فيتامينات النفاس بدون تخطي. غير قابل للتفاوض.',cat:'cph',cl:'جسدي'},
-  {n:9,ico:'🌙',t:'ارتاحي متى استطعتِ — النوم مع الطفل إنجاز حقيقي. أنتِ تتعافين.',cat:'cph',cl:'جسدي'},
-  {n:10,ico:'💛',t:'اقبلي المساعدة. اطلبيها. تقبّل الدعم قوة وليس ضعفاً.',cat:'cph',cl:'جسدي'},
-  {n:11,ico:'🧠',t:'غذّي عقلك بلطف — حتى ١٠ دقائق قراءة أو بودكاست.',cat:'cmn',cl:'ذهني'},
-  {n:12,ico:'📝',t:'اكتبي في يومياتك — حتى سطر واحد. هذه المرحلة تستحق التوثيق.',cat:'cmn',cl:'ذهني'},
-  {n:13,ico:'✨',t:'روتين العناية بالبشرة — حتى المرطب فقط. خمس دقائق من الحب لنفسك.',cat:'csc',cl:'عناية'},
-  {n:14,ico:'🦷',t:'نظّفي أسنانك كل مساء — اعتني بالأم.',cat:'csc',cl:'عناية'},
-  {n:15,ico:'💆',t:'العناية الأسبوعية بالشعر والجسم حين تستطيعين — بدون ضغط، فقط محبة.',cat:'csc',cl:'عناية'},
-  {n:16,ico:'⚖️',t:'تابعي وزنك حين تشعرين بالاستعداد — بدون تسرع ولا ضغط.',cat:'cph',cl:'جسدي'},
-  {n:17,ico:'🌸',t:'ابدئي كل يوم بالشكر — اكتبي ٣ أشياء. حتى الصغيرة منها.',cat:'cmn',cl:'ذهني'},
-  {n:18,ico:'💡',t:'اختمي كل يوم بالتأمل — ماذا تعلمتِ اليوم؟',cat:'cmn',cl:'ذهني'},
-  {n:19,ico:'💛',t:'كوني لطيفة مع نفسك — لقد أنجبتِ إنساناً. التقدم أهم من الكمال.',cat:'cmn',cl:'ذهني'},
-  {n:20,ico:'💪',t:'أقبلي حتى في أصعب الأيام. حتى ١٪ يكفي. أنتِ كافية.',cat:'cph',cl:'جسدي'},
-  {n:21,ico:'⭐',t:'ضعي أولويات صغيرة وواقعية كل يوم — واحدة أو اثنتان تكفيان.',cat:'cmn',cl:'ذهني'},
-  {n:22,ico:'🎁',t:'كافئي نفسك كل أسبوع تلتزمين فيه. استحققتِه أكثر من أي وقت.',cat:'cmn',cl:'ذهني'},
-  {n:23,ico:'🤱',t:'احتفي بمرحلة النفاس — هي مؤقتة وثمينة وقوية.',cat:'cmn',cl:'ذهني'},
-  {n:24,ico:'🌿',t:'أنتِ لستِ متأخرة. أنتِ لا تفشلين. أنتِ تفعلين شيئاً استثنائياً.',cat:'cmn',cl:'ذهني'},
-  {n:25,ico:'🎉',t:'احتفلي بكل إنجاز صغير — أنتِ تتعافين وتنمين وتزدهرين.',cat:'cmn',cl:'ذهني'},
+  {n:1,ico:'🕌',t:"Never miss a prayer — even praying sitting down counts. Allah sees your effort.",cat:'csp',cl:'Spiritual'},
+  {n:2,ico:'🕐',t:"Pray all 5 prayers — even if late, even if short. Show up for Allah first.",cat:'csp',cl:'Spiritual'},
+  {n:3,ico:'📖',t:"Read or listen to Quran daily — even one verse while nursing counts.",cat:'csp',cl:'Spiritual'},
+  {n:4,ico:'🤲',t:"Say your morning & evening adhkar and istighfar — protect your heart.",cat:'csp',cl:'Spiritual'},
+  {n:5,ico:'💧',t:"Drink at least 10–12 glasses of water daily — breastfeeding increases your needs significantly.",cat:'cph',cl:'Physical'},
+  {n:6,ico:'🚶',t:"Move gently — a short walk, stretching, or pelvic floor exercises all count.",cat:'cph',cl:'Physical'},
+  {n:7,ico:'🥗',t:"Eat clean, nourishing food — your body is recovering. Fuel it with love.",cat:'cph',cl:'Physical'},
+  {n:8,ico:'💊',t:"Take your postnatal vitamins without skipping. Non-negotiable.",cat:'cph',cl:'Physical'},
+  {n:9,ico:'🌙',t:"Rest whenever you can — napping with baby IS productive. You're healing.",cat:'cph',cl:'Physical'},
+  {n:10,ico:'💛',t:"Accept help. Ask for help. Receiving support is strength, not weakness.",cat:'cph',cl:'Physical'},
+  {n:11,ico:'🧠',t:"Feed your mind gently — even 10 minutes of reading or a podcast.",cat:'cmn',cl:'Mind'},
+  {n:12,ico:'📝',t:"Write in your journal — even one line. This season is worth remembering.",cat:'cmn',cl:'Mind'},
+  {n:13,ico:'✨',t:"Do your skincare — even just moisturiser. It's 5 minutes of self-love.",cat:'csc',cl:'Self-Care'},
+  {n:14,ico:'🦷',t:"Brush and floss every evening — take care of the mama.",cat:'csc',cl:'Self-Care'},
+  {n:15,ico:'💆',t:"Weekly hair & body care when you can — no pressure, just love.",cat:'csc',cl:'Self-Care'},
+  {n:16,ico:'⚖️',t:"Track your weight when you feel ready — no rush, no pressure.",cat:'cph',cl:'Physical'},
+  {n:17,ico:'🌸',t:"Start every day with gratitude — write 3 things. Even tiny ones.",cat:'cmn',cl:'Mind'},
+  {n:18,ico:'💡',t:"End every day reflecting — what did you learn today?",cat:'cmn',cl:'Mind'},
+  {n:19,ico:'💛',t:"Be gentle with yourself — you just grew a human. Progress over perfection.",cat:'cmn',cl:'Mind'},
+  {n:20,ico:'💪',t:"Show up even on the hardest days. Even 1% counts. You are enough.",cat:'cph',cl:'Physical'},
+  {n:21,ico:'⭐',t:"Set small, realistic priorities each day — 1 or 2 is enough.",cat:'cmn',cl:'Mind'},
+  {n:22,ico:'🎁',t:"Reward yourself every 7 days you show up. You deserve it more than anyone.",cat:'cmn',cl:'Mind'},
+  {n:23,ico:'🤱',t:"Honour this postpartum season — it's temporary, precious, and powerful.",cat:'cmn',cl:'Mind'},
+  {n:24,ico:'🌿',t:"You are not behind. You are not failing. You are doing something extraordinary.",cat:'cmn',cl:'Mind'},
+  {n:25,ico:'🎉',t:"Celebrate every single small win — you are healing, growing and thriving.",cat:'cmn',cl:'Mind'},
 ];
 
+// ═══════════════════════════════════════════
+// HELPERS
+// ═══════════════════════════════════════════
 function dk(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
 function dayData(){
   const k=dk(vd);if(!st[k])st[k]={};const d=st[k];
@@ -582,64 +674,95 @@ function dayData(){
   if(!d.lr)d.lr=Array(NL).fill('');
   if(!d.sl)d.sl=Array(NS).fill('');
   if(!d.dua)d.dua='';if(!d.jn)d.jn='';if(!d.nt)d.nt='';
-  if(!d.sc)d.sc={};if(!d.scn)d.scn='';if(!d.qlearn)d.qlearn='';
+  if(!d.sc)d.sc={};if(!d.scn)d.scn='';
+  if(!d.qlearn)d.qlearn='';
   return d;
 }
-function sv(){localStorage.setItem('par3',JSON.stringify(st))}
-function svH(){localStorage.setItem('parh5',JSON.stringify(ht))}
+function sv(){localStorage.setItem('pen3',JSON.stringify(st))}
+function svH(){localStorage.setItem('penh5',JSON.stringify(ht))}
+function cDay(){return Math.min(Math.max(Math.round((vd-START)/86400000)+1,1),90)}
 function weekNum(){return Math.min(Math.ceil(cDay()/7),13)}
-function updBar(){const c=cDay(),p=Math.round(c/90*100);document.getElementById('cbar').style.width=p+'%';document.getElementById('dlbl').textContent='اليوم '+ar(c)+' من '+ar(90);document.getElementById('plbl').textContent=ar(p)+'٪'}
-function chDay(d){flushTxt();vd=new Date(vd.getTime()+d*86400000);render()}
 
-function quoteForDay(){return Math.min(Math.max(Math.round((vd-START)/86400000),0),89)%QUOTES.length}
+// ═══════════════════════════════════════════
+// QUOTE
+// ═══════════════════════════════════════════
+let qIdx=0;
+function quoteForDay(){
+  const dayN=Math.min(Math.max(Math.round((vd-START)/86400000),0),89);
+  return dayN % QUOTES.length;
+}
 function bQuote(){
-  const d=dayData(),idx=quoteForDay(),q=QUOTES[idx];
+  const d=dayData();
+  const idx=quoteForDay();
+  const q=QUOTES[idx];
   document.getElementById('qcard').innerHTML=`
     <div class="q-arabic">${q.ar}</div>
+    <div class="q-english">"${q.en}"</div>
     <div class="q-source">— ${q.src}</div>
-    <div class="q-learn"><div class="q-learn-lbl">💡 ما تعلمته من هذا الاقتباس…</div>
-    <input class="q-learn-inp" id="qlearn-inp" type="text" value="${d.qlearn||''}" placeholder="اكتب تأملك في هذا الاقتباس…"></div>
+    <div class="q-learn">
+      <div class="q-learn-lbl">💡 What I learn from this…</div>
+      <input class="q-learn-inp" id="qlearn-inp" type="text" value="${d.qlearn||''}" placeholder="Write your reflection on this quote…">
+    </div>
     <div class="q-nav">
-      <button class="q-nav-btn" onclick="pQ()">◀</button>
-      <span style="font-size:.65rem;font-weight:700;color:var(--inks);align-self:center">${ar(idx+1)}/${ar(QUOTES.length)}</span>
-      <button class="q-nav-btn" onclick="nQ()">▶</button>
+      <button class="q-nav-btn" onclick="prevQuote()">◀ Prev</button>
+      <span style="font-size:.65rem;font-weight:700;color:var(--inks);align-self:center">${idx+1}/${QUOTES.length}</span>
+      <button class="q-nav-btn" onclick="nextQuote()">Next ▶</button>
     </div>`;
   document.getElementById('qlearn-inp').addEventListener('input',e=>{dayData().qlearn=e.target.value;sv()});
 }
-function pQ(){const i=(quoteForDay()-1+QUOTES.length)%QUOTES.length;rtQ(i)}
-function nQ(){const i=(quoteForDay()+1)%QUOTES.length;rtQ(i)}
-function rtQ(idx){const d=dayData(),q=QUOTES[idx];
+function prevQuote(){const q=QUOTES;const cur=quoteForDay();const el=document.getElementById('qcard');const idx=(cur-1+q.length)%q.length;renderTempQuote(idx)}
+function nextQuote(){const q=QUOTES;const cur=quoteForDay();const idx=(cur+1)%q.length;renderTempQuote(idx)}
+function renderTempQuote(idx){
+  const d=dayData();const q=QUOTES[idx];
   document.getElementById('qcard').innerHTML=`
     <div class="q-arabic">${q.ar}</div>
+    <div class="q-english">"${q.en}"</div>
     <div class="q-source">— ${q.src}</div>
-    <div class="q-learn"><div class="q-learn-lbl">💡 ما تعلمته من هذا الاقتباس…</div>
-    <input class="q-learn-inp" id="qlearn-inp" type="text" value="${d.qlearn||''}" placeholder="اكتب تأملك…"></div>
-    <div class="q-nav"><button class="q-nav-btn" onclick="pQ()">◀</button>
-    <span style="font-size:.65rem;font-weight:700;color:var(--inks);align-self:center">${ar(idx+1)}/${ar(QUOTES.length)}</span>
-    <button class="q-nav-btn" onclick="nQ()">▶</button></div>`;
+    <div class="q-learn">
+      <div class="q-learn-lbl">💡 What I learn from this…</div>
+      <input class="q-learn-inp" id="qlearn-inp" type="text" value="${d.qlearn||''}" placeholder="Write your reflection on this quote…">
+    </div>
+    <div class="q-nav">
+      <button class="q-nav-btn" onclick="prevQuote()">◀ Prev</button>
+      <span style="font-size:.65rem;font-weight:700;color:var(--inks);align-self:center">${idx+1}/${QUOTES.length}</span>
+      <button class="q-nav-btn" onclick="nextQuote()">Next ▶</button>
+    </div>`;
   document.getElementById('qlearn-inp').addEventListener('input',e=>{dayData().qlearn=e.target.value;sv()});
 }
 
-function bMood(){const d=dayData();document.getElementById('moods').innerHTML=MOODS.map((m,i)=>`<button class="mood-btn${d.mood===i?' sel':''}" onclick="setMood(${i})" title="${MOOD_NAMES[i]}">${m}</button>`).join('');const mn=document.getElementById('mood-note');if(mn)mn.value=d.moodNote||''}
+// ═══════════════════════════════════════════
+// MOOD
+// ═══════════════════════════════════════════
+function bMood(){
+  const d=dayData();
+  document.getElementById('moods').innerHTML=MOODS.map((m,i)=>
+    `<button class="mood-btn${d.mood===i?' sel':''}" onclick="setMood(${i})" title="${MOOD_NAMES[i]}">${m}</button>`
+  ).join('');
+  const mn=document.getElementById('mood-note');if(mn)mn.value=d.moodNote||'';
+}
 function setMood(i){const d=dayData();d.mood=i;sv();bMood();updScore()}
 
-// BF TRACKER
-const BB_FEELINGS_AR=['😊 سعيدة','😢 دموع','😰 قلقة','😔 حزينة','😤 محبطة','🥰 ممتنة','😌 هادئة','😵 مرهقة','💪 قوية','🌫️ ضبابية الذهن'];
+// ═══════════════════════════════════════════
+// BREASTFEEDING TRACKER
+// ═══════════════════════════════════════════
+const BB_FEELINGS=['😊 Happy','😢 Tearful','😰 Anxious','😔 Low','😤 Frustrated','🥰 Grateful','😌 Calm','😵 Overwhelmed','💪 Strong','🌫️ Foggy'];
 function bBF(){
   const d=dayData();
   if(d.bf==null)d.bf=0;if(d.pump==null)d.pump=0;
-  const bc=document.getElementById('bf-count');if(bc)bc.textContent=ar(d.bf);
-  const pc=document.getElementById('pump-count');if(pc)pc.textContent=ar(d.pump);
-  const sR=document.getElementById('side-R'),sL=document.getElementById('side-L');
-  if(sR&&sL){
+  const bc=document.getElementById('bf-count');if(bc)bc.textContent=d.bf;
+  const pc=document.getElementById('pump-count');if(pc)pc.textContent=d.pump;
+  // side buttons
+  const sL=document.getElementById('side-L'),sR=document.getElementById('side-R');
+  if(sL&&sR){
     const active='background:var(--gm);color:#fff;border-color:var(--gd)';
     const idle='background:#fff;color:var(--gm);border-color:var(--gl)';
-    sR.style.cssText+=d.bfside==='R'?active:idle;
     sL.style.cssText+=d.bfside==='L'?active:idle;
+    sR.style.cssText+=d.bfside==='R'?active:idle;
   }
   const di=document.getElementById('bf-dur');if(di&&d.bfdur)di.value=d.bfdur;
+  // supplement
   const el=document.getElementById('bf-supp');if(!el)return;
-  el.innerHTML=`<div class="sr${d.bfsupp?' ck':''}" onclick="tBFSupp()" style="margin-top:4px"><div class="dot"></div><span class="slb">تناولتُ مكمل الرضاعة / الأعشاب اليوم 🌿</span></div>`;
+  el.innerHTML=`<div class="sr${d.bfsupp?' ck':''}" onclick="tBFSupp()" style="margin-top:4px"><div class="dot"></div><span class="slb">Took lactation supplement / herb today 🌿</span></div>`;
 }
 function chBF(n){const d=dayData();if(d.bf==null)d.bf=0;d.bf=Math.max(0,d.bf+n);sv();bBF()}
 function chPump(n){const d=dayData();if(d.pump==null)d.pump=0;d.pump=Math.max(0,d.pump+n);sv();bBF()}
@@ -647,16 +770,20 @@ function tBFSupp(){const d=dayData();d.bfsupp=!d.bfsupp;sv();bBF();updScore()}
 function setSide(s){const d=dayData();d.bfside=s;sv();bBF()}
 function saveBFDur(v){const d=dayData();d.bfdur=parseInt(v)||0;sv()}
 
-// BABY BLUES
+// ═══════════════════════════════════════════
+// BABY BLUES / EMOTIONAL CHECK-IN
+// ═══════════════════════════════════════════
 function bBB(){
   const d=dayData();if(!d.bbf)d.bbf={};
   const el=document.getElementById('bb-feelings');if(!el)return;
-  el.innerHTML=BB_FEELINGS_AR.map((f,i)=>`<span onclick="tBBF(${i})" style="font-size:.76rem;font-weight:700;padding:5px 10px;border-radius:50px;cursor:pointer;border:1.5px solid ${d.bbf[i]?'#4a6fa5':'#d0d8f0'};background:${d.bbf[i]?'#4a6fa5':'#f0f4ff'};color:${d.bbf[i]?'#fff':'#4a6fa5'};transition:all .18s">${f}</span>`).join('');
+  el.innerHTML=BB_FEELINGS.map((f,i)=>`<span onclick="tBBF(${i})" style="font-size:.74rem;font-weight:700;padding:5px 10px;border-radius:50px;cursor:pointer;border:1.5px solid ${d.bbf[i]?'#4a6fa5':'#d0d8f0'};background:${d.bbf[i]?'#4a6fa5':'#f0f4ff'};color:${d.bbf[i]?'#fff':'#4a6fa5'};transition:all .18s">${f}</span>`).join('');
   const bn=document.getElementById('bb-note');if(bn)bn.value=d.bbnote||'';
 }
 function tBBF(i){const d=dayData();if(!d.bbf)d.bbf={};d.bbf[i]=!d.bbf[i];sv();bBB()}
 
+// ═══════════════════════════════════════════
 // BABY SECTION
+// ═══════════════════════════════════════════
 function bBaby(){
   const d=dayData();
   const bs=document.getElementById('baby-sleep');if(bs&&d.babysleep)bs.value=d.babysleep;
@@ -664,54 +791,291 @@ function bBaby(){
   const lg=document.getElementById('letgo');if(lg)lg.value=d.letgo||'';
 }
 function saveBabySleep(v){const d=dayData();d.babysleep=parseFloat(v)||0;sv()}
-const REST_ITEMS_AR=['نمتُ مع الطفل في القيلولة 😴','أخذتُ لحظة هدوء وصمت 🌿','جلستُ لأكل وجبة كاملة 🍽️','طلبتُ المساعدة أو قبلتُها 🤲','فعلتُ شيئاً لنفسي فقط 💛'];
-function bRest(){const d=dayData();if(!d.rest)d.rest={};document.getElementById('rest-checks').innerHTML=REST_ITEMS_AR.map((item,i)=>`<div class="sr${d.rest[i]?' ck':''}" onclick="tRest(${i})"><div class="dot"></div><span class="slb">${item}</span></div>`).join('')}
+
+// ═══════════════════════════════════════════
+const REST_ITEMS=['Napped when baby napped 😴','Had a moment of stillness / quiet 🌿','Sat down for a full meal 🍽️','Asked for or accepted help today 🤲','Did something just for me 💛'];
+function bRest(){
+  const d=dayData();if(!d.rest)d.rest={};
+  document.getElementById('rest-checks').innerHTML=REST_ITEMS.map((item,i)=>`
+    <div class="sr${d.rest[i]?' ck':''}" onclick="tRest(${i})">
+      <div class="dot"></div><span class="slb">${item}</span>
+    </div>`).join('');
+}
 function tRest(i){const d=dayData();if(!d.rest)d.rest={};d.rest[i]=!d.rest[i];sv();bRest();updScore()}
-function bPray(){const d=dayData();[['pgrid',PR,'pr'],['sgrid',SN,'su']].forEach(([gid,arr,k])=>{document.getElementById(gid).innerHTML=arr.map(p=>`<div class="pcol"><div class="pn">${p}</div><div class="pd${d[k][p]?' done':''}" onclick="tPr('${k}','${p}')"></div></div>`).join('')})}
+
+// ═══════════════════════════════════════════
+// PRAYERS
+// ═══════════════════════════════════════════
+function bPray(){
+  const d=dayData();
+  [['pgrid',PR,'pr'],['sgrid',SN,'su']].forEach(([gid,arr,k])=>{
+    document.getElementById(gid).innerHTML=arr.map(p=>`<div class="pcol"><div class="pn">${p}</div><div class="pd${d[k][p]?' done':''}" onclick="tPr('${k}','${p}')"></div></div>`).join('')
+  });
+}
 function tPr(k,n){const d=dayData();d[k][n]=!d[k][n];sv();bPray();updScore()}
-function bWat(){const d=dayData();let h='';for(let i=1;i<=NC;i++)h+=`<div class="cup${i<=d.cu?' fl':''}" onclick="sCup(${i})"><svg viewBox="0 0 24 28"><path class="cf" d="M4 6L6 26L18 26L20 6Z"/><path class="co" d="M4 6L6 26L18 26L20 6Z"/><line x1="3" y1="6" x2="21" y2="6" stroke="var(--gm)" stroke-width="2"/></svg></div>`;document.getElementById('cupr').innerHTML=h;document.getElementById('cupc').textContent=ar(d.cu)+'/'+ar(NC)}
+
+// ═══════════════════════════════════════════
+// WATER
+// ═══════════════════════════════════════════
+function bWat(){
+  const d=dayData();let h='';
+  for(let i=1;i<=NC;i++)h+=`<div class="cup${i<=d.cu?' fl':''}" onclick="sCup(${i})"><svg viewBox="0 0 24 28"><path class="cf" d="M4 6L6 26L18 26L20 6Z"/><path class="co" d="M4 6L6 26L18 26L20 6Z"/><line x1="3" y1="6" x2="21" y2="6" stroke="var(--gm)" stroke-width="2"/></svg></div>`;
+  document.getElementById('cupr').innerHTML=h;document.getElementById('cupc').textContent=d.cu+'/'+NC;
+}
 function sCup(n){const d=dayData();d.cu=d.cu===n?n-1:n;sv();bWat();updScore()}
-function bHab(){const d=dayData();document.getElementById('hlist').innerHTML=ht.map((h,hi)=>{const md=!!d.ha[h.id],any=h.pick&&h.subs.some((_,si)=>d.sb[h.id+'_'+si]);const rc='mr'+(md?' ck':'')+(h.pick?' pk':'')+(h.pick&&any?' sd':'');const subs=h.subs.map((s,si)=>{const k=h.id+'_'+si,sd=!!d.sb[k];return `<div class="sr${sd?' ck':''}" onclick="tSub(${h.id},${si},${!!h.pick})"><div class="dot"></div><span class="slb">${s}</span><button class="xb" onclick="event.stopPropagation();dSub(${hi},${si})">✕</button></div>`}).join('');return `<div class="hg"><div class="${rc}" onclick="${h.pick?'':'tMain('+h.id+')'}"><div class="ml">${!h.pick?'<div class="cc"></div>':''}<span class="mll">${h.emoji} ${h.name}</span>${h.pick?'<span class="pb">على الأقل واحدة ✦</span>':''}</div><div style="display:flex;align-items:center;gap:3px"><button class="eb${h.op?' op':''}" onclick="event.stopPropagation();tOp(${hi})">▼</button><button class="xb" onclick="event.stopPropagation();dMain(${hi})">✕</button></div></div><div class="shs${h.op?' op':''}">${subs}<div class="asb"><input type="text" id="sbi${h.id}" placeholder="+ أضف عادة فرعية…" maxlength="60" onkeydown="if(event.key==='Enter'){event.stopPropagation();aSub(${hi})}" onclick="event.stopPropagation()"><button onclick="event.stopPropagation();aSub(${hi})">+</button></div></div></div>`}).join('')}
+
+// ═══════════════════════════════════════════
+// HABITS
+// ═══════════════════════════════════════════
+function bHab(){
+  const d=dayData();
+  document.getElementById('hlist').innerHTML=ht.map((h,hi)=>{
+    const md=!!d.ha[h.id],any=h.pick&&h.subs.some((_,si)=>d.sb[h.id+'_'+si]);
+    const rc='mr'+(md?' ck':'')+(h.pick?' pk':'')+(h.pick&&any?' sd':'');
+    const subs=h.subs.map((s,si)=>{const k=h.id+'_'+si,sd=!!d.sb[k];
+      return `<div class="sr${sd?' ck':''}" onclick="tSub(${h.id},${si},${!!h.pick})"><div class="dot"></div><span class="slb">${s}</span><button class="xb" onclick="event.stopPropagation();dSub(${hi},${si})">✕</button></div>`;
+    }).join('');
+    return `<div class="hg"><div class="${rc}" onclick="${h.pick?'':'tMain('+h.id+')'}"><div class="ml">${!h.pick?'<div class="cc"></div>':''}<span class="mll">${h.emoji} ${h.name}</span>${h.pick?'<span class="pb">at least one ✦</span>':''}</div><div style="display:flex;align-items:center;gap:3px"><button class="eb${h.op?' op':''}" onclick="event.stopPropagation();tOp(${hi})">▼</button><button class="xb" onclick="event.stopPropagation();dMain(${hi})">✕</button></div></div><div class="shs${h.op?' op':''}">${subs}<div class="asb"><input type="text" id="sbi${h.id}" placeholder="+ sub-habit…" maxlength="40" onkeydown="if(event.key==='Enter'){event.stopPropagation();aSub(${hi})}" onclick="event.stopPropagation()"><button onclick="event.stopPropagation();aSub(${hi})">+</button></div></div></div>`;
+  }).join('');
+}
 function tMain(id){const d=dayData();d.ha[id]=!d.ha[id];sv();bHab();updScore()}
 function tSub(hid,si,pick){const d=dayData(),k=hid+'_'+si;d.sb[k]=!d.sb[k];sv();bHab();updScore()}
 function tOp(hi){ht[hi].op=!ht[hi].op;svH();bHab()}
 function aSub(hi){const h=ht[hi],inp=document.getElementById('sbi'+h.id);const n=inp.value.trim();if(!n)return;h.subs.push(n);svH();inp.value='';bHab()}
 function dSub(hi,si){ht[hi].subs.splice(si,1);svH();bHab()}
-function dMain(hi){if(!confirm('حذف هذه المجموعة وعاداتها؟'))return;ht.splice(hi,1);svH();bHab()}
+function dMain(hi){if(!confirm('Remove this habit group?'))return;ht.splice(hi,1);svH();bHab()}
 function aMain(){const inp=document.getElementById('nh'),n=inp.value.trim();if(!n)return;ht.push({id:Date.now(),name:n,emoji:'🌿',subs:[],pick:false,op:true});svH();inp.value='';bHab()}
-function bPri(){const d=dayData();document.getElementById('plist').innerHTML=d.pri.map((p,i)=>`<div class="prr"><div class="pnum">${ar(i+1)}</div><input class="pi" id="pi${i}" type="text" value="${p.t||''}" placeholder="أولوية ${ar(i+1)}…" onblur="d.pri[${i}].t=this.value;sv()"><div class="pc${p.done?' dn':''}" onclick="tPri(${i})"></div></div>`).join('')}
+
+// ═══════════════════════════════════════════
+// PRIORITIES
+// ═══════════════════════════════════════════
+function bPri(){const d=dayData();document.getElementById('plist').innerHTML=d.pri.map((p,i)=>`<div class="prr"><div class="pnum">${i+1}</div><input class="pi" id="pi${i}" type="text" value="${p.t||''}" placeholder="Priority ${i+1}…" onblur="d.pri[${i}].t=this.value;sv()"><div class="pc${p.done?' dn':''}" onclick="tPri(${i})"></div></div>`).join('')}
 function tPri(i){const d=dayData();d.pri[i].done=!d.pri[i].done;sv();bPri();updScore()}
-function bGrat(){const d=dayData();const ic=['🌸','🌼','🌺'];document.getElementById('glist').innerHTML=Array.from({length:NG},(_,i)=>`<div class="br"><span class="bi">${ic[i]}</span><input class="bip" id="gi${i}" type="text" value="${d.gr[i]||''}" placeholder="أنا ممتن لـ…" onblur="d.gr[${i}]=this.value;sv()"></div>`).join('')}
-function bLearn(){const d=dayData();document.getElementById('llist').innerHTML=Array.from({length:NL},(_,i)=>`<div class="br"><span class="bi">📘</span><input class="bip" id="li${i}" type="text" value="${d.lr[i]||''}" placeholder="معرفة تعلمتها…" onblur="d.lr[${i}]=this.value;sv()"></div>`).join('');document.getElementById('slist').innerHTML=Array.from({length:NS},(_,i)=>`<div class="br"><span class="bi">🪞</span><input class="bip" id="si2${i}" type="text" value="${d.sl[i]||''}" placeholder="عن نفسي اليوم…" onblur="d.sl[${i}]=this.value;sv()"></div>`).join('')}
-function bSC(){const d=dayData();function card(id,title,items,wk){const el=document.getElementById(id);if(!el)return;el.innerHTML=`<div class="sct2">${title}</div>`+items.map((it,i)=>{const k=id+'_'+i,dn=!!d.sc[k];return `<div class="sci${dn?' dn':''}" onclick="tSC('${k}')"><div class="scd"></div><span class="scl">${it}</span><span class="scf${wk?' wk':''}">${wk?'أسبوعي':'يومي'}</span></div>`}).join('')}
-card('scm','🌅 الصباح',SCM,false);card('sce','🌙 المساء',SCE,false);card('sch','💇 الشعر',SCH,true);card('scb','🧴 الجسم',SCB,true);card('sct','🦷 الأسنان',SCT,false);
-const el=document.getElementById('scnts');if(el)el.value=d.scn||'';updSCScore()}
+
+// ═══════════════════════════════════════════
+// BULLETS
+// ═══════════════════════════════════════════
+function bGrat(){const d=dayData();const ic=['🌸','🌼','🌺'];document.getElementById('glist').innerHTML=Array.from({length:NG},(_,i)=>`<div class="br"><span class="bi">${ic[i]}</span><input class="bip" id="gi${i}" type="text" value="${d.gr[i]||''}" placeholder="I'm grateful for…" onblur="d.gr[${i}]=this.value;sv()"></div>`).join('')}
+function bLearn(){const d=dayData();document.getElementById('llist').innerHTML=Array.from({length:NL},(_,i)=>`<div class="br"><span class="bi">📘</span><input class="bip" id="li${i}" type="text" value="${d.lr[i]||''}" placeholder="Knowledge I learned…" onblur="d.lr[${i}]=this.value;sv()"></div>`).join('');document.getElementById('slist').innerHTML=Array.from({length:NS},(_,i)=>`<div class="br"><span class="bi">🪞</span><input class="bip" id="si2${i}" type="text" value="${d.sl[i]||''}" placeholder="About myself…" onblur="d.sl[${i}]=this.value;sv()"></div>`).join('')}
+
+// ═══════════════════════════════════════════
+// SELF-CARE
+// ═══════════════════════════════════════════
+function bSC(){
+  const d=dayData();
+  function card(id,title,items,wk){
+    const el=document.getElementById(id);if(!el)return;
+    el.innerHTML=`<div class="sct2">${title}</div>`+items.map((it,i)=>{const k=id+'_'+i,dn=!!d.sc[k];return `<div class="sci${dn?' dn':''}" onclick="tSC('${k}')"><div class="scd"></div><span class="scl">${it}</span><span class="scf${wk?' wk':''}">${wk?'weekly':'daily'}</span></div>`}).join('');
+  }
+  card('scm','🌅 Morning',SCM,false);card('sce','🌙 Evening',SCE,false);
+  card('sch','💇 Hair',SCH,true);card('scb','🧴 Body',SCB,true);
+  card('sct','🦷 Teeth',SCT,false);card('scbf','🤱 Breast Care',SCBF,false);
+  const el=document.getElementById('scnts');if(el)el.value=d.scn||'';
+  updSCScore();
+}
 function tSC(k){const d=dayData();d.sc[k]=!d.sc[k];sv();bSC()}
 function rstSC(){const d=dayData();d.sc={};d.scn='';sv();const e=document.getElementById('scnts');if(e)e.value='';bSC()}
-function updSCScore(){const d=dayData();const tot=SCM.length+SCE.length+SCH.length+SCB.length+SCT.length;const dn=Object.values(d.sc).filter(Boolean).length;const e=document.getElementById('scscore');if(e)e.textContent='✅ العناية: '+ar(dn)+'/'+ar(tot)}
-function bWt(){const wts=JSON.parse(localStorage.getItem('parwt3')||'{}');if(!wts[1])wts[1]='77.5';const labels=['🏁 البداية','اليوم ٢٢','اليوم ٤٣','اليوم ٦٤','🏆 النهاية'];document.getElementById('wtl').innerHTML=WT_DAYS.map((day,idx)=>{const date=new Date(START.getTime()+(day-1)*86400000);const ds=date.toLocaleDateString('ar-SA',{month:'long',day:'numeric',year:'numeric'});const val=wts[day]||'';const pv=idx>0?wts[WT_DAYS[idx-1]]||'':'';let dif='';if(pv&&val){const diff=(parseFloat(val)-parseFloat(pv)).toFixed(1);const cl=diff<0?'ls':diff>0?'gn':'sm';const pfx=diff<0?'▼ ':diff>0?'▲ ':'— ';dif=`<span class="wtdf ${cl}">${pfx}${Math.abs(diff)} كغ</span>`}const dc=day===1?'st':day===90?'ms':'';return `<div class="wte">${idx<WT_DAYS.length-1?'<div class="wtln"></div>':''}<div class="wtdw"><div class="wtd ${dc}">${ar(idx+1)}</div></div><div class="wtc"><div class="wtlbl">${labels[idx]}</div><div class="wtdt">📅 ${ds}</div><div class="wtir"><input class="wtin" type="number" step="0.1" min="30" max="300" value="${val}" placeholder="— كغ" onchange="svWt(${day},this.value)" onblur="svWt(${day},this.value)"><span class="wtu">كغ</span>${dif}</div></div></div>`}).join('');bMeas();const wn2=document.getElementById('wtnts');if(wn2)wn2.value=st._wtn||''}
-function svWt(day,val){const wts=JSON.parse(localStorage.getItem('parwt3')||'{}');if(val)wts[day]=val;else delete wts[day];localStorage.setItem('parwt3',JSON.stringify(wts));bWt()}
-function bMeas(){const ms=JSON.parse(localStorage.getItem('parmeas')||'{}');const g=document.getElementById('meas-grid');if(!g)return;g.innerHTML=MEAS_LABELS.map((lbl,i)=>{const milestones=MEAS_MILESTONES.map((d2,mi)=>{const v=ms[lbl+'_'+d2]||'';return `<div style="margin-bottom:4px"><div style="font-size:.62rem;font-weight:700;color:var(--inks);text-align:right">يوم ${ar(d2)}</div><input class="meas-inp" type="number" step="0.5" min="20" max="200" value="${v}" placeholder="—" onblur="svMeas('${lbl}',${d2},this.value)"></div>`}).join('');return `<div class="meas-card"><div class="meas-lbl">📏 ${lbl} (سم)</div>${milestones}</div>`}).join('')}
-function svMeas(lbl,day,val){const ms=JSON.parse(localStorage.getItem('parmeas')||'{}');const k=lbl+'_'+day;if(val)ms[k]=val;else delete ms[k];localStorage.setItem('parmeas',JSON.stringify(ms));bMeas()}
-function bWeekly(){const wn=weekNum();document.getElementById('week-num').textContent=ar(wn);document.getElementById('wk-score').textContent='الأسبوع '+ar(wn)+' من '+ar(13);const wStart=new Date(START.getTime()+(wn-1)*7*86400000);const wEnd=new Date(START.getTime()+Math.min(wn*7,90)*86400000-86400000);document.getElementById('week-range').textContent=wStart.toLocaleDateString('ar-SA',{month:'short',day:'numeric'})+' – '+wEnd.toLocaleDateString('ar-SA',{month:'short',day:'numeric'});const wr=JSON.parse(localStorage.getItem('parwr')||'{}')[wn]||{};const rating=wr.rating||0;document.getElementById('week-stars').innerHTML=Array.from({length:5},(_,i)=>`<button class="star-btn" onclick="setRating(${i+1})">${i<rating?'⭐':'☆'}</button>`).join('');const labels=['','أسبوع صعب 😓','يمكن أفضل 😐','أسبوع لا بأس 🙂','أسبوع جيد 😊','أسبوع رائع 🌟'];document.getElementById('rating-lbl').textContent=rating?labels[rating]:'اضغطي على نجمة';['wr-well','wr-impr','wr-focus','wr-quote'].forEach(id=>{const el=document.getElementById(id);const key=id.replace('wr-','');if(el)el.value=wr[key]||''});bMoodChart(wn)}
-function setRating(r){const wn=weekNum();const all=JSON.parse(localStorage.getItem('parwr')||'{}');if(!all[wn])all[wn]={};all[wn].rating=r;localStorage.setItem('parwr',JSON.stringify(all));bWeekly()}
-function saveWeeklyReview(){const wn=weekNum();const all=JSON.parse(localStorage.getItem('parwr')||'{}');if(!all[wn])all[wn]={};['wr-well','wr-impr','wr-focus','wr-quote'].forEach(id=>{const el=document.getElementById(id);const key=id.replace('wr-','');if(el)all[wn][key]=el.value});localStorage.setItem('parwr',JSON.stringify(all));alert('✅ تم حفظ المراجعة الأسبوعية!')}
-function bMoodChart(wn){const days=['إث','ثل','أر','خم','جم','سب','أح'];const wStart=new Date(START.getTime()+(wn-1)*7*86400000);const bars=document.getElementById('mood-chart-week');const lbls=document.getElementById('mood-days-lbl');if(!bars||!lbls)return;let bHtml='',lHtml='';for(let i=0;i<7;i++){const d2=new Date(wStart.getTime()+i*86400000);const k=dk(d2);const mood=st[k]?st[k].mood:-1;const h=mood>=0?((mood+1)/5*100):5;bHtml+=`<div class="mood-bar" style="height:${h}%;background:${mood>=0?'var(--gl)':'#eee'}"></div>`;lHtml+=`<span style="font-size:.6rem;color:var(--inks);font-weight:700;flex:1;text-align:center">${days[i]}</span>`}bars.innerHTML=bHtml;lbls.innerHTML=lHtml}
-function bRewards(){const rws=JSON.parse(localStorage.getItem('parrw')||'{}');let html='';for(let w=1;w<=13;w++){const endDay=w*7;const wDate=new Date(START.getTime()+(endDay-1)*86400000);const dateStr=wDate.toLocaleDateString('ar-SA',{month:'short',day:'numeric'});const isPast=wDate<=NOW;const rw=rws[w]||{};const unlocked=isPast&&(rw.done||false);html+=`<div class="reward-week${unlocked?' unlocked':''}"><div class="rw-header"><div class="rw-num">${ar(w)}</div><div><div class="rw-title">🎁 مكافأة الأسبوع ${ar(w)} ${unlocked?'✅':isPast?'⏰':'🔒'}</div><div class="rw-date">بعد اليوم ${ar(endDay)} — ${dateStr}</div></div></div><div class="rw-ideas">${REWARD_IDEAS.map((idea,i)=>`<span class="rw-tag${rw.tag===i?' sel':''}" onclick="setRwTag(${w},${i})">${idea}</span>`).join('')}</div><input class="rw-custom" type="text" placeholder="أو اكتبي مكافأتك الخاصة…" value="${rw.custom||''}" onblur="svRwCustom(${w},this.value)"><div class="rw-check" onclick="toggleRwDone(${w})"><div class="rw-chk${rw.done?' dn':''}"></div><span>${rw.done?'🎉 تم المطالبة بالمكافأة!':'وضّعي علامة عند الاستلام'}</span></div></div>`}document.getElementById('rewards-body').innerHTML=html}
-function setRwTag(w,i){const all=JSON.parse(localStorage.getItem('parrw')||'{}');if(!all[w])all[w]={};all[w].tag=i;localStorage.setItem('parrw',JSON.stringify(all));bRewards()}
-function svRwCustom(w,v){const all=JSON.parse(localStorage.getItem('parrw')||'{}');if(!all[w])all[w]={};all[w].custom=v;localStorage.setItem('parrw',JSON.stringify(all))}
-function toggleRwDone(w){const all=JSON.parse(localStorage.getItem('parrw')||'{}');if(!all[w])all[w]={};all[w].done=!all[w].done;localStorage.setItem('parrw',JSON.stringify(all));bRewards()}
-function bRules(){document.getElementById('rbd').innerHTML=RULES.map(r=>`<div class="ri"><div class="rnum">${ar(r.n)}</div><div class="rico">${r.ico}</div><div><div class="rtxt">${r.t}</div><span class="rcat ${r.cat}">${r.cl}</span></div></div>`).join('')}
-function updScore(){const d=dayData();let dn=0,tot=0;PR.forEach(p=>{tot++;if(d.pr[p])dn++});SN.forEach(p=>{tot++;if(d.su[p])dn++});ht.forEach(h=>{if(h.pick){tot++;if(h.subs.some((_,si)=>d.sb[h.id+'_'+si]))dn++}else{tot++;if(d.ha[h.id])dn++;h.subs.forEach((_,si)=>{tot++;if(d.sb[h.id+'_'+si])dn++})}});tot++;if(d.cu>=5)dn++;tot++;if(d.bfsupp)dn++;if(d.rest)Object.values(d.rest).forEach(v=>{tot++;if(v)dn++});else REST_ITEMS_AR.forEach(()=>tot++);d.pri.forEach(p=>{if(p.t){tot++;if(p.done)dn++}});tot++;if(d.mood>=0)dn++;document.getElementById('scrlbl').textContent='✅ النتيجة: '+ar(dn)+'/'+ar(tot)}
+function updSCScore(){const d=dayData();const tot=SCM.length+SCE.length+SCH.length+SCB.length+SCT.length+SCBF.length;const dn=Object.values(d.sc).filter(Boolean).length;const e=document.getElementById('scscore');if(e)e.textContent='✅ Self-Care: '+dn+'/'+tot}
+
+// ═══════════════════════════════════════════
+// WEIGHT & MEASUREMENTS
+// ═══════════════════════════════════════════
+function bWt(){
+  const wts=JSON.parse(localStorage.getItem('penwt3')||'{}');
+  if(!wts[1])wts[1]='77.5';
+  document.getElementById('wtl').innerHTML=WT_DAYS.map((day,idx)=>{
+    const date=new Date(START.getTime()+(day-1)*86400000);
+    const ds=date.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+    const val=wts[day]||'';const pv=idx>0?wts[WT_DAYS[idx-1]]||'':'';
+    let dif='';
+    if(pv&&val){const diff=(parseFloat(val)-parseFloat(pv)).toFixed(1);const cl=diff<0?'ls':diff>0?'gn':'sm';const pfx=diff<0?'▼ ':diff>0?'▲ ':'— ';dif=`<span class="wtdf ${cl}">${pfx}${Math.abs(diff)} kg</span>`}
+    const dc=day===1?'st':day===90?'ms':'';
+    const lbl=day===1?'🏁 START':'Day '+day+(day===90?' 🏆 FINISH':'');
+    return `<div class="wte">${idx<WT_DAYS.length-1?'<div class="wtln"></div>':''}<div class="wtdw"><div class="wtd ${dc}">${idx+1}</div></div><div class="wtc"><div class="wtlbl">${lbl}</div><div class="wtdt">📅 ${ds}</div><div class="wtir"><input class="wtin" type="number" step="0.1" min="30" max="300" value="${val}" placeholder="— kg" onchange="svWt(${day},this.value)" onblur="svWt(${day},this.value)"><span class="wtu">kg</span>${dif}</div></div></div>`;
+  }).join('');
+  bMeas();
+  const wn=document.getElementById('wtnts');if(wn)wn.value=st._wtn||'';
+}
+function svWt(day,val){const wts=JSON.parse(localStorage.getItem('penwt3')||'{}');if(val)wts[day]=val;else delete wts[day];localStorage.setItem('penwt3',JSON.stringify(wts));bWt()}
+
+function bMeas(){
+  const ms=JSON.parse(localStorage.getItem('penmeas')||'{}');
+  const g=document.getElementById('meas-grid');if(!g)return;
+  g.innerHTML=MEAS_LABELS.map((lbl,i)=>{
+    const milestones=MEAS_MILESTONES.map((d,mi)=>{
+      const v=ms[lbl+'_'+d]||'';
+      return `<div style="margin-bottom:4px"><div style="font-size:.6rem;font-weight:700;color:var(--inks)">Day ${d}</div><input class="meas-inp" type="number" step="0.5" min="20" max="200" value="${v}" placeholder="—" onblur="svMeas('${lbl}',${d},this.value)"></div>`;
+    }).join('');
+    return `<div class="meas-card"><div class="meas-lbl">📏 ${lbl} (cm)</div>${milestones}</div>`;
+  }).join('');
+}
+function svMeas(lbl,day,val){const ms=JSON.parse(localStorage.getItem('penmeas')||'{}');const k=lbl+'_'+day;if(val)ms[k]=val;else delete ms[k];localStorage.setItem('penmeas',JSON.stringify(ms));bMeas()}
+
+// ═══════════════════════════════════════════
+// WEEKLY REVIEW
+// ═══════════════════════════════════════════
+function bWeekly(){
+  const wn=weekNum();
+  document.getElementById('week-num').textContent=wn;
+  document.getElementById('wk-score').textContent='Week '+wn+' of 13';
+  const wStart=new Date(START.getTime()+(wn-1)*7*86400000);
+  const wEnd=new Date(START.getTime()+Math.min(wn*7,90)*86400000-86400000);
+  document.getElementById('week-range').textContent=wStart.toLocaleDateString('en-US',{month:'short',day:'numeric'})+' – '+wEnd.toLocaleDateString('en-US',{month:'short',day:'numeric'});
+  const wr=JSON.parse(localStorage.getItem('penwr')||'{}')[wn]||{};
+  // Stars
+  const rating=wr.rating||0;
+  document.getElementById('week-stars').innerHTML=Array.from({length:5},(_,i)=>
+    `<button class="star-btn" onclick="setRating(${i+1})">${i<rating?'⭐':'☆'}</button>`
+  ).join('');
+  const labels=['','Tough week 😓','Could be better 😐','Decent week 🙂','Good week 😊','Amazing week 🌟'];
+  document.getElementById('rating-lbl').textContent=rating?labels[rating]:'Tap a star to rate your week';
+  // Text areas
+  ['wr-well','wr-impr','wr-focus','wr-quote'].forEach(id=>{
+    const el=document.getElementById(id);const key=id.replace('wr-','');if(el)el.value=wr[key]||'';
+  });
+  // Mood chart
+  bMoodChart(wn);
+}
+function setRating(r){
+  const wn=weekNum();const all=JSON.parse(localStorage.getItem('penwr')||'{}');
+  if(!all[wn])all[wn]={};all[wn].rating=r;
+  localStorage.setItem('penwr',JSON.stringify(all));bWeekly();
+}
+function saveWeeklyReview(){
+  const wn=weekNum();const all=JSON.parse(localStorage.getItem('penwr')||'{}');
+  if(!all[wn])all[wn]={};
+  ['wr-well','wr-impr','wr-focus','wr-quote'].forEach(id=>{
+    const el=document.getElementById(id);const key=id.replace('wr-','');if(el)all[wn][key]=el.value;
+  });
+  localStorage.setItem('penwr',JSON.stringify(all));
+  alert('✅ Weekly review saved!');
+}
+function bMoodChart(wn){
+  const days=['Mo','Tu','We','Th','Fr','Sa','Su'];
+  const wStart=new Date(START.getTime()+(wn-1)*7*86400000);
+  const bars=document.getElementById('mood-chart-week');
+  const lbls=document.getElementById('mood-days-lbl');
+  if(!bars||!lbls)return;
+  let bHtml='',lHtml='';
+  for(let i=0;i<7;i++){
+    const d2=new Date(wStart.getTime()+i*86400000);
+    const k=dk(d2);const mood=st[k]?st[k].mood:-1;
+    const h=mood>=0?((mood+1)/5*100):5;
+    const mEmoji=mood>=0?MOODS[mood]:'—';
+    bHtml+=`<div class="mood-bar" style="height:${h}%;background:${mood>=0?'var(--gl)':'#eee'}" data-tip="${days[i]}: ${MOOD_NAMES[mood>=0?mood:0]||'—'} ${mEmoji}"></div>`;
+    lHtml+=`<span style="font-size:.6rem;color:var(--inks);font-weight:700;flex:1;text-align:center">${days[i]}</span>`;
+  }
+  bars.innerHTML=bHtml;lbls.innerHTML=lHtml;
+}
+
+// ═══════════════════════════════════════════
+// REWARDS
+// ═══════════════════════════════════════════
+function bRewards(){
+  const rws=JSON.parse(localStorage.getItem('penrw')||'{}');
+  let html='';
+  for(let w=1;w<=13;w++){
+    const endDay=w*7;const wDate=new Date(START.getTime()+(endDay-1)*86400000);
+    const dateStr=wDate.toLocaleDateString('en-US',{month:'short',day:'numeric'});
+    const isPast=wDate<=NOW;const rw=rws[w]||{};
+    const unlocked=isPast&&(rw.done||false);
+    html+=`<div class="reward-week${unlocked?' unlocked':''}">
+      <div class="rw-header">
+        <div class="rw-num">${w}</div>
+        <div><div class="rw-title">🎁 Week ${w} Reward ${unlocked?'✅':isPast?'⏰':'🔒'}</div>
+        <div class="rw-date">After Day ${endDay} — ${dateStr}</div></div>
+      </div>
+      <div class="rw-ideas">${REWARD_IDEAS.map((idea,i)=>`<span class="rw-tag${rw.tag===i?' sel':''}" onclick="setRwTag(${w},${i})">${idea}</span>`).join('')}</div>
+      <input class="rw-custom" type="text" placeholder="Or write your own reward…" value="${rw.custom||''}" onblur="svRwCustom(${w},this.value)">
+      <div class="rw-check" onclick="toggleRwDone(${w})">
+        <div class="rw-chk${rw.done?' dn':''}"></div>
+        <span>${rw.done?'🎉 Reward claimed!':'Mark as claimed'}</span>
+      </div>
+    </div>`;
+  }
+  document.getElementById('rewards-body').innerHTML=html;
+}
+function setRwTag(w,i){const all=JSON.parse(localStorage.getItem('penrw')||'{}');if(!all[w])all[w]={};all[w].tag=i;localStorage.setItem('penrw',JSON.stringify(all));bRewards()}
+function svRwCustom(w,v){const all=JSON.parse(localStorage.getItem('penrw')||'{}');if(!all[w])all[w]={};all[w].custom=v;localStorage.setItem('penrw',JSON.stringify(all))}
+function toggleRwDone(w){const all=JSON.parse(localStorage.getItem('penrw')||'{}');if(!all[w])all[w]={};all[w].done=!all[w].done;localStorage.setItem('penrw',JSON.stringify(all));bRewards()}
+
+// ═══════════════════════════════════════════
+// RULES
+// ═══════════════════════════════════════════
+function bRules(){document.getElementById('rbd').innerHTML=RULES.map(r=>`<div class="ri"><div class="rnum">${r.n}</div><div class="rico">${r.ico}</div><div><div class="rtxt">${r.t}</div><span class="rcat ${r.cat}">${r.cl}</span></div></div>`).join('')}
+
+// ═══════════════════════════════════════════
+// SCORE
+// ═══════════════════════════════════════════
+function updScore(){
+  const d=dayData();let dn=0,tot=0;
+  PR.forEach(p=>{tot++;if(d.pr[p])dn++});SN.forEach(p=>{tot++;if(d.su[p])dn++});
+  ht.forEach(h=>{if(h.pick){tot++;if(h.subs.some((_,si)=>d.sb[h.id+'_'+si]))dn++}else{tot++;if(d.ha[h.id])dn++;h.subs.forEach((_,si)=>{tot++;if(d.sb[h.id+'_'+si])dn++})}});
+  tot++;if(d.cu>=5)dn++;tot++;if(d.bfsupp)dn++;
+  if(d.rest)Object.values(d.rest).forEach(v=>{tot++;if(v)dn++});
+  else REST_ITEMS.forEach(()=>tot++);
+  d.pri.forEach(p=>{if(p.t){tot++;if(p.done)dn++}});
+  tot++;if(d.mood>=0)dn++;
+  document.getElementById('scrlbl').textContent='✅ Score: '+dn+'/'+tot;
+}
+
+// ═══════════════════════════════════════════
+// TEXT
+// ═══════════════════════════════════════════
 function bTxt(){const d=dayData();const s=(id,v)=>{const e=document.getElementById(id);if(e)e.value=v||''};s('dua',d.dua);s('jnl',d.jn);s('nts',d.nt)}
-function flushTxt(){const d=dayData(),g=id=>{const e=document.getElementById(id);return e?e.value:''};d.dua=g('dua');d.jn=g('jnl');d.nt=g('nts');d.scn=g('scnts');d.moodNote=g('mood-note');d.bbnote=g('bb-note');d.letgo=g('letgo');d.babywin=g('baby-win');for(let i=0;i<NP;i++){const e=document.getElementById('pi'+i);if(e)d.pri[i].t=e.value}for(let i=0;i<NG;i++){const e=document.getElementById('gi'+i);if(e)d.gr[i]=e.value}for(let i=0;i<NL;i++){const e=document.getElementById('li'+i);if(e)d.lr[i]=e.value}for(let i=0;i<NS;i++){const e=document.getElementById('si2'+i);if(e)d.sl[i]=e.value}const wn2=document.getElementById('wtnts');if(wn2)st._wtn=wn2.value;sv()}
-function setupTL(){['dua','jnl','nts','scnts','mood-note','bb-note','letgo','baby-win'].forEach(id=>{const el=document.getElementById(id);if(!el)return;el.addEventListener('input',()=>{const d=dayData();if(id==='dua')d.dua=el.value;if(id==='jnl')d.jn=el.value;if(id==='nts')d.nt=el.value;if(id==='scnts')d.scn=el.value;if(id==='mood-note')d.moodNote=el.value;if(id==='bb-note')d.bbnote=el.value;if(id==='letgo')d.letgo=el.value;if(id==='baby-win')d.babywin=el.value;sv()})});const wn2=document.getElementById('wtnts');if(wn2)wn2.addEventListener('input',()=>{st._wtn=wn2.value;sv()})}
-function bDateLbl(){const diff=Math.round((vd-NOW)/86400000);let l=vd.toLocaleDateString('ar-SA',{weekday:'long',month:'long',day:'numeric',year:'numeric'});if(diff===0)l='📅 اليوم — '+vd.toLocaleDateString('ar-SA',{weekday:'long',month:'long',day:'numeric'});else if(diff===-1)l='⬅️ أمس';else if(diff===1)l='➡️ غداً';document.getElementById('datelbl').textContent=l}
+function flushTxt(){
+  const d=dayData(),g=id=>{const e=document.getElementById(id);return e?e.value:''};
+  d.dua=g('dua');d.jn=g('jnl');d.nt=g('nts');d.scn=g('scnts');d.moodNote=g('mood-note');
+  d.bbnote=g('bb-note');d.letgo=g('letgo');d.babywin=g('baby-win');
+  for(let i=0;i<NP;i++){const e=document.getElementById('pi'+i);if(e)d.pri[i].t=e.value}
+  for(let i=0;i<NG;i++){const e=document.getElementById('gi'+i);if(e)d.gr[i]=e.value}
+  for(let i=0;i<NL;i++){const e=document.getElementById('li'+i);if(e)d.lr[i]=e.value}
+  for(let i=0;i<NS;i++){const e=document.getElementById('si2'+i);if(e)d.sl[i]=e.value}
+  const wn2=document.getElementById('wtnts');if(wn2)st._wtn=wn2.value;
+  sv();
+}
+function setupTL(){
+  ['dua','jnl','nts','scnts','mood-note','bb-note','letgo','baby-win'].forEach(id=>{const el=document.getElementById(id);if(!el)return;
+    el.addEventListener('input',()=>{const d=dayData();
+      if(id==='dua')d.dua=el.value;if(id==='jnl')d.jn=el.value;
+      if(id==='nts')d.nt=el.value;if(id==='scnts')d.scn=el.value;
+      if(id==='mood-note')d.moodNote=el.value;
+      if(id==='bb-note')d.bbnote=el.value;
+      if(id==='letgo')d.letgo=el.value;
+      if(id==='baby-win')d.babywin=el.value;
+      sv();})});
+  const wn2=document.getElementById('wtnts');if(wn2)wn2.addEventListener('input',()=>{st._wtn=wn2.value;sv()});
+}
+
+// ═══════════════════════════════════════════
+// NAV
+// ═══════════════════════════════════════════
+function updBar(){const c=cDay(),p=Math.round(c/90*100);document.getElementById('cbar').style.width=p+'%';document.getElementById('dlbl').textContent='Day '+c+' of 90';document.getElementById('plbl').textContent=p+'%'}
+function bDateLbl(){const diff=Math.round((vd-NOW)/86400000);let l=vd.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});if(diff===0)l='📅 Today — '+vd.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});else if(diff===-1)l='⬅️ Yesterday';else if(diff===1)l='➡️ Tomorrow';document.getElementById('datelbl').textContent=l}
 function bSpr(){const h=Array(11).fill('<div class="sd"></div>').join('');['spr1','spr2','spr3','spr4','spr5','spr6'].forEach(id=>{const e=document.getElementById(id);if(e)e.innerHTML=h})}
-function resetDay(){if(!confirm('إعادة تعيين جميع تدقيقات اليوم؟'))return;const k=dk(vd);delete st[k];sv();render()}
-function showPage(name,btn){flushTxt();document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.getElementById('page-'+name).classList.add('active');if(btn)btn.classList.add('active');if(name==='selfcare')bSC();if(name==='weight')bWt();if(name==='weekly')bWeekly();if(name==='rewards')bRewards();if(name==='rules')bRules()}
+function chDay(d){flushTxt();vd=new Date(vd.getTime()+d*86400000);render()}
+function resetDay(){if(!confirm('Reset all checks for today?'))return;const k=dk(vd);delete st[k];sv();render()}
+function showPage(name,btn){
+  flushTxt();
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
+  if(btn)btn.classList.add('active');
+  if(name==='selfcare')bSC();
+  if(name==='weight')bWt();
+  if(name==='weekly')bWeekly();
+  if(name==='rewards')bRewards();
+  if(name==='rules')bRules();
+}
+
 function render(){bDateLbl();updBar();bSpr();bQuote();bMood();bPray();bHab();bWat();bBF();bBB();bRest();bPri();bGrat();bLearn();bBaby();bTxt();updScore();setupTL()}
-['tPr','sCup','tMain','tSub','tOp','aSub','dSub','dMain','aMain','tPri','tSC','rstSC','svWt','svMeas','setMood','tRest','chBF','chPump','tBFSupp','setSide','saveBFDur','tBBF','saveBabySleep','setRating','saveWeeklyReview','setRwTag','svRwCustom','toggleRwDone','showPage','chDay','resetDay','pQ','nQ','rtQ'].forEach(fn=>{try{window[fn]=eval(fn)}catch(e){}});
+
+['tPr','sCup','tMain','tSub','tOp','aSub','dSub','dMain','aMain','tPri','tSC','rstSC',
+ 'svWt','svMeas','setMood','tRest','tBFSupp','chBF','chPump','setSide','saveBFDur',
+ 'tBBF','saveBabySleep','setRating','saveWeeklyReview','setRwTag','svRwCustom',
+ 'toggleRwDone','showPage','chDay','resetDay','prevQuote','nextQuote','renderTempQuote']
+.forEach(fn=>{try{window[fn]=eval(fn)}catch(e){}});
+
 render();
 </script>
 </body>
