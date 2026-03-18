@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barakah Journey — Progress Report</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Quicksand:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gd:#1b5e38;--gm:#2d8653;--gl:#5bbf85;--gp:#d4f0e0;
+  --ink:#1a3328;--inks:#3d6b52;--line:#b5e3cc;--gold:#c9a84c;
+  --rose:#fde8f0;--lav:#f0edff;--sky:#e8f4ff;
+  --w:#fff;--bg:#f0faf4;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);font-family:'Quicksand',sans-serif;color:var(--ink);min-height:100vh}
+
+/* ── HEADER ── */
+.hero{background:linear-gradient(135deg,var(--gd) 0%,#2d8653 50%,#1a7a4a 100%);padding:32px 24px 28px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(255,255,255,.03) 0,rgba(255,255,255,.03) 2px,transparent 2px,transparent 16px)}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.3);border-radius:50px;padding:5px 14px;font-size:.72rem;font-weight:700;color:rgba(255,255,255,.9);margin-bottom:12px;letter-spacing:.5px}
+.hero h1{font-family:'Amiri',serif;font-size:2rem;color:#fff;margin-bottom:5px}
+.hero .sub{font-size:.8rem;color:rgba(255,255,255,.7);font-weight:600;margin-bottom:18px}
+.period-badge{display:inline-block;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.4);border-radius:12px;padding:10px 20px;color:#fff;font-size:.85rem;font-weight:700}
+.period-badge span{display:block;font-size:.65rem;opacity:.75;font-weight:600;margin-bottom:2px}
+
+/* ── SELECTOR ── */
+.selector{max-width:600px;margin:20px auto;padding:0 16px}
+.sel-card{background:#fff;border-radius:16px;padding:18px 20px;box-shadow:0 4px 20px rgba(27,94,56,.1);border:1.5px solid var(--line)}
+.sel-title{font-size:.72rem;font-weight:800;color:var(--gm);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
+.period-btns{display:flex;gap:8px;flex-wrap:wrap}
+.pbtn{flex:1;min-width:80px;padding:10px 8px;border:2px solid var(--line);border-radius:10px;background:#fff;font-family:'Quicksand',sans-serif;font-size:.78rem;font-weight:700;color:var(--inks);cursor:pointer;transition:all .2s;text-align:center}
+.pbtn:hover{border-color:var(--gl);background:var(--gp)}
+.pbtn.active{border-color:var(--gd);background:var(--gd);color:#fff}
+.pbtn .days{display:block;font-size:.65rem;opacity:.75;margin-top:1px}
+.gen-btn{width:100%;margin-top:12px;padding:12px;background:linear-gradient(135deg,var(--gd),var(--gm));color:#fff;border:none;border-radius:12px;font-family:'Quicksand',sans-serif;font-size:.9rem;font-weight:800;cursor:pointer;transition:transform .15s,box-shadow .15s;letter-spacing:.3px}
+.gen-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(27,94,56,.3)}
+.gen-btn:active{transform:translateY(0)}
+
+/* ── REPORT ── */
+#report{max-width:600px;margin:0 auto;padding:0 16px 40px;display:none}
+
+.r-section{background:#fff;border-radius:16px;padding:18px 20px;margin-bottom:14px;box-shadow:0 4px 16px rgba(27,94,56,.08);border:1.5px solid var(--line);position:relative;overflow:hidden}
+.r-section::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--gm)}
+.r-section.gold::before{background:var(--gold)}
+.r-section.rose::before{background:#e8a0a0}
+.r-section.lav::before{background:#b8a0d8}
+.r-section.sky::before{background:#6ab0e8}
+
+.r-label{font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:1.2px;color:var(--gm);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.r-label.gold{color:var(--gold)}
+.r-label.rose{color:#c07080}
+.r-label.lav{color:#8060b0}
+.r-label.sky{color:#4080b0}
+
+/* Score ring */
+.score-row{display:flex;gap:12px;flex-wrap:wrap;align-items:stretch}
+.score-ring{flex:1;min-width:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--gp);border-radius:12px;padding:14px 10px}
+.ring-num{font-size:2.2rem;font-weight:800;color:var(--gd);line-height:1}
+.ring-lbl{font-size:.65rem;font-weight:700;color:var(--inks);margin-top:3px;text-align:center}
+.score-details{flex:2;min-width:160px;display:flex;flex-direction:column;gap:6px;justify-content:center}
+.score-bar-row{display:flex;align-items:center;gap:7px}
+.score-bar-lbl{font-size:.7rem;font-weight:700;color:var(--inks);width:80px;flex-shrink:0}
+.score-bar-bg{flex:1;height:7px;background:#eee;border-radius:50px;overflow:hidden}
+.score-bar-fill{height:100%;border-radius:50px;background:linear-gradient(90deg,var(--gl),var(--gm));transition:width .8s ease}
+
+/* Mood chart */
+.mood-week-row{display:flex;gap:4px;margin-top:8px}
+.mood-week{flex:1;display:flex;flex-direction:column;gap:3px;align-items:center}
+.mood-week-lbl{font-size:.58rem;font-weight:700;color:var(--inks)}
+.mood-dots{display:flex;flex-direction:column;gap:2px}
+.mood-dot{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;border:1.5px solid #eee}
+.mood-dot.has{border:none}
+
+/* Weight */
+.weight-journey{display:flex;align-items:center;gap:0;overflow-x:auto;padding:4px 0}
+.wj-step{display:flex;flex-direction:column;align-items:center;flex:1;min-width:60px}
+.wj-dot{width:20px;height:20px;border-radius:50%;background:var(--gp);border:3px solid var(--gl);margin-bottom:4px;position:relative;z-index:1;display:flex;align-items:center;justify-content:center;font-size:.55rem;font-weight:900;color:var(--gd)}
+.wj-dot.filled{background:var(--gm);border-color:var(--gd);color:#fff}
+.wj-dot.current{background:var(--gold);border-color:#a07830;color:#fff}
+.wj-lbl{font-size:.62rem;font-weight:700;color:var(--inks);text-align:center}
+.wj-val{font-size:.78rem;font-weight:800;color:var(--gd)}
+.wj-diff{font-size:.62rem;font-weight:700;padding:1px 5px;border-radius:50px}
+.wj-diff.ls{background:#d4f0e0;color:var(--gd)}
+.wj-diff.gn{background:#fde8e8;color:#c0392b}
+.wj-line{flex:1;height:2px;background:var(--line);margin-bottom:24px}
+
+/* Habit grid */
+.habit-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-top:8px}
+.habit-tile{background:var(--gp);border-radius:10px;padding:10px 11px}
+.habit-tile-name{font-size:.72rem;font-weight:800;color:var(--gd);margin-bottom:5px}
+.habit-tile-bar{height:6px;background:#d4f0e0;border-radius:50px;overflow:hidden;margin-bottom:4px}
+.habit-tile-fill{height:100%;background:linear-gradient(90deg,var(--gl),var(--gm));border-radius:50px}
+.habit-tile-pct{font-size:.65rem;font-weight:700;color:var(--inks)}
+
+/* BF stats */
+.bf-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.bf-stat{background:var(--gp);border-radius:10px;padding:10px;text-align:center}
+.bf-stat-num{font-size:1.5rem;font-weight:800;color:var(--gd);line-height:1}
+.bf-stat-lbl{font-size:.62rem;font-weight:700;color:var(--inks);margin-top:2px}
+
+/* Baby wins */
+.baby-wins{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.baby-win-item{display:flex;align-items:flex-start;gap:8px;padding:8px 10px;background:#fffdf0;border-radius:9px;border-left:3px solid var(--gold)}
+.baby-win-day{font-size:.62rem;font-weight:800;color:var(--gold);flex-shrink:0;min-width:40px}
+.baby-win-text{font-size:.78rem;font-weight:600;color:var(--ink);line-height:1.4}
+
+/* Feelings summary */
+.feelings-cloud{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.feeling-tag{font-size:.72rem;font-weight:700;padding:4px 10px;border-radius:50px;background:var(--sky);color:#3060a0}
+.feeling-tag.big{font-size:.8rem;padding:6px 13px;background:#ddeeff}
+
+/* Weekly reflections */
+.week-reflection{background:var(--gp);border-radius:10px;padding:11px 13px;margin-bottom:8px}
+.week-reflection:last-child{margin-bottom:0}
+.wr-header{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+.wr-num{width:24px;height:24px;border-radius:50%;background:var(--gm);color:#fff;font-size:.68rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.wr-stars{color:var(--gold);font-size:.85rem}
+.wr-text{font-size:.78rem;font-weight:600;color:var(--ink);line-height:1.5;font-style:italic}
+.wr-label{font-size:.62rem;font-weight:800;color:var(--gm);text-transform:uppercase;letter-spacing:.8px;margin-top:5px;margin-bottom:2px}
+
+/* Affirmation */
+.affirmation{background:linear-gradient(135deg,#f0faf4,#e8f7ee);border-radius:14px;padding:18px 20px;text-align:center;border:2px solid var(--line);margin-bottom:14px}
+.affirmation .bismillah{font-family:'Amiri',serif;font-size:1rem;color:var(--gm);margin-bottom:8px}
+.affirmation p{font-size:.88rem;font-weight:700;color:var(--gd);line-height:1.6}
+.affirmation .sig{font-size:.7rem;color:var(--inks);margin-top:8px;font-weight:600}
+
+/* Print button */
+.print-bar{max-width:600px;margin:0 auto;padding:0 16px 16px;display:none}
+.print-btn{width:100%;padding:13px;background:#fff;border:2px solid var(--gl);border-radius:12px;font-family:'Quicksand',sans-serif;font-size:.88rem;font-weight:800;color:var(--gm);cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px}
+.print-btn:hover{background:var(--gp);border-color:var(--gd);color:var(--gd)}
+
+/* No data */
+.no-data{text-align:center;padding:24px;color:var(--inks);font-size:.82rem;font-weight:600}
+.no-data span{display:block;font-size:2rem;margin-bottom:8px}
+
+@media print{
+  .selector,.print-bar,.hero{display:none!important}
+  #report{display:block!important;padding:0}
+  .r-section{box-shadow:none;break-inside:avoid}
+  body{background:#fff}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-badge">🌿 Barakah Journey</div>
+  <h1>Progress Report</h1>
+  <div class="sub">رحلة البركة — Your journey, documented with love</div>
+  <div class="period-badge" id="hero-period">
+    <span>Report Period</span>
+    Select a period below
+  </div>
+</div>
+
+<div class="selector">
+  <div class="sel-card">
+    <div class="sel-title">📊 Choose your report period</div>
+    <div class="period-btns">
+      <button class="pbtn active" onclick="selPeriod(1,this)">Days 1–21<span class="days">Period 1</span></button>
+      <button class="pbtn" onclick="selPeriod(2,this)">Days 22–42<span class="days">Period 2</span></button>
+      <button class="pbtn" onclick="selPeriod(3,this)">Days 43–63<span class="days">Period 3</span></button>
+      <button class="pbtn" onclick="selPeriod(4,this)">Days 64–90<span class="days">Final</span></button>
+    </div>
+    <button class="gen-btn" onclick="generateReport()">✨ Generate My Report</button>
+  </div>
+</div>
+
+<div id="print-bar" class="print-bar">
+  <button class="print-btn" onclick="window.print()">🖨️ Print / Save as PDF</button>
+</div>
+
+<div id="report"></div>
+
+<script>
+// ── DATA KEYS (must match tracker) ──
+const ST_KEY='pen3';
+const HT_KEY='penh5';
+const WT_KEY='penwt3';
+const WR_KEY='penwr';
+const RW_KEY='penrw';
+
+const START=new Date('2026-03-23');START.setHours(0,0,0,0);
+const PERIODS=[
+  {label:'Period 1',days:'Days 1–21',start:1,end:21},
+  {label:'Period 2',days:'Days 22–42',start:22,end:42},
+  {label:'Period 3',days:'Days 43–63',start:43,end:63},
+  {label:'Final',  days:'Days 64–90',start:64,end:90},
+];
+const PR=['Fajr','Dhuhr','Asr','Maghrib','Isha'];
+const SN=['Fajr S.','Duha','Tahajjud','Witr'];
+const MOODS=['😔','😐','🙂','😊','🌟'];
+const MOOD_NAMES=['Difficult','Okay','Good','Great','Amazing'];
+const WT_DAYS=[1,22,43,64,90];
+const BB_FEELINGS=['😊 Happy','😢 Tearful','😰 Anxious','😔 Low','😤 Frustrated','🥰 Grateful','😌 Calm','😵 Overwhelmed','💪 Strong','🌫️ Foggy'];
+
+let selectedPeriod=1;
+
+function selPeriod(p,btn){
+  selectedPeriod=p;
+  document.querySelectorAll('.pbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function dk(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+
+function dayN(n){
+  const d=new Date(START.getTime()+(n-1)*86400000);
+  return dk(d);
+}
+
+function dateLabel(n){
+  const d=new Date(START.getTime()+(n-1)*86400000);
+  return d.toLocaleDateString('en-US',{month:'short',day:'numeric'});
+}
+
+function generateReport(){
+  const p=PERIODS[selectedPeriod-1];
+  const st=JSON.parse(localStorage.getItem(ST_KEY)||'{}');
+  const ht=JSON.parse(localStorage.getItem(HT_KEY)||'null')||[];
+  const wts=JSON.parse(localStorage.getItem(WT_KEY)||'{}');
+  const wr=JSON.parse(localStorage.getItem(WR_KEY)||'{}');
+
+  // Collect all days in period
+  const days=[];
+  for(let n=p.start;n<=p.end;n++){
+    const k=dayN(n);
+    days.push({n,k,d:st[k]||{}});
+  }
+  const totalDays=days.length;
+
+  // Update hero
+  document.getElementById('hero-period').innerHTML=`<span>${p.label} · ${p.days}</span>${dateLabel(p.start)} → ${dateLabel(p.end)}`;
+  document.getElementById('print-bar').style.display='block';
+
+  // ── 1. OVERVIEW SCORE ──
+  let totalChecks=0,totalPossible=0,daysWithData=0;
+  days.forEach(({d})=>{
+    if(Object.keys(d).length===0)return;
+    daysWithData++;
+    // prayers
+    PR.forEach(pr=>{totalPossible++;if(d.pr&&d.pr[pr])totalChecks++});
+    SN.forEach(sn=>{totalPossible++;if(d.su&&d.su[sn])totalChecks++});
+    // habits
+    ht.forEach(h=>{
+      if(h.pick){totalPossible++;if(h.subs.some((_,si)=>d.sb&&d.sb[h.id+'_'+si]))totalChecks++}
+      else{totalPossible++;if(d.ha&&d.ha[h.id])totalChecks++}
+    });
+    // water
+    totalPossible++;if((d.cu||0)>=5)totalChecks++;
+    // mood
+    totalPossible++;if((d.mood||0)>=0&&d.mood!=null&&d.mood!==-1)totalChecks++;
+  });
+  const overallPct=totalPossible>0?Math.round(totalChecks/totalPossible*100):0;
+
+  // Prayer consistency
+  let prayerDone=0,prayerPoss=0;
+  days.forEach(({d})=>{PR.forEach(pr=>{prayerPoss++;if(d.pr&&d.pr[pr])prayerDone++})});
+  const prayerPct=prayerPoss>0?Math.round(prayerDone/prayerPoss*100):0;
+
+  // Quran consistency
+  const quranH=ht.find(h=>h.name==='Quran'||h.name==='القرآن الكريم');
+  let quranDays=0;
+  if(quranH)days.forEach(({d})=>{if(quranH.subs.some((_,si)=>d.sb&&d.sb[quranH.id+'_'+si]))quranDays++});
+  const quranPct=Math.round(quranDays/totalDays*100);
+
+  // Water consistency
+  let waterDays=0;
+  days.forEach(({d})=>{if((d.cu||0)>=5)waterDays++});
+  const waterPct=Math.round(waterDays/totalDays*100);
+
+  // ── 2. MOOD DATA ──
+  const moodCounts=[0,0,0,0,0];
+  const moodByWeek={};
+  days.forEach(({n,d})=>{
+    const m=d.mood;
+    if(m!=null&&m>=0&&m<=4){
+      moodCounts[m]++;
+      const wk=Math.ceil(n/7);
+      if(!moodByWeek[wk])moodByWeek[wk]=[];
+      moodByWeek[wk].push(m);
+    }
+  });
+  const totalMoodDays=moodCounts.reduce((a,b)=>a+b,0);
+  const avgMood=totalMoodDays>0?moodCounts.reduce((sum,c,i)=>sum+c*i,0)/totalMoodDays:null;
+  const dominantMoodIdx=moodCounts.indexOf(Math.max(...moodCounts));
+
+  // ── 3. FEELINGS (baby blues) ──
+  const feelingCounts={};
+  days.forEach(({d})=>{
+    if(d.bbf)Object.keys(d.bbf).forEach(i=>{if(d.bbf[i]){const f=BB_FEELINGS[parseInt(i)]||'';if(f)feelingCounts[f]=(feelingCounts[f]||0)+1}});
+  });
+  const topFeelings=Object.entries(feelingCounts).sort((a,b)=>b[1]-a[1]).slice(0,8);
+
+  // ── 4. BREASTFEEDING ──
+  let totalFeeds=0,totalPumps=0,suppDays=0,totalDuration=0,durCount=0;
+  days.forEach(({d})=>{
+    totalFeeds+=(d.bf||0);
+    totalPumps+=(d.pump||0);
+    if(d.bfsupp)suppDays++;
+    if(d.bfdur){totalDuration+=d.bfdur;durCount++}
+  });
+  const avgFeeds=daysWithData>0?(totalFeeds/daysWithData).toFixed(1):0;
+  const avgDur=durCount>0?Math.round(totalDuration/durCount):0;
+
+  // ── 5. BABY WINS ──
+  const babyWins=[];
+  days.forEach(({n,d})=>{if(d.babywin&&d.babywin.trim())babyWins.push({n,text:d.babywin.trim()})});
+
+  // ── 6. BABY SLEEP ──
+  let sleepTotal=0,sleepCount=0,maxSleep=0;
+  days.forEach(({d})=>{if(d.babysleep&&d.babysleep>0){sleepTotal+=d.babysleep;sleepCount++;if(d.babysleep>maxSleep)maxSleep=d.babysleep}});
+  const avgSleep=sleepCount>0?(sleepTotal/sleepCount).toFixed(1):null;
+
+  // ── 7. WEIGHT ──
+  const wjSteps=WT_DAYS.filter(d=>d>=p.start-1&&d<=p.end+1);
+
+  // ── 8. WEEKLY REVIEWS ──
+  const startWeek=Math.ceil(p.start/7);
+  const endWeek=Math.ceil(p.end/7);
+  const weekReviews=[];
+  for(let w=startWeek;w<=endWeek;w++){if(wr[w]&&(wr[w].rating||wr[w].well||wr[w].focus))weekReviews.push({w,data:wr[w]})}
+
+  // ── 9. GRATITUDE ──
+  const gratitudes=[];
+  days.forEach(({d})=>{if(d.gr)d.gr.forEach(g=>{if(g&&g.trim())gratitudes.push(g.trim())})});
+
+  // ── 10. LET IT GO ──
+  const letGoList=[];
+  days.forEach(({n,d})=>{if(d.letgo&&d.letgo.trim())letGoList.push({n,text:d.letgo.trim()})});
+
+  // ── BUILD REPORT HTML ──
+  let html='';
+
+  // Affirmation header
+  const affirmations=[
+    "You showed up for yourself and your baby during one of life's most demanding seasons. That is extraordinary.",
+    "Every check, every prayer, every glass of water — all of it is counted by Allah and witnessed in this report.",
+    "Postpartum and breastfeeding and still building yourself? You are one of the strongest people on this earth.",
+    "This is not just a habit tracker. This is proof that you chose yourself, every single day.",
+  ];
+  html+=`<div class="affirmation">
+    <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمٰنِ الرَّحِيمِ</div>
+    <p>${affirmations[(selectedPeriod-1)%affirmations.length]}</p>
+    <div class="sig">— Your 90-Day Challenge · ${p.label} Report · ${dateLabel(p.start)} to ${dateLabel(p.end)}</div>
+  </div>`;
+
+  // Overview score
+  html+=`<div class="r-section">
+    <div class="r-label">📊 Overall Score</div>
+    <div class="score-row">
+      <div class="score-ring">
+        <div class="ring-num">${overallPct}%</div>
+        <div class="ring-lbl">Consistency<br>Rate</div>
+      </div>
+      <div class="score-details">
+        ${scoreBar('🕌 Prayers',prayerPct)}
+        ${scoreBar('📖 Quran',quranPct)}
+        ${scoreBar('💧 Water (5+ bottles)',waterPct)}
+        ${scoreBar('📅 Days tracked',Math.round(daysWithData/totalDays*100))}
+      </div>
+    </div>
+  </div>`;
+
+  // Habits per group
+  if(ht.length>0){
+    let habitTiles='';
+    ht.forEach(h=>{
+      let done=0;
+      days.forEach(({d})=>{
+        if(h.pick){if(h.subs.some((_,si)=>d.sb&&d.sb[h.id+'_'+si]))done++}
+        else{if(d.ha&&d.ha[h.id])done++}
+      });
+      const pct=Math.round(done/totalDays*100);
+      habitTiles+=`<div class="habit-tile">
+        <div class="habit-tile-name">${h.emoji} ${h.name}</div>
+        <div class="habit-tile-bar"><div class="habit-tile-fill" style="width:${pct}%"></div></div>
+        <div class="habit-tile-pct">${done}/${totalDays} days · ${pct}%</div>
+      </div>`;
+    });
+    html+=`<div class="r-section">
+      <div class="r-label">✅ Daily Habits</div>
+      <div class="habit-grid">${habitTiles}</div>
+    </div>`;
+  }
+
+  // Mood
+  if(totalMoodDays>0){
+    const avgLabel=avgMood!=null?MOOD_NAMES[Math.round(avgMood)]:'—';
+    const avgEmoji=avgMood!=null?MOODS[Math.round(avgMood)]:'';
+    let weekRows='';
+    Object.keys(moodByWeek).sort((a,b)=>a-b).forEach(wk=>{
+      const moods=moodByWeek[wk];
+      const avg=moods.reduce((a,b)=>a+b,0)/moods.length;
+      weekRows+=`<div class="mood-week">
+        <div class="mood-week-lbl">Wk ${wk}</div>
+        <div class="mood-dot has" style="background:${moodColor(Math.round(avg))}">${MOODS[Math.round(avg)]}</div>
+      </div>`;
+    });
+    html+=`<div class="r-section sky">
+      <div class="r-label sky">😊 Mood Overview</div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap">
+        <div style="background:var(--sky);border-radius:10px;padding:10px 14px;text-align:center;flex-shrink:0">
+          <div style="font-size:1.8rem">${avgEmoji}</div>
+          <div style="font-size:.7rem;font-weight:800;color:#3060a0;margin-top:2px">Avg: ${avgLabel}</div>
+        </div>
+        <div style="flex:1">
+          ${moodCounts.map((c,i)=>c>0?`<div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
+            <span style="font-size:.85rem">${MOODS[i]}</span>
+            <div style="flex:1;height:7px;background:#eee;border-radius:50px;overflow:hidden">
+              <div style="width:${Math.round(c/totalMoodDays*100)}%;height:100%;background:${moodColor(i)};border-radius:50px"></div>
+            </div>
+            <span style="font-size:.65rem;font-weight:700;color:#4a6fa5;width:30px">${c}d</span>
+          </div>`:'').join('')}
+        </div>
+      </div>
+      <div style="font-size:.65rem;font-weight:700;color:#4a6fa5;margin-bottom:5px;text-transform:uppercase;letter-spacing:.8px">By week</div>
+      <div class="mood-week-row">${weekRows}</div>
+    </div>`;
+  }
+
+  // Emotional check-in / feelings
+  if(topFeelings.length>0){
+    const positives=['😊 Happy','🥰 Grateful','😌 Calm','💪 Strong'];
+    const posCount=topFeelings.filter(([f])=>positives.some(p=>f.includes(p.split(' ')[1]))).reduce((s,[,c])=>s+c,0);
+    const totF=topFeelings.reduce((s,[,c])=>s+c,0);
+    html+=`<div class="r-section rose">
+      <div class="r-label rose">💙 Emotional Check-ins</div>
+      <div style="font-size:.75rem;font-weight:600;color:#c07080;margin-bottom:8px">You logged your feelings on ${Object.keys(feelingCounts).length>0?totalMoodDays:0} days. The most common emotions this period:</div>
+      <div class="feelings-cloud">
+        ${topFeelings.map(([f,c])=>`<span class="feeling-tag${c===Math.max(...topFeelings.map(x=>x[1]))?' big':''}" title="${c} times">${f} <span style="opacity:.6;font-size:.65rem">×${c}</span></span>`).join('')}
+      </div>
+      ${posCount>0?`<div style="margin-top:10px;font-size:.74rem;font-weight:700;color:var(--gm)">💛 ${Math.round(posCount/totF*100)}% of your logged feelings were positive or empowering.</div>`:''}
+    </div>`;
+  }
+
+  // Breastfeeding
+  if(totalFeeds>0||totalPumps>0){
+    html+=`<div class="r-section rose">
+      <div class="r-label rose">🤱 Breastfeeding This Period</div>
+      <div class="bf-stats">
+        <div class="bf-stat"><div class="bf-stat-num">${totalFeeds}</div><div class="bf-stat-lbl">Total feeds</div></div>
+        <div class="bf-stat"><div class="bf-stat-num">${avgFeeds}</div><div class="bf-stat-lbl">Avg per day</div></div>
+        <div class="bf-stat"><div class="bf-stat-num">${totalPumps}</div><div class="bf-stat-lbl">Pump sessions</div></div>
+      </div>
+      ${avgDur>0?`<div style="margin-top:8px;font-size:.75rem;font-weight:600;color:var(--inks)">⏱️ Average feed duration: <b>${avgDur} minutes</b></div>`:''}
+      ${suppDays>0?`<div style="margin-top:5px;font-size:.75rem;font-weight:600;color:var(--inks)">🌿 Lactation supplement taken on <b>${suppDays} of ${totalDays} days</b> (${Math.round(suppDays/totalDays*100)}%)</div>`:''}
+      <div style="margin-top:10px;font-size:.74rem;font-weight:700;color:var(--gm)">💛 You are nourishing your baby every single day. That is one of the greatest acts of love.</div>
+    </div>`;
+  }
+
+  // Baby sleep
+  if(avgSleep){
+    html+=`<div class="r-section gold">
+      <div class="r-label gold">🌙 Baby Sleep</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <div style="background:#fffdf0;border-radius:10px;padding:10px 14px;text-align:center;flex:1;min-width:90px;border:1.5px solid #f0dfa0">
+          <div style="font-size:1.6rem;font-weight:800;color:var(--gold)">${avgSleep}h</div>
+          <div style="font-size:.65rem;font-weight:700;color:#a07830">Avg longest stretch</div>
+        </div>
+        <div style="background:#fffdf0;border-radius:10px;padding:10px 14px;text-align:center;flex:1;min-width:90px;border:1.5px solid #f0dfa0">
+          <div style="font-size:1.6rem;font-weight:800;color:var(--gold)">${maxSleep}h</div>
+          <div style="font-size:.65rem;font-weight:700;color:#a07830">Best stretch 🎉</div>
+        </div>
+      </div>
+      <div style="margin-top:8px;font-size:.74rem;font-weight:600;color:var(--inks)">Watch this number grow — it will. 🌱</div>
+    </div>`;
+  }
+
+  // Baby wins
+  if(babyWins.length>0){
+    html+=`<div class="r-section gold">
+      <div class="r-label gold">👶 Baby Milestones This Period</div>
+      <div class="baby-wins">
+        ${babyWins.map(({n,text})=>`<div class="baby-win-item">
+          <div class="baby-win-day">Day ${n}<br><span style="font-size:.58rem;color:#a07830">${dateLabel(n)}</span></div>
+          <div class="baby-win-text">🌟 ${text}</div>
+        </div>`).join('')}
+      </div>
+    </div>`;
+  }
+
+  // Weight journey
+  const wtsData=JSON.parse(localStorage.getItem(WT_KEY)||'{}');
+  const relevantWt=WT_DAYS.filter(d=>{
+    const wDate=new Date(START.getTime()+(d-1)*86400000);
+    return d>=p.start-1&&d<=p.end+2;
+  });
+  if(relevantWt.some(d=>wtsData[d])){
+    let wjHtml='';
+    relevantWt.forEach((d,idx)=>{
+      const val=wtsData[d];
+      const prev=idx>0?wtsData[relevantWt[idx-1]]:null;
+      let diffHtml='';
+      if(prev&&val){
+        const diff=(parseFloat(val)-parseFloat(prev)).toFixed(1);
+        const cl=diff<0?'ls':'gn';
+        const pfx=diff<0?'▼':'▲';
+        diffHtml=`<span class="wj-diff ${cl}">${pfx}${Math.abs(diff)}</span>`;
+      }
+      const isCurrent=d<=21*(selectedPeriod);
+      wjHtml+=`<div class="wj-step">
+        <div class="wj-dot${val?' filled':''}${d===relevantWt[relevantWt.length-1]&&val?' current':''}">${idx+1}</div>
+        <div class="wj-lbl">Day ${d}</div>
+        <div class="wj-val">${val?val+' kg':'—'}</div>
+        ${diffHtml}
+      </div>`;
+      if(idx<relevantWt.length-1)wjHtml+='<div class="wj-line"></div>';
+    });
+    html+=`<div class="r-section">
+      <div class="r-label">⚖️ Weight Journey</div>
+      <div class="weight-journey">${wjHtml}</div>
+    </div>`;
+  }
+
+  // Weekly reviews
+  if(weekReviews.length>0){
+    let wrHtml='';
+    weekReviews.forEach(({w,data})=>{
+      const stars='⭐'.repeat(data.rating||0)+'☆'.repeat(5-(data.rating||0));
+      wrHtml+=`<div class="week-reflection">
+        <div class="wr-header">
+          <div class="wr-num">${w}</div>
+          <div>
+            <div style="font-size:.75rem;font-weight:800;color:var(--gd)">Week ${w}</div>
+            <div class="wr-stars">${stars}</div>
+          </div>
+        </div>
+        ${data.well?`<div class="wr-label">💪 Went well</div><div class="wr-text">"${data.well}"</div>`:''}
+        ${data.focus?`<div class="wr-label">🎯 Focus</div><div class="wr-text">"${data.focus}"</div>`:''}
+        ${data.quote?`<div class="wr-label">📖 Quote</div><div class="wr-text">"${data.quote}"</div>`:''}
+      </div>`;
+    });
+    html+=`<div class="r-section lav">
+      <div class="r-label lav">📓 Weekly Reflections</div>
+      ${wrHtml}
+    </div>`;
+  }
+
+  // Gratitude highlights (random 5)
+  if(gratitudes.length>0){
+    const sample=gratitudes.sort(()=>Math.random()-.5).slice(0,5);
+    html+=`<div class="r-section">
+      <div class="r-label">🌸 Gratitude — A Few From This Period</div>
+      <div style="display:flex;flex-direction:column;gap:5px">
+        ${sample.map(g=>`<div style="display:flex;align-items:flex-start;gap:7px;padding:6px 0;border-bottom:1px dashed var(--line)">
+          <span style="color:var(--gl);font-size:.85rem;flex-shrink:0">🌸</span>
+          <span style="font-size:.8rem;font-weight:600;color:var(--ink);font-style:italic">${g}</span>
+        </div>`).join('')}
+      </div>
+    </div>`;
+  }
+
+  // Let it go
+  if(letGoList.length>0){
+    const sample=letGoList.slice(-3);
+    html+=`<div class="r-section">
+      <div class="r-label">🌿 Things You Let Go Of</div>
+      <div style="font-size:.73rem;font-weight:600;color:var(--inks);margin-bottom:8px">You gave yourself permission to release these — and that takes courage.</div>
+      <div style="display:flex;flex-direction:column;gap:5px">
+        ${sample.map(({n,text})=>`<div style="display:flex;align-items:flex-start;gap:7px;padding:6px 0;border-bottom:1px dashed var(--line)">
+          <span style="font-size:.62rem;font-weight:800;color:var(--gl);flex-shrink:0;margin-top:2px">Day ${n}</span>
+          <span style="font-size:.8rem;font-weight:600;color:var(--ink);font-style:italic">"${text}"</span>
+        </div>`).join('')}
+      </div>
+    </div>`;
+  }
+
+  // Closing dua
+  html+=`<div class="affirmation" style="margin-top:0">
+    <div class="bismillah">اللَّهُمَّ بَارِكْ لَنَا فِيمَا رَزَقْتَنَا</div>
+    <p style="font-size:.8rem">O Allah, bless us in what You have provided us.<br>May every effort in this report be accepted and multiplied.</p>
+    <div class="sig">Keep going. You are building something beautiful. 🌿</div>
+  </div>`;
+
+  document.getElementById('report').innerHTML=html;
+  document.getElementById('report').style.display='block';
+  document.getElementById('print-bar').style.display='block';
+
+  // Animate bars
+  setTimeout(()=>{
+    document.querySelectorAll('.score-bar-fill,.habit-tile-fill').forEach(el=>{
+      const w=el.style.width;el.style.width='0';
+      setTimeout(()=>el.style.width=w,50);
+    });
+  },100);
+
+  // Scroll to report
+  document.getElementById('report').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function scoreBar(label,pct){
+  return `<div class="score-bar-row">
+    <div class="score-bar-lbl">${label}</div>
+    <div class="score-bar-bg"><div class="score-bar-fill" style="width:${pct}%"></div></div>
+    <span style="font-size:.65rem;font-weight:800;color:var(--gm);width:30px;text-align:right">${pct}%</span>
+  </div>`;
+}
+
+function moodColor(i){
+  return ['#f0d0d0','#e8e0d0','#d4f0e0','#b8e8c8','#8fd4ad'][i]||'#eee';
+}
+</script>
+</body>
+</html>
