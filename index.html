@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Barakah Journey — 90-Day Planner</title>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Quicksand:wght@500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 :root{
   --gd:#1b5e38;--gm:#2d8653;--gl:#5bbf85;--gp:#d4f0e0;
@@ -250,8 +251,46 @@ body{background:linear-gradient(135deg,#e3f5eb,#d0eedd);font-family:'Quicksand',
 </head>
 <body>
 
+<!-- ══ AUTH OVERLAY ══ -->
+<div id="auth-overlay" style="display:flex;position:fixed;inset:0;background:linear-gradient(135deg,#e3f5eb,#d0eedd);z-index:1000;align-items:center;justify-content:center;padding:20px">
+  <div style="background:#fff;border-radius:20px;width:100%;max-width:380px;overflow:hidden;box-shadow:0 20px 60px rgba(27,94,56,.25)">
+    <div style="background:linear-gradient(135deg,#1b5e38,#2d8653);padding:28px 24px;text-align:center">
+      <div style="font-family:'Amiri',serif;font-size:1rem;color:#b5e3cc;margin-bottom:6px">بِسْمِ اللَّهِ</div>
+      <h2 id="auth-title" style="font-family:'Amiri',serif;font-size:1.5rem;color:#fff">Welcome Back 🌿</h2>
+      <p style="font-size:.75rem;color:rgba(255,255,255,.75);margin-top:4px;font-weight:600">Barakah Journey — 90-Day Challenge</p>
+    </div>
+    <form id="auth-form" onsubmit="authSubmit(event)" style="padding:24px">
+      <div id="auth-mode" data-mode="login" style="display:none"></div>
+      <div style="margin-bottom:14px">
+        <label style="font-size:.72rem;font-weight:800;color:#2d8653;text-transform:uppercase;letter-spacing:.8px;display:block;margin-bottom:5px">Email</label>
+        <input id="auth-email" type="email" required autocomplete="email" placeholder="your@email.com"
+          style="width:100%;padding:11px 14px;border:2px solid #b5e3cc;border-radius:11px;font-family:'Quicksand',sans-serif;font-size:.9rem;font-weight:600;color:#1a3328;outline:none;transition:border-color .2s"
+          onfocus="this.style.borderColor='#2d8653'" onblur="this.style.borderColor='#b5e3cc'">
+      </div>
+      <div style="margin-bottom:8px">
+        <label style="font-size:.72rem;font-weight:800;color:#2d8653;text-transform:uppercase;letter-spacing:.8px;display:block;margin-bottom:5px">Password</label>
+        <input id="auth-pwd" type="password" required autocomplete="current-password" placeholder="••••••••"
+          style="width:100%;padding:11px 14px;border:2px solid #b5e3cc;border-radius:11px;font-family:'Quicksand',sans-serif;font-size:.9rem;font-weight:600;color:#1a3328;outline:none;transition:border-color .2s"
+          onfocus="this.style.borderColor='#2d8653'" onblur="this.style.borderColor='#b5e3cc'">
+      </div>
+      <div id="auth-err" style="font-size:.78rem;font-weight:700;min-height:22px;margin-bottom:10px;line-height:1.4"></div>
+      <button id="auth-btn" type="submit"
+        style="width:100%;background:#2d8653;color:#fff;border:none;border-radius:11px;padding:13px;font-family:'Quicksand',sans-serif;font-size:.95rem;font-weight:800;cursor:pointer;transition:background .2s"
+        onmouseover="this.style.background='#1b5e38'" onmouseout="this.style.background='#2d8653'">Sign In</button>
+      <p id="auth-switch" style="text-align:center;font-size:.78rem;font-weight:600;color:#3d6b52;margin-top:14px">
+        No account? <a href="#" onclick="switchAuthMode('signup');return false" style="color:#2d8653;font-weight:800">Sign up free</a>
+      </p>
+    </form>
+  </div>
+</div>
+
+<!-- ══ APP ══ -->
+<div id="app-wrap" style="display:none">
+
 <div class="banner">
   <a class="lsw" href="habit-tracker-ar.html">🌐 العربية</a>
+  <button onclick="signOut()" style="position:absolute;top:13px;left:13px;background:rgba(255,255,255,.18);border:1.5px solid rgba(255,255,255,.35);border-radius:50px;padding:5px 12px;font-size:.73rem;font-weight:700;color:#fff;cursor:pointer;font-family:'Quicksand',sans-serif">🚪 Sign out</button>
+  <span id="sync-dot" title="Saved" style="position:absolute;top:16px;left:112px;font-size:.8rem;opacity:.4">☁️</span>
   <div class="bisml">بِسْمِ اللَّهِ، نَبْدَأُ عَلَى بَرَكَةِ اللَّهِ</div>
   <h1>🌿 Barakah Journey</h1>
   <div class="sub">رحلة البركة — 90-Day Challenge Planner</div>
@@ -678,8 +717,8 @@ function dayData(){
   if(!d.qlearn)d.qlearn='';
   return d;
 }
-function sv(){localStorage.setItem('pen3',JSON.stringify(st))}
-function svH(){localStorage.setItem('penh5',JSON.stringify(ht))}
+function sv(){localStorage.setItem('pen3',JSON.stringify(st));scheduleSync()}
+function svH(){localStorage.setItem('penh5',JSON.stringify(ht));scheduleSync()}
 function cDay(){return Math.min(Math.max(Math.round((vd-START)/86400000)+1,1),90)}
 function weekNum(){return Math.min(Math.ceil(cDay()/7),13)}
 
@@ -896,7 +935,7 @@ function bWt(){
   bMeas();
   const wn=document.getElementById('wtnts');if(wn)wn.value=st._wtn||'';
 }
-function svWt(day,val){const wts=JSON.parse(localStorage.getItem('penwt3')||'{}');if(val)wts[day]=val;else delete wts[day];localStorage.setItem('penwt3',JSON.stringify(wts));bWt()}
+function svWt(day,val){const wts=JSON.parse(localStorage.getItem('penwt3')||'{}');if(val)wts[day]=val;else delete wts[day];localStorage.setItem('penwt3',JSON.stringify(wts));bWt();scheduleSync()}
 
 function bMeas(){
   const ms=JSON.parse(localStorage.getItem('penmeas')||'{}');
@@ -909,7 +948,7 @@ function bMeas(){
     return `<div class="meas-card"><div class="meas-lbl">📏 ${lbl} (cm)</div>${milestones}</div>`;
   }).join('');
 }
-function svMeas(lbl,day,val){const ms=JSON.parse(localStorage.getItem('penmeas')||'{}');const k=lbl+'_'+day;if(val)ms[k]=val;else delete ms[k];localStorage.setItem('penmeas',JSON.stringify(ms));bMeas()}
+function svMeas(lbl,day,val){const ms=JSON.parse(localStorage.getItem('penmeas')||'{}');const k=lbl+'_'+day;if(val)ms[k]=val;else delete ms[k];localStorage.setItem('penmeas',JSON.stringify(ms));bMeas();scheduleSync()}
 
 // ═══════════════════════════════════════════
 // WEEKLY REVIEW
@@ -939,7 +978,7 @@ function bWeekly(){
 function setRating(r){
   const wn=weekNum();const all=JSON.parse(localStorage.getItem('penwr')||'{}');
   if(!all[wn])all[wn]={};all[wn].rating=r;
-  localStorage.setItem('penwr',JSON.stringify(all));bWeekly();
+  localStorage.setItem('penwr',JSON.stringify(all));bWeekly();scheduleSync();
 }
 function saveWeeklyReview(){
   const wn=weekNum();const all=JSON.parse(localStorage.getItem('penwr')||'{}');
@@ -995,9 +1034,9 @@ function bRewards(){
   }
   document.getElementById('rewards-body').innerHTML=html;
 }
-function setRwTag(w,i){const all=JSON.parse(localStorage.getItem('penrw')||'{}');if(!all[w])all[w]={};all[w].tag=i;localStorage.setItem('penrw',JSON.stringify(all));bRewards()}
-function svRwCustom(w,v){const all=JSON.parse(localStorage.getItem('penrw')||'{}');if(!all[w])all[w]={};all[w].custom=v;localStorage.setItem('penrw',JSON.stringify(all))}
-function toggleRwDone(w){const all=JSON.parse(localStorage.getItem('penrw')||'{}');if(!all[w])all[w]={};all[w].done=!all[w].done;localStorage.setItem('penrw',JSON.stringify(all));bRewards()}
+function setRwTag(w,i){const all=JSON.parse(localStorage.getItem('penrw')||'{}');if(!all[w])all[w]={};all[w].tag=i;localStorage.setItem('penrw',JSON.stringify(all));bRewards();scheduleSync()}
+function svRwCustom(w,v){const all=JSON.parse(localStorage.getItem('penrw')||'{}');if(!all[w])all[w]={};all[w].custom=v;localStorage.setItem('penrw',JSON.stringify(all));scheduleSync()}
+function toggleRwDone(w){const all=JSON.parse(localStorage.getItem('penrw')||'{}');if(!all[w])all[w]={};all[w].done=!all[w].done;localStorage.setItem('penrw',JSON.stringify(all));bRewards();scheduleSync()}
 
 // ═══════════════════════════════════════════
 // RULES
@@ -1076,7 +1115,110 @@ function render(){bDateLbl();updBar();bSpr();bQuote();bMood();bPray();bHab();bWa
  'toggleRwDone','showPage','chDay','resetDay','prevQuote','nextQuote','renderTempQuote']
 .forEach(fn=>{try{window[fn]=eval(fn)}catch(e){}});
 
-render();
+// ═══════════════════════════════════════════
+// SUPABASE INTEGRATION
+// ═══════════════════════════════════════════
+const SUPA_URL='https://sjyreesfyhnmofpcqmis.supabase.co';
+const SUPA_ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNqeXJlZXNmeWhubW9mcGNxbWlzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM4NDMwOTQsImV4cCI6MjA4OTQxOTA5NH0.doeXTL4krWXzRMBx6T_lKQfpYFHYf4Kub-_o0r7JqWk';
+const sb=window.supabase.createClient(SUPA_URL,SUPA_ANON);
+let currentUser=null,syncTimer=null;
+
+function showSyncDot(state){
+  const el=document.getElementById('sync-dot');if(!el)return;
+  if(state==='syncing'){el.textContent='🔄';el.style.opacity='.8'}
+  else{el.textContent='✅';el.style.opacity='1';setTimeout(()=>{el.textContent='☁️';el.style.opacity='.4'},2000)}
+}
+function scheduleSync(){
+  if(!currentUser)return;
+  if(syncTimer)clearTimeout(syncTimer);
+  showSyncDot('syncing');
+  syncTimer=setTimeout(syncToCloud,1500);
+}
+async function syncToCloud(){
+  if(!currentUser)return;
+  try{
+    await sb.from('tracker_data').upsert({
+      user_id:currentUser.id,
+      daily_data:JSON.parse(localStorage.getItem('pen3')||'{}'),
+      habits_data:JSON.parse(localStorage.getItem('penh5')||'null'),
+      weight_data:JSON.parse(localStorage.getItem('penwt3')||'{}'),
+      measurements_data:JSON.parse(localStorage.getItem('penmeas')||'{}'),
+      weekly_reviews:JSON.parse(localStorage.getItem('penwr')||'{}'),
+      rewards_data:JSON.parse(localStorage.getItem('penrw')||'{}'),
+      updated_at:new Date().toISOString()
+    },{onConflict:'user_id'});
+    showSyncDot('saved');
+  }catch(e){console.error('Sync error:',e)}
+}
+async function loadFromCloud(){
+  const{data}=await sb.from('tracker_data').select('*').eq('user_id',currentUser.id).single();
+  if(!data)return;
+  if(data.daily_data&&Object.keys(data.daily_data).length){st=data.daily_data;localStorage.setItem('pen3',JSON.stringify(st))}
+  if(data.habits_data){ht=data.habits_data;localStorage.setItem('penh5',JSON.stringify(ht))}
+  if(data.weight_data)localStorage.setItem('penwt3',JSON.stringify(data.weight_data));
+  if(data.measurements_data)localStorage.setItem('penmeas',JSON.stringify(data.measurements_data));
+  if(data.weekly_reviews)localStorage.setItem('penwr',JSON.stringify(data.weekly_reviews));
+  if(data.rewards_data)localStorage.setItem('penrw',JSON.stringify(data.rewards_data));
+}
+
+function showApp(){
+  document.getElementById('auth-overlay').style.display='none';
+  document.getElementById('app-wrap').style.display='block';
+  render();
+}
+async function signOut(){
+  if(!confirm('Sign out?'))return;
+  await sb.auth.signOut();
+  currentUser=null;
+  document.getElementById('app-wrap').style.display='none';
+  document.getElementById('auth-overlay').style.display='flex';
+}
+async function authSubmit(e){
+  e.preventDefault();
+  const isLogin=document.getElementById('auth-mode').dataset.mode==='login';
+  const email=document.getElementById('auth-email').value.trim();
+  const pwd=document.getElementById('auth-pwd').value;
+  const errEl=document.getElementById('auth-err');
+  const btn=document.getElementById('auth-btn');
+  errEl.textContent='';btn.disabled=true;
+  btn.textContent=isLogin?'Signing in…':'Creating account…';
+  try{
+    if(isLogin){
+      const{error}=await sb.auth.signInWithPassword({email,password:pwd});
+      if(error)throw error;
+    }else{
+      const{error}=await sb.auth.signUp({email,password:pwd});
+      if(error)throw error;
+      errEl.style.color='#2d8653';
+      errEl.textContent='✅ Account created! Check your email to confirm, then sign in.';
+      switchAuthMode('login');return;
+    }
+  }catch(err){errEl.style.color='#e74c3c';errEl.textContent=err.message}
+  finally{btn.disabled=false;btn.textContent=isLogin?'Sign In':'Create Account'}
+}
+function switchAuthMode(mode){
+  document.getElementById('auth-mode').dataset.mode=mode;
+  document.getElementById('auth-title').textContent=mode==='login'?'Welcome Back 🌿':'Join Barakah Journey 🌿';
+  document.getElementById('auth-btn').textContent=mode==='login'?'Sign In':'Create Account';
+  document.getElementById('auth-switch').innerHTML=mode==='login'
+    ?`No account? <a href="#" onclick="switchAuthMode('signup');return false" style="color:#2d8653;font-weight:800">Sign up free</a>`
+    :`Already have one? <a href="#" onclick="switchAuthMode('login');return false" style="color:#2d8653;font-weight:800">Sign in</a>`;
+  document.getElementById('auth-err').textContent='';
+}
+
+async function initAuth(){
+  const{data:{session}}=await sb.auth.getSession();
+  if(session){currentUser=session.user;await loadFromCloud();showApp()}
+  else{document.getElementById('auth-overlay').style.display='flex'}
+  sb.auth.onAuthStateChange(async(event,session)=>{
+    if(event==='SIGNED_IN'&&!currentUser){currentUser=session.user;await loadFromCloud();showApp()}
+    else if(event==='SIGNED_OUT'){currentUser=null;document.getElementById('app-wrap').style.display='none';document.getElementById('auth-overlay').style.display='flex'}
+  });
+}
+
+initAuth();
 </script>
+
+</div><!-- end app-wrap -->
 </body>
 </html>
