@@ -1,8 +1,8 @@
 'use client'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { useStore } from '@/hooks/useStore'
-import { dateKey, dayNumber, weekNumber } from '@/lib/dates'
+import { useStore, type DayData } from '@/hooks/useStore'
+import { dateKey, dayNumber } from '@/lib/dates'
 import Header from '@/components/layout/Header'
 import QuoteCard from '@/components/daily/QuoteCard'
 import MoodTracker from '@/components/daily/MoodTracker'
@@ -39,7 +39,7 @@ export default function DailyPage() {
   const d = store.getDayData(dk)
   const dayNum = dayNumber(start, viewDate)
 
-  const upd = (fn: (d: typeof d) => typeof d) => store.updateDay(dk, fn)
+  const upd = (fn: (d: DayData) => DayData) => store.updateDay(dk, fn)
 
   // Score calculation
   const prayersDone = Object.values(d.pr).filter(Boolean).length +
