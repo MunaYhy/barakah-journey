@@ -5,7 +5,7 @@ import AppShell from '@/components/layout/AppShell'
 
 const quicksand = Quicksand({
   subsets: ['latin'],
-  weight: ['500', '600', '700', '800'],
+  weight: ['500', '600', '700'],
   variable: '--font-quicksand',
 })
 
