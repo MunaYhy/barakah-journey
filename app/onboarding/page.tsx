@@ -8,8 +8,7 @@ type Step = 'date' | 'weight' | 'welcome'
 export default function OnboardingPage() {
   const router = useRouter()
   const [step, setStep] = useState<Step>('date')
-  const today = new Date().toISOString().slice(0, 10)
-  const [startDate, setStartDate] = useState(today)
+  const [startDate, setStartDate] = useState('2026-03-23')
   const [startWeight, setStartWeight] = useState('')
 
   const finishOnboarding = () => {
